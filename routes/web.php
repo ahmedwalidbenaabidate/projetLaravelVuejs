@@ -17,9 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('chantiers', "App\Http\Controllers\ChantierController@index");
+Route::post('/chantiers/create', "App\Http\Controllers\ChantierController@create");
+Route::get('/chantiers/get/{id}', "App\Http\Controllers\ChantierController@show");
+Route::post('/chantiers/update', "App\Http\Controllers\ChantierController@update");
+Route::delete('/chantiers/delete/{id}', "App\Http\Controllers\ChantierController@destroy");
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::view('{any}', 'dashboard')
+->middleware('auth')
+->where('any', '.*');
