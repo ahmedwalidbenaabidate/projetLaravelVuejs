@@ -62,7 +62,7 @@ export default {
     methods: {
       async  getC() {
 
-            let response = await axios.get('/chantiers');
+            let response = await axios.get('chantiers/all');
             if (response.data.status == 1)
                 this.chantiers = response.data.data
         },

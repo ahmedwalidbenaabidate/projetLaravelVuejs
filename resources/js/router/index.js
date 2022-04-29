@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Chantierindex from "../components/Chantierindex.vue";
-import ChantierCreate from "../components/ChantierCreate.vue";
-import ChantierEdit from "../components/ChantierEdit.vue";
+import Chantierindex from "../components/ChantierDoss/Chantierindex.vue";
+import ChantierCreate from "../components/ChantierDoss/ChantierCreate.vue";
+import ChantierEdit from "../components/ChantierDoss/ChantierEdit.vue";
+
+import Qualiteindex from "../components/QualiteDoss/Qualiteindex.vue";
+import QualiteCreate from "../components/QualiteDoss/QualiteCreate.vue";
+import QualiteEdit from "../components/QualiteDoss/QualiteEdit.vue";
+
 
 const routes =[
+    //Routes Chantiers-------------------------------
     {
-        path : '/dashboard',
+        path : '/chantiers',
         name: 'chantiers.index',
         component: Chantierindex
     },
@@ -22,7 +28,25 @@ const routes =[
         component: ChantierEdit,
         props : true
     },
-    
+    //Routes Qualites--------------------------------------
+    {
+        path : '/qualites',
+        name: 'qualites.index',
+        component: Qualiteindex
+    },
+
+    {
+        path : '/qualites/create',
+        name: 'qualites.create',
+        component: QualiteCreate
+    },
+    {
+        path : '/qualites/:id/edit',
+        name: 'qualites.edit',
+        component: QualiteEdit,
+        props : true
+    },
+
 ];
 
 export default createRouter({

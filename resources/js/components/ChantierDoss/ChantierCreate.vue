@@ -17,8 +17,7 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
-import router from "../router/index.js";
+
 
 export default {
 
@@ -42,7 +41,7 @@ export default {
 
         async storeChantier(){
             await this.createChantier(this.form1);
-            this.$router.push("/dashboard");
+            this.$router.push("/chantiers");
         },
 
     },

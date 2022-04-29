@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
-import router from "../router/index.js";
 import axios from "axios";
 
 export default {
@@ -54,7 +52,7 @@ export default {
 
         async saveChantier(){
             await this.updateChantier();
-            this.$router.push("/dashboard");
+            this.$router.push("/chantiers");
         },
 
     },
