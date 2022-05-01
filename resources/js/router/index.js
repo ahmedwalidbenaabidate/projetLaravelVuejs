@@ -8,6 +8,11 @@ import Qualiteindex from "../components/QualiteDoss/Qualiteindex.vue";
 import QualiteCreate from "../components/QualiteDoss/QualiteCreate.vue";
 import QualiteEdit from "../components/QualiteDoss/QualiteEdit.vue";
 
+import Employeeindex from "../components/EmployeeDoss/Employeeindex.vue";
+import EmployeeCreate from "../components/EmployeeDoss/EmployeeCreate.vue";
+import EmployeeEdit from "../components/EmployeeDoss/EmployeeEdit.vue";
+
+
 
 const routes =[
     //Routes Chantiers-------------------------------
@@ -44,6 +49,24 @@ const routes =[
         path : '/qualites/:id/edit',
         name: 'qualites.edit',
         component: QualiteEdit,
+        props : true
+    },
+    //Routes Employee-----------------------------------------
+    {
+        path : '/employees',
+        name: 'employees.index',
+        component: Employeeindex
+    },
+
+    {
+        path : '/employees/create',
+        name: 'employees.create',
+        component: EmployeeCreate
+    },
+    {
+        path : '/employees/:id/edit',
+        name: 'employees.edit',
+        component: EmployeeEdit,
         props : true
     },
 

@@ -31,6 +31,12 @@ Route::get('/qualites/get/{id}', "App\Http\Controllers\QualiteController@show");
 Route::post('/qualites/update', "App\Http\Controllers\QualiteController@update");
 Route::delete('/qualites/delete/{id}', "App\Http\Controllers\QualiteController@destroy");
 
+//Route Employees------------------------------------------------
+Route::get('employees/all', "App\Http\Controllers\EmployeeController@index");
+Route::post('/employees/create', "App\Http\Controllers\EmployeeController@create");
+Route::get('/employees/get/{id}', "App\Http\Controllers\EmployeeController@show");
+Route::post('/employees/update', "App\Http\Controllers\EmployeeController@update");
+Route::delete('/employees/delete/{id}', "App\Http\Controllers\EmployeeController@destroy");
 
 
 Route::get('/dashboard', function () {

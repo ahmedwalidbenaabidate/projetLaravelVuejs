@@ -1,0 +1,117 @@
+<template>
+    <form class="space-y-6"  @submit.prevent="saveEmployee" >
+        <div>
+            <label for="reference" class="block">Référence</label>
+            <input type="text" class="inp1" id="reference" v-model="employee.reference" maxlength="6" required>
+        </div>
+        <div>
+            <label for="nom" class="block">Nom</label>
+            <input type="text" class="inp1" id="nom" v-model="employee.nom" required>
+        </div>
+        <div>
+            <label for="prenom" class="block">Prenom</label>
+            <input type="text" class="inp1" id="prenom" v-model="employee.prenom" required>
+        </div>
+        <div>
+            <label for="adresse" class="block">Adresse</label>
+            <input type="text" class="inp1" id="adresse" v-model="employee.adresse" required>
+        </div>
+        <div>
+            <label for="cin" class="block">CIN</label>
+            <input type="text" class="inp1" id="cin" v-model="employee.cin" required>
+        </div>
+        <div>
+            <label for="salaire" class="block">Salaire</label>
+            <input type="number" step="any" class="inp1" id="salaire" v-model="employee.salaire" required>
+        </div>
+        <div>
+            <label for="type_salaire" class="block">Type salaire</label>
+            <!-- <input type="text" class="inp1" id="type_salaire" v-model="employee.type_salaire" required> -->
+            <select name="type_salaire" class="inp1" id="type_salaire" v-model="employee.type_salaire" required>
+                <option value="">Choisir le type</option>
+                <option value="Journalier">Journalier</option>
+                <option value="Mensuel">Mensuel</option>
+            </select>
+        </div>
+        <div>
+            <label for="permisDate" class="block">Date du permis</label>
+            <input type="date" class="inp1" id="permisDate" v-model="employee.permisDate" required>
+        </div>
+        <div>
+            <label for="qualite_id" class="block">Id du qualité</label>
+            <input type="text" id="qualite_id" class="inp1" v-model="employee.qualite_id" disabled required>
+            
+        </div>
+        <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Mettre à jour</button>
+    </form>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+
+     props: {
+        id: {
+            required: true,
+            type: String
+        }
+    },
+
+
+    data() {
+        return {
+            employee: {}
+        };
+    },
+
+
+    methods: {
+
+        async  getEmployee(id) {
+
+            let response = await axios.get('/employees/get/' + id);
+            if (response.data.status == 1)
+                this.employee = response.data.data
+        },
+
+      
+        async updateEmployee(){
+            await axios.post('/employees/update',this.employee);
+        },
+
+        async saveEmployee(){
+            await this.updateEmployee();
+            this.$router.push("/employees");
+        },
+
+    },
+    mounted(){
+        this.getEmployee(this.$route.params.id)
+    }
+
+
+}
+
+</script>
+
+<style>
+form{
+    text-align: center;
+    
+    
+}
+
+#code ,#libelle, #abreviation{
+    border-radius: 10px;
+}
+.inp1{
+    border-radius: 10px;
+}
+#btnEnreg{
+    background-color: aqua;
+    margin-top: 10px;
+    
+}
+
+</style>
