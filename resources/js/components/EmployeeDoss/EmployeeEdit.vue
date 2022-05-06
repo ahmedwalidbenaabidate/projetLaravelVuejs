@@ -34,14 +34,21 @@
             </select>
         </div>
         <div>
+            <label for="type_salaire" class="block">Qualite</label>
+            <!-- <input type="text" class="inp1" id="type_salaire" v-model="form1.type_salaire" required> -->
+            <select name="type_salaire" class="inp1" id="type_salaire" v-model="employee.qualite_id" required>
+                <option v-for="c in Qualites" :value="c.id" :key="c.id">{{c.libelleFonction}}</option>
+            </select>
+        </div>
+        <div>
             <label for="permisDate" class="block">Date du permis</label>
             <input type="date" class="inp1" id="permisDate" v-model="employee.permisDate" required>
         </div>
-        <div>
+        <!-- <div>
             <label for="qualite_id" class="block">Id du qualité</label>
             <input type="text" id="qualite_id" class="inp1" v-model="employee.qualite_id" disabled required>
             
-        </div>
+        </div> -->
         <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Mettre à jour</button>
     </form>
 </template>
@@ -61,6 +68,7 @@ export default {
 
     data() {
         return {
+            Qualites: [],
             employee: {}
         };
     },
@@ -85,9 +93,17 @@ export default {
             this.$router.push("/employees");
         },
 
+        async getQualites() {
+
+            let response = await axios.get('/qualites/all');
+            if (response.data.status == 1)
+                this.Qualites = response.data.data
+        },
+
     },
     mounted(){
-        this.getEmployee(this.$route.params.id)
+        this.getEmployee(this.$route.params.id),
+        this.getQualites()
     }
 
 

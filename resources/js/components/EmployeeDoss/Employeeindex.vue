@@ -33,7 +33,7 @@
                     Date du permis
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Id du qualité
+                    Qualité
                 </th>
                 <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Action</span>
@@ -68,7 +68,7 @@
                         <div v-text="employee.permisDate"></div>
                     </td>
                     <td class="px-6 py-4">
-                        <div v-text="employee.qualite_id"></div>
+                        <div v-text="employee.libelleFonction"></div>
                     </td>
                    
                     <td class="px-6 py-4 text-right">

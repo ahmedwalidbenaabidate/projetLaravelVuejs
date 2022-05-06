@@ -25,7 +25,8 @@ Route::post('/chantiers/update', "App\Http\Controllers\ChantierController@update
 Route::delete('/chantiers/delete/{id}', "App\Http\Controllers\ChantierController@destroy");
 
 //Route Qualites----------------------------------------------
-Route::get('qualites/all', "App\Http\Controllers\QualiteController@index");
+ Route::get('/qualites/all', "App\Http\Controllers\QualiteController@index");
+
 Route::post('/qualites/create', "App\Http\Controllers\QualiteController@create");
 Route::get('/qualites/get/{id}', "App\Http\Controllers\QualiteController@show");
 Route::post('/qualites/update', "App\Http\Controllers\QualiteController@update");
@@ -37,6 +38,11 @@ Route::post('/employees/create', "App\Http\Controllers\EmployeeController@create
 Route::get('/employees/get/{id}', "App\Http\Controllers\EmployeeController@show");
 Route::post('/employees/update', "App\Http\Controllers\EmployeeController@update");
 Route::delete('/employees/delete/{id}', "App\Http\Controllers\EmployeeController@destroy");
+
+//Route Pointage------------------------
+Route::get('/pointages/allAbs', "App\Http\Controllers\PointageController@indexAfficherAbs");
+Route::post('/pointages/create', "App\Http\Controllers\PointageController@create");
+
 
 
 Route::get('/dashboard', function () {

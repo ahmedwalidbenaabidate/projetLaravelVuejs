@@ -12,6 +12,8 @@ import Employeeindex from "../components/EmployeeDoss/Employeeindex.vue";
 import EmployeeCreate from "../components/EmployeeDoss/EmployeeCreate.vue";
 import EmployeeEdit from "../components/EmployeeDoss/EmployeeEdit.vue";
 
+import PointageCreate from "../components/PointageDoss/PointageCreate.vue";
+
 
 
 const routes =[
@@ -69,7 +71,12 @@ const routes =[
         component: EmployeeEdit,
         props : true
     },
-
+    //Routes Pointage-------------------------------------------
+    {
+        path : '/pointages',
+        name: 'pointages.create',
+        component: PointageCreate
+    },
 ];
 
 export default createRouter({

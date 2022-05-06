@@ -14,7 +14,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Employee:: latest()->get();
+        $data = Employee::leftjoin("qualites","qualites.id","=","employees.qualite_id")->select("employees.*","qualites.libelleFonction")->latest()->get();
         return \response()->json([
             "data"=>$data,
             "status"=>1,

@@ -7,6 +7,7 @@ import Chantierindex from "./components/ChantierDoss/Chantierindex.vue";
 import Qualiteindex from "./components/QualiteDoss/Qualiteindex.vue";
 import Employeeindex from "./components/EmployeeDoss/Employeeindex.vue";
 
+import PointageCreate from "./components/PointageDoss/PointageCreate.vue";
 
 import Alpine from 'alpinejs';
 
@@ -20,7 +21,8 @@ createApp({
     components: {
         Chantierindex,
         Qualiteindex,
-        Employeeindex
+        Employeeindex,
+        PointageCreate,
     }
 })
 .use(router)

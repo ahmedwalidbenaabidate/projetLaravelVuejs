@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Resources\ChantierResource;
 
+
 class ChantierController extends Controller
 {
     public function index(Request $request){
+        
         $data = Chantier:: latest()->get();
         return \response()->json([
             "data"=>$data,
