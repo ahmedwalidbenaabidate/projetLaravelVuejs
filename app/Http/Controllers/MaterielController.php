@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
+use App\Models\Materiel;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class MaterielController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Employee::leftjoin("qualites","qualites.id","=","employees.qualite_id")->select("employees.*","qualites.libelleFonction")->latest()->get();
+        $data = Materiel::leftjoin("type_materiels","type_materiels.id","=","materiels.typeMateriel_id")->select("materiels.*","type_materiels.libelleMateriel")->latest()->get();
         return \response()->json([
             "data"=>$data,
             "status"=>1,
@@ -28,16 +28,13 @@ class EmployeeController extends Controller
      */
     public function create(Request $request)
     {
-        Employee::create([
-            'reference' => $request->reference,
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'adresse' => $request->adresse,
-            'cin' => $request->cin,
-            'salaire' => $request->salaire,
-            'type_salaire' => $request->type_salaire,
-            'permisDate' => $request->permisDate,
-            'qualite_id' => $request->qualite_id,
+        Materiel::create([
+            'marqueM' => $request->marqueM,
+            'modelM' => $request->modelM,
+            'etatM' => $request->etatM,
+            'date_AchatM' => $request->date_AchatM,
+            'date_FonctionM' => $request->date_FonctionM,
+            'typeMateriel_id' => $request->typeMateriel_id,
                     
         ]);
     }
@@ -56,12 +53,12 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Materiel  $materiel
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $data= Employee::where('id',$id)->first();
+        $data= Materiel::where('id',$id)->first();
         return \response()->json([
             "data"=>$data,
             "status"=>1,
@@ -71,10 +68,10 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Materiel  $materiel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit(Materiel $materiel)
     {
         //
     }
@@ -83,25 +80,25 @@ class EmployeeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Materiel  $materiel
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-        $Employee =  Employee::where('id', $request->id)->first();
-        $Employee->fill($request->all());
-        $Employee->save();
+        $Materiel =  Materiel::where('id', $request->id)->first();
+        $Materiel->fill($request->all());
+        $Materiel->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Materiel  $materiel
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $data= Employee::where('id',$id)->first();
+        $data= Materiel::where('id',$id)->first();
         $data->delete();
         return \response()->noContent();
     }

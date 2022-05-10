@@ -1,0 +1,119 @@
+<template>
+<div class="flex flex-col">
+    <div class="flex ">
+        <router-link :to="{name: 'materiels.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un matériel</router-link>
+    </div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+    
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Marque matériel
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Model matériel
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    État matériel
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Date achat
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Date fonctionnement
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Type matériel
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Action</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <template v-for="materiel,i in materiels" :key="i">
+                <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                        <div v-text="materiel.marqueM"></div>
+                    </th>
+                    <td class="px-6 py-4">
+                        <div v-text="materiel.modelM"></div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div v-text="materiel.etatM"></div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div v-text="materiel.date_AchatM"></div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div v-text="materiel.date_FonctionM"></div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div v-text="materiel.libelleMateriel"></div>
+                    </td>
+                    
+                    <td class="px-6 py-4 text-right">
+                        <router-link :to="{name: 'materiels.edit', params:{id: materiel.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link>
+                        <button  @click="destroyMateriel(materiel.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                    </td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</div>
+</div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+    data() {
+        return {
+            materiels: []
+        };
+    },
+    methods: {
+      async  getMateriel() {
+
+            let response = await axios.get('materiels/all');
+            if (response.data.status == 1)
+                this.materiels = response.data.data
+        },
+        async destroyMateriel(id,pos){
+             if (!window.confirm( 'Voullez vous supprimer cet materiel ?')) return;
+
+            await axios.delete('/materiels/delete/' + id);
+            
+            this.materiels.splice(pos,1)
+        },
+       
+
+
+    },
+    mounted(){
+        this.getMateriel()
+                    
+
+    }
+}
+</script>
+
+<style>
+
+#rlink1{
+    background-color: aqua;
+}
+#rlinkEdit{
+    margin-right: 20px;
+}
+#btnSupp{
+    margin-left: 10px;
+    
+}
+
+#trl1{
+    text-align: center;
+}
+</style>

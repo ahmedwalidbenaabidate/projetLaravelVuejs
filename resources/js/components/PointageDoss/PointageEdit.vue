@@ -1,8 +1,10 @@
 <template>
 <div class="flex flex-col" v-if="list_create_pointage.length">
-    <div class="flex ">
-        <router-link :to="{name: 'pointages.edit'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Modifier Pointage</router-link>
+    <div class="DivRecherche">
+        <input type="date" v-model="$datePP" class="inp1" name="datePointage" id="dateP">
+        <button id="btnRech" @click="getEmployeeParDate($datePP)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Recherche</button>
     </div>
+
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -29,9 +31,9 @@
                     <th scope="col" class="px-6 py-3">
                         Remarque
                     </th>
-                    <!-- <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3">
                         Date
-                    </th> -->
+                    </th>
                     <th scope="col" class="px-6 py-3">
                         <span class="sr-only">Action</span>
                     </th>
@@ -41,7 +43,7 @@
                 <template v-for="employee,i in employees" :key="i">
                     <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                            {{employee.id}}
+                            {{employee.id_employee}}
                         </th>
                         <td class="px-6 py-4">
                             {{employee.nom}}<!-- {{chantier.libelle}} -->
@@ -53,7 +55,7 @@
                             {{employee.libelleFonction}}
                         </td>
                         <td class="px-6 py-4">
-                            <select class="inp1" v-model="list_create_pointage[i].presence">
+                            <select class="inp1" v-model="employee.presence">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="0.5">0.5</option>
@@ -61,18 +63,20 @@
                             </select>
                         </td>
                         <td class="px-6 py-4">
-                            <input type="number" v-model="list_create_pointage[i].heurs_suppl" min="0" class="inp1">
+                            <!-- <input type="number" v-model="list_create_pointage[i].heurs_suppl" min="0" class="inp1"> -->
+                            <input type="number" v-model="employee.heurs_suppl" min="0" class="inp1">
                         </td>
                         <td class="px-6 py-4">
-                            <textarea class="inp1" v-model="list_create_pointage[i].remarque" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque"></textarea>
+                            <textarea class="inp1" v-model="employee.remarque" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque"></textarea>
                         </td>
-                        <!-- <td class="px-6 py-4">
-                            <input type="date" class="inp1" v-model="list_create_pointage[i].date_pointage">
-                        </td> -->
+                        <td class="px-6 py-4">
+                            <!-- <input type="date" class="inp1" v-model="list_create_pointage[i].date_pointage"> -->
+                            <label for="dateP">{{employee.date_pointage}}</label>
+                        </td>
 
                         <td class="px-6 py-4 text-right">
-
-                            <button id="btnEnr" @click="create_pointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>
+                            <!-- <button id="btnEnr" @click="create_pointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>  -->
+                            <button id="btnEnr" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>
                         </td>
                     </tr>
                 </template>
@@ -104,7 +108,7 @@ export default {
     methods: {
         async getEmployee() {
 
-            let response = await axios.get('/pointages/allAbs');
+            let response = await axios.get('/pointages/all');
             if (response.data.status == 1) {
                 this.employees = response.data.data
                 let i = 0;
@@ -116,18 +120,22 @@ export default {
 
             }
         },
-        async createpointData(data) {
-            await axios.post('/pointages/create', data);
-            this.$router.push("/pointages");
+
+        async getEmployeeParDate($date_pointage) {
+
+            let response = await axios.get('/pointages/allAbsDate/'+ $date_pointage);
+            if (response.data.status == 1) {
+                this.employees = response.data.data
+                let i = 0;
+                for (i = 0; i < this.employees.length; i++) {
+                    let item__ = Object.assign({}, this.Object_pointage)
+                    item__.id_employee = this.employees[i].id;
+                    this.list_create_pointage.push(item__)
+                }
+
+            }
         },
 
-        async create_pointage(i) {
-            await this.createpointData(this.list_create_pointage[i]);
-            this.list_create_pointage.splice(i,1);
-            this.employees.splice(i,1);
-            // this.$router.push("/pointages");
-            //console.log(this.list_create_pointage[i])
-        }
     },
     mounted() {
         this.getEmployee()
@@ -140,9 +148,18 @@ export default {
 #btnEnr {
     background-color: aqua;
 }
+#btnRech {
+    background-color:aqua;
+    margin-left: 40px;
+}
 
 .inp1 {
     border-radius: 10px;
 
 }
+.DivRecherche{
+    margin-left: 30%;
+    margin-bottom: 50px;
+}
+
 </style>

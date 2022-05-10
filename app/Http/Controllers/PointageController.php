@@ -17,7 +17,29 @@ class PointageController extends Controller
      */
     public function index()
     {
-        //
+        $data = Employee::join("p_persones","employees.id","=","p_persones.id_employee")
+        ->join("qualites","employees.qualite_id","=","qualites.id")
+        ->select("id_employee","nom","prenom","libelleFonction","presence","heurs_suppl","remarque","date_pointage")
+        ->latest("p_persones.created_at")
+        ->get();
+          return \response()->json([
+            "data"=>$data,
+            "status"=>1,
+        ]);
+    }
+
+    public function indexAfficherAbsParDate($date_pointage)
+    {
+        $data = Employee::join("p_persones","employees.id","=","p_persones.id_employee")
+        ->join("qualites","employees.qualite_id","=","qualites.id")
+        ->select("id_employee","nom","prenom","libelleFonction","presence","heurs_suppl","remarque","date_pointage")
+        ->where("date_pointage","=","$date_pointage")
+        ->latest("p_persones.created_at")
+        ->get();
+          return \response()->json([
+            "data"=>$data,
+            "status"=>1,
+        ]);
     }
 
     public function indexAfficherAbs()

@@ -13,7 +13,14 @@ import EmployeeCreate from "../components/EmployeeDoss/EmployeeCreate.vue";
 import EmployeeEdit from "../components/EmployeeDoss/EmployeeEdit.vue";
 
 import PointageCreate from "../components/PointageDoss/PointageCreate.vue";
+import PointageEdit from "../components/PointageDoss/PointageEdit.vue";
 
+import TypeMaterielindex from "../components/MaterielDoss/TypeMaterielDoss/TypeMaterielindex.vue";
+import TypeMaterielcreate from "../components/MaterielDoss/TypeMaterielDoss/TypeMaterielcreate.vue";
+
+import Materielindex from "../components/MaterielDoss/Materiel/Materielindex.vue";
+import MaterielCreate from "../components/MaterielDoss/Materiel/MaterielCreate.vue";
+import MaterielEdit from "../components/MaterielDoss/Materiel/MaterielEdit.vue";
 
 
 const routes =[
@@ -77,6 +84,42 @@ const routes =[
         name: 'pointages.create',
         component: PointageCreate
     },
+    {
+        path : '/pointages/edit',
+        name: 'pointages.edit',
+        component: PointageEdit
+    },
+    //Routes TypeMateriel--------------------
+    {
+        path : '/typemarteriels',
+        name: 'typemarteriels.index',
+        component: TypeMaterielindex
+    },
+
+    {
+        path : '/typemarteriels/create',
+        name: 'typemarteriels.create',
+        component: TypeMaterielcreate
+    },
+    
+    //Routes Materiel---------------------------
+    {
+        path : '/materiels',
+        name: 'materiels.index',
+        component: Materielindex
+    },
+    {
+        path : '/materiels/create',
+        name: 'materiels.create',
+        component: MaterielCreate
+    },
+    {
+        path : '/materiels/:id/edit',
+        name: 'materiels.edit',
+        component: MaterielEdit,
+        
+    },
+
 ];
 
 export default createRouter({
