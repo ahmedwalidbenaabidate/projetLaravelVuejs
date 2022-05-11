@@ -14,7 +14,7 @@ class MaterielController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Materiel::leftjoin("type_materiels","type_materiels.id","=","materiels.typeMateriel_id")->select("materiels.*","type_materiels.libelleMateriel")->latest()->get();
+        $data = Materiel::leftjoin("type_materiels","type_materiels.id","=","materiels.typeMateriel_id")->select("materiels.*","type_materiels.libelleMateriel","type_materiels.photo")->latest()->get();
         return \response()->json([
             "data"=>$data,
             "status"=>1,

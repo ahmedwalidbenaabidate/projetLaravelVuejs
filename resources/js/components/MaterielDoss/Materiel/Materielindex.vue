@@ -24,6 +24,9 @@
                     Date fonctionnement
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Photo
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Type matériel
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -48,6 +51,10 @@
                     </td>
                     <td class="px-6 py-4">
                         <div v-text="materiel.date_FonctionM"></div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <!-- <div v-text="materiel.date_FonctionM"></div> -->
+                        <img width="140" height="160" :src="materiel.photo" name="photo" id="photo2"  alt="vide">
                     </td>
                     <td class="px-6 py-4">
                         <div v-text="materiel.libelleMateriel"></div>

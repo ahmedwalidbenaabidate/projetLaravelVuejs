@@ -1,5 +1,5 @@
 <template>
-<div class="flex flex-col" v-if="list_create_pointage.length">
+<div class="flex flex-col" v-if="employees.length">
     <div class="DivRecherche">
         <input type="date" v-model="$datePP" class="inp1" name="datePointage" id="dateP">
         <button id="btnRech" @click="getEmployeeParDate($datePP)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Recherche</button>
@@ -56,10 +56,10 @@
                         </td>
                         <td class="px-6 py-4">
                             <select class="inp1" v-model="employee.presence">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="0.5">0.5</option>
-                                <option value="1.5">1.5</option>
+                                <option value="0">ABSENT</option>
+                                <option value="1">PRÉSENT</option>
+                                <option value="0.5">DEMI JOURNÉE</option>
+                                <option value="1.5">UN JOUR ET DEMI</option>
                             </select>
                         </td>
                         <td class="px-6 py-4">
@@ -76,7 +76,8 @@
 
                         <td class="px-6 py-4 text-right">
                             <!-- <button id="btnEnr" @click="create_pointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>  -->
-                            <button id="btnEnr" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>
+                            <button id="btnEnr" @click="savePointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Modifier</button>
+                            <button id="btnSupp" @click="destroyPointage(employee.id,i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -94,15 +95,6 @@ export default {
     data() {
         return {
             employees: [],
-            list_create_pointage: [],
-            Object_pointage: {
-                //date_pointage: '',
-                id_employee: -1,
-                presence: '',
-                remarque: '',
-                heurs_suppl: '0',
-
-            }
         };
     },
     methods: {
@@ -111,29 +103,36 @@ export default {
             let response = await axios.get('/pointages/all');
             if (response.data.status == 1) {
                 this.employees = response.data.data
-                let i = 0;
-                for (i = 0; i < this.employees.length; i++) {
-                    let item__ = Object.assign({}, this.Object_pointage)
-                    item__.id_employee = this.employees[i].id;
-                    this.list_create_pointage.push(item__)
-                }
-
             }
         },
 
         async getEmployeeParDate($date_pointage) {
 
-            let response = await axios.get('/pointages/allAbsDate/'+ $date_pointage);
+            let response = await axios.get('/pointages/allAbsDate/' + $date_pointage);
             if (response.data.status == 1) {
                 this.employees = response.data.data
-                let i = 0;
-                for (i = 0; i < this.employees.length; i++) {
-                    let item__ = Object.assign({}, this.Object_pointage)
-                    item__.id_employee = this.employees[i].id;
-                    this.list_create_pointage.push(item__)
-                }
 
             }
+        },
+
+        async savePointage(i) {
+            console.log(this.employees[i].remarque)
+            if (this.employees[i].presence == '' || this.employees[i].heurs_suppl === '' || this.employees[i].remarque == '') {
+                alert("Veuillez remplir les champs vide");
+
+            } else {
+                await axios.post('/pointages/update', this.employees[i]);
+                alert("Modification à été bien fait");
+            }
+        },
+
+        async destroyPointage(id,pos){
+             if (!window.confirm( 'Voulez vous supprimer ce pointage ?')) return;
+
+            await axios.delete('/pointages/delete/' + id);
+            
+            this.employees.splice(pos,1)
+            //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
         },
 
     },
@@ -144,12 +143,26 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #btnEnr {
-    background-color: aqua;
+    background-color: lime;
+    color: black;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 85px;
+    margin-bottom: 20px;
+    margin-left: 10px;
 }
+
+#btnSupp {
+    background-color: red;
+    color: black;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
 #btnRech {
-    background-color:aqua;
+    background-color: aqua;
     margin-left: 40px;
 }
 
@@ -157,9 +170,9 @@ export default {
     border-radius: 10px;
 
 }
-.DivRecherche{
+
+.DivRecherche {
     margin-left: 30%;
     margin-bottom: 50px;
 }
-
 </style>

@@ -43,7 +43,9 @@ Route::delete('/employees/delete/{id}', "App\Http\Controllers\EmployeeController
 Route::get('/pointages/allAbs', "App\Http\Controllers\PointageController@indexAfficherAbs");
 Route::get('/pointages/all', "App\Http\Controllers\PointageController@index");
 Route::get('/pointages/allAbsDate/{date_pointage}', "App\Http\Controllers\PointageController@indexAfficherAbsParDate");
+Route::post('/pointages/update', "App\Http\Controllers\PointageController@update");
 Route::post('/pointages/create', "App\Http\Controllers\PointageController@create");
+Route::delete('/pointages/delete/{id}', "App\Http\Controllers\PointageController@destroy");
 
 //Route TypeMateriel--------------------------
 Route::get('/typemarteriels/all', "App\Http\Controllers\ControllerTypeMateriel@index");

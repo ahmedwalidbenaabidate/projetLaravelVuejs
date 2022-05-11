@@ -19,7 +19,7 @@ class PointageController extends Controller
     {
         $data = Employee::join("p_persones","employees.id","=","p_persones.id_employee")
         ->join("qualites","employees.qualite_id","=","qualites.id")
-        ->select("id_employee","nom","prenom","libelleFonction","presence","heurs_suppl","remarque","date_pointage")
+        ->select("p_persones.id","id_employee","nom","prenom","libelleFonction","presence","heurs_suppl","remarque","date_pointage")
         ->latest("p_persones.created_at")
         ->get();
           return \response()->json([
@@ -131,9 +131,12 @@ class PointageController extends Controller
      * @param  \App\Models\P_persone  $p_persone
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, P_persone $p_persone)
+    public function update(Request $request)
     {
-        //
+
+        $P_persone =  P_persone::where('id', $request->id)->first();
+        $P_persone->fill($request->all());
+        $P_persone->save();
     }
 
     /**
@@ -142,8 +145,10 @@ class PointageController extends Controller
      * @param  \App\Models\P_persone  $p_persone
      * @return \Illuminate\Http\Response
      */
-    public function destroy(P_persone $p_persone)
+    public function destroy($id)
     {
-        //
+        $data= P_persone::where('id',$id)->first();
+        $data->delete();
+        return \response()->noContent();
     }
 }

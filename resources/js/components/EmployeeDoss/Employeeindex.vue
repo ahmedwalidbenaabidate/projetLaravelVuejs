@@ -105,6 +105,7 @@ export default {
             await axios.delete('/employees/delete/' + id);
             
             this.employees.splice(pos,1)
+            //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
         },
        
 

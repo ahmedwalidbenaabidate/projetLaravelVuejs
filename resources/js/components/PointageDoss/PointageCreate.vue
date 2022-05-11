@@ -40,6 +40,7 @@
             <tbody>
                 <template v-for="employee,i in employees" :key="i">
                     <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{employee.id}}
                         </th>
@@ -52,20 +53,23 @@
                         <td class="px-6 py-4">
                             {{employee.libelleFonction}}
                         </td>
+
+                        <!-- <form v-on:submit.prevent="create_pointage(i)"> -->
                         <td class="px-6 py-4">
-                            <select class="inp1" v-model="list_create_pointage[i].presence">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="0.5">0.5</option>
-                                <option value="1.5">1.5</option>
+                            <select class="inp1" v-model="list_create_pointage[i].presence" required>
+                                <option value="0">ABSENT</option>
+                                <option value="1">PRÉSENT</option>
+                                <option value="0.5">DEMI JOURNÉE</option>
+                                <option value="1.5">UN JOUR ET DEMI</option>
                             </select>
                         </td>
                         <td class="px-6 py-4">
-                            <input type="number" v-model="list_create_pointage[i].heurs_suppl" min="0" class="inp1">
+                            <input type="number" v-model="list_create_pointage[i].heurs_suppl" min="0" class="inp1" required>
                         </td>
                         <td class="px-6 py-4">
-                            <textarea class="inp1" v-model="list_create_pointage[i].remarque" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque"></textarea>
+                            <textarea class="inp1" v-model="list_create_pointage[i].remarque" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque" required></textarea>
                         </td>
+
                         <!-- <td class="px-6 py-4">
                             <input type="date" class="inp1" v-model="list_create_pointage[i].date_pointage">
                         </td> -->
@@ -74,6 +78,8 @@
 
                             <button id="btnEnr" @click="create_pointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>
                         </td>
+                        <!-- </form>                 -->
+
                     </tr>
                 </template>
             </tbody>
@@ -122,9 +128,13 @@ export default {
         },
 
         async create_pointage(i) {
-            await this.createpointData(this.list_create_pointage[i]);
-            this.list_create_pointage.splice(i,1);
-            this.employees.splice(i,1);
+            if (this.list_create_pointage[i].presence != '' && this.list_create_pointage[i].heurs_suppl !== '' && this.list_create_pointage[i].remarque != '') {
+                await this.createpointData(this.list_create_pointage[i]);
+                this.list_create_pointage.splice(i, 1);
+                this.employees.splice(i, 1);
+            }else
+            alert("Veuillez remplir les champs vide");
+
             // this.$router.push("/pointages");
             //console.log(this.list_create_pointage[i])
         }
@@ -136,7 +146,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #btnEnr {
     background-color: aqua;
 }
