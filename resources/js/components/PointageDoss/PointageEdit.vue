@@ -1,5 +1,5 @@
 <template>
-<div class="flex flex-col" v-if="employees.length">
+<div class="flex flex-col" >
     <div class="DivRecherche">
         <input type="date" v-model="$datePP" class="inp1" name="datePointage" id="dateP">
         <button id="btnRech" @click="getEmployeeParDate($datePP)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Recherche</button>
@@ -84,6 +84,7 @@
             </tbody>
         </table>
 
+
     </div>
 </div>
 </template>
@@ -107,17 +108,18 @@ export default {
         },
 
         async getEmployeeParDate($date_pointage) {
-
+            if($date_pointage){
             let response = await axios.get('/pointages/allAbsDate/' + $date_pointage);
             if (response.data.status == 1) {
                 this.employees = response.data.data
-
             }
+            }else
+            alert("Veuillez choisir une date");
         },
 
         async savePointage(i) {
             console.log(this.employees[i].remarque)
-            if (this.employees[i].presence == '' || this.employees[i].heurs_suppl === '' || this.employees[i].remarque == '') {
+            if (this.employees[i].presence === '' || this.employees[i].heurs_suppl === '' || this.employees[i].remarque == '') {
                 alert("Veuillez remplir les champs vide");
 
             } else {

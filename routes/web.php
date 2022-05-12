@@ -50,6 +50,9 @@ Route::delete('/pointages/delete/{id}', "App\Http\Controllers\PointageController
 //Route TypeMateriel--------------------------
 Route::get('/typemarteriels/all', "App\Http\Controllers\ControllerTypeMateriel@index");
 Route::post('/typemarteriels/create', "App\Http\Controllers\ControllerTypeMateriel@create");
+Route::get('/typemarteriels/get/{id}', "App\Http\Controllers\ControllerTypeMateriel@show");
+Route::post('/typemarteriels/update', "App\Http\Controllers\ControllerTypeMateriel@update");
+Route::delete('/typemarteriels/delete/{id}', "App\Http\Controllers\ControllerTypeMateriel@destroy");
 
 //Route Materiel-----------------------------
 Route::get('materiels/all', "App\Http\Controllers\MaterielController@index");

@@ -17,6 +17,7 @@ import PointageEdit from "../components/PointageDoss/PointageEdit.vue";
 
 import TypeMaterielindex from "../components/MaterielDoss/TypeMaterielDoss/TypeMaterielindex.vue";
 import TypeMaterielcreate from "../components/MaterielDoss/TypeMaterielDoss/TypeMaterielcreate.vue";
+import TypeMaterielEdit from "../components/MaterielDoss/TypeMaterielDoss/TypeMaterielEdit.vue";
 
 import Materielindex from "../components/MaterielDoss/Materiel/Materielindex.vue";
 import MaterielCreate from "../components/MaterielDoss/Materiel/MaterielCreate.vue";
@@ -102,6 +103,12 @@ const routes =[
         component: TypeMaterielcreate
     },
     
+    {
+        path : '/typemarteriels/:id/edit',
+        name: 'typemarteriels.edit',
+        component: TypeMaterielEdit,
+    },
+
     //Routes Materiel---------------------------
     {
         path : '/materiels',

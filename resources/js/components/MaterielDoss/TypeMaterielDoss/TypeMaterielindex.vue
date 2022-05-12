@@ -31,8 +31,8 @@
                     </th>
                     
                     <td class="px-6 py-4 text-right">
-                        <!-- <router-link :to="{name: 'qualites.edit', params:{id: qualite.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link>
-                        <button  @click="destroyQualite(qualite.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button> -->
+                        <router-link :to="{name: 'typemarteriels.edit', params:{id: typeM.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link>
+                        <button  @click="destroyTypeMateriel(typeM.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
                     </td>
                 </tr>
             </template>
@@ -59,13 +59,13 @@ export default {
                 this.typesMat = response.data.data
         },
 
-        // async destroyQualite(id,pos){
-        //      if (!window.confirm( 'Supprimer cette qualité ?')) return;
+        async destroyTypeMateriel(id,pos){
+             if (!window.confirm( 'Supprimer ce type de matériel ?')) return;
 
-        //     await axios.delete('/qualites/delete/' + id);
+            await axios.delete('/typemarteriels/delete/' + id);
             
-        //     this.qualites.splice(pos,1)
-        // },
+            this.typesMat.splice(pos,1)
+        },
        
 
 

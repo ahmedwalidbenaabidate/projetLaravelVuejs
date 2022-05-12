@@ -6,7 +6,7 @@
     </div>
     <div>
         <label for="photo" class="block">Photo</label>
-        <input type="file" name="photo" id="photo1" ref="photo"  required>
+        <input type="file" name="photo" id="photo1" ref="photo" required>
     </div>
 
     <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>
@@ -18,7 +18,7 @@ export default {
 
     data() {
         return {
-            qualites: [],
+
             form1: {
                 libelleMateriel: '',
                 photo: '',
@@ -28,22 +28,29 @@ export default {
 
     methods: {
 
-        async createTypeMateriel(data,file_photo) {
-          //  let res = await axios.post('/typemarteriels/create', data );
-            let res = await axios.post('/typemarteriels/create',file_photo);
-            if (res.data.status == 1)
-                this.$router.push("/typemarteriels");
-            else
-            if (!window.confirm('Cet type exist déjà !!!!')) return;
-        },
+        // async createTypeMateriel(data, file_photo) {
+        //     //  let res = await axios.post('/typemarteriels/create', data );
+        //     let res = await axios.post('/typemarteriels/create', file_photo);
+        //     if (res.data.status == 1)
+        //         this.$router.push("/typemarteriels");
+        //     else
+        //     if (!window.confirm('Cet type exist déjà !!!!')) return;
+        // },
+
+        
 
         async storeTypeMateriel() {
 
             let formData = new FormData();
             const file = this.$refs.photo.files[0];
-             formData.append("photo", file);
+            formData.append("photo", file);
             formData.append("libelleMateriel", this.form1.libelleMateriel);
-             let res = await axios.post('/typemarteriels/create',formData);
+            let res = await axios.post('/typemarteriels/create', formData);
+            if (res.data.status == 1)
+                this.$router.push("/typemarteriels");
+                else
+            alert("Cet type exist déjà !!!!");
+            // if (!window.confirm('Cet type exist déjà !!!!')) return;
         },
 
     },

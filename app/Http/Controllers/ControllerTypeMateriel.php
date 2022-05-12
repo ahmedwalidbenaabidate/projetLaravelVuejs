@@ -74,9 +74,13 @@ class ControllerTypeMateriel extends Controller
      * @param  \App\Models\TypeMateriel  $typeMateriel
      * @return \Illuminate\Http\Response
      */
-    public function show(TypeMateriel $typeMateriel)
+    public function show($id)
     {
-        //
+        $data= TypeMateriel::where('id',$id)->first();
+        return \response()->json([
+            "data"=>$data,
+            "status"=>1,
+        ]);
     }
 
     /**
@@ -97,9 +101,45 @@ class ControllerTypeMateriel extends Controller
      * @param  \App\Models\TypeMateriel  $typeMateriel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TypeMateriel $typeMateriel)
+    public function update(Request $request)
     {
-        //
+        $test = TypeMateriel::where("libelleMateriel","=",$request->libelleMateriel)
+        ->where('id',"!=",$request->id)->first();
+        if($test)
+        return \response()->json([
+            "status"=>-1,
+        ]);
+
+        $TypeMateriel = TypeMateriel::where("id","=",$request->id)->first();
+        if($TypeMateriel){
+
+            $requestData = $request->all();
+            $fileName = \md5(Str::random(45));
+            $image = $TypeMateriel->photo ;
+            if($request->file('photo')){
+                $ext = strtolower($request->file('photo')->getClientOriginalExtension());
+            $imageNmae = md5("00".Str::random(45));
+                    if($ext=="png" || $ext=="jpg" || $ext=="gif" || $ext=="jpeg" || $ext=="jpeg"  )
+                    {            
+                        $request->file('photo')->storeAs('images', $fileName.".".$ext, 'public'); 
+                        $image = '/storage/images/'.$fileName.".".$ext ;
+                    }
+            }
+        
+            $TypeMateriel =  TypeMateriel::where('id', $request->id)->first();
+            $TypeMateriel->libelleMateriel=$request->libelleMateriel;
+            $TypeMateriel->photo=$image;
+
+            $TypeMateriel->save();
+            return \response()->json([
+                "status"=>1,
+                "image"=> $image
+            ]);
+            }
+            else
+            return \response()->json([
+                "status"=>-2,
+            ]);
     }
 
     /**
@@ -108,8 +148,10 @@ class ControllerTypeMateriel extends Controller
      * @param  \App\Models\TypeMateriel  $typeMateriel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TypeMateriel $typeMateriel)
+    public function destroy($id)
     {
-        //
+        $data= TypeMateriel::where('id',$id)->first();
+        $data->delete();
+        return \response()->noContent();
     }
 }
