@@ -23,6 +23,11 @@ import Materielindex from "../components/MaterielDoss/Materiel/Materielindex.vue
 import MaterielCreate from "../components/MaterielDoss/Materiel/MaterielCreate.vue";
 import MaterielEdit from "../components/MaterielDoss/Materiel/MaterielEdit.vue";
 
+import Accidentindex from "../components/AccidentDoss/Accidentindex.vue";
+import AccidentCreate from "../components/AccidentDoss/AccidentCreate.vue";
+import AccidentEdit from "../components/AccidentDoss/AccidentEdit.vue";
+
+
 
 const routes =[
     //Routes Chantiers-------------------------------
@@ -126,6 +131,25 @@ const routes =[
         component: MaterielEdit,
         
     },
+
+    //Route Accident---------------------------
+    {
+        path : '/accidents',
+        name: 'accidents.index',
+        component: Accidentindex
+    },
+    {
+        path : '/accidents/create',
+        name: 'accidents.create',
+        component: AccidentCreate
+    },
+    {
+        path : '/accidents/:id/edit',
+        name: 'accidents.edit',
+        component: AccidentEdit,
+        
+    },
+    Accidentindex
 
 ];
 

@@ -61,6 +61,9 @@ Route::get('/materiels/get/{id}', "App\Http\Controllers\MaterielController@show"
 Route::post('/materiels/update', "App\Http\Controllers\MaterielController@update");
 Route::delete('/materiels/delete/{id}', "App\Http\Controllers\MaterielController@destroy");
 
+//Route Accident--------------------------------
+Route::get('accidents/all', "App\Http\Controllers\AccidentController@index");
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
