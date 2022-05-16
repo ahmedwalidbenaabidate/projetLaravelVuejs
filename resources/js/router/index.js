@@ -149,7 +149,7 @@ const routes =[
         component: AccidentEdit,
         
     },
-    Accidentindex
+    
 
 ];
 

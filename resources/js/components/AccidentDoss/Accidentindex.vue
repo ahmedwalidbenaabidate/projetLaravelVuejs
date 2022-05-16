@@ -1,7 +1,7 @@
 <template>
 <div class="flex flex-col">
     <div class="flex ">
-        <!-- <router-link :to="{name: 'typemarteriels.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer une type</router-link> -->
+        <router-link :to="{name: 'accidents.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter un accident</router-link>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
@@ -59,11 +59,12 @@
                             <!-- <div v-text="typeM.photo"></div> -->
                             <!-- <img width="140" height="160" :src="typeM.photo" name="photo" id="photo2"  alt="vide"> -->
                             <button @click="afficherDocument(accident.proceV)" id="previewPDF">Aperçu document</button>
+                            <br><img id="imgDoc1" src="/storage/images/imgDoc1.png" alt="vide">
                         </th>
 
                         <td class="px-6 py-4 text-right">
-                            <!-- <router-link :to="{name: 'typemarteriels.edit', params:{id: typeM.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link>
-                        <button  @click="destroyTypeMateriel(typeM.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button> -->
+                            <router-link :to="{name: 'accidents.edit', params:{id: accident.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
+                        <button  @click="destroyAccident(accident.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -90,13 +91,14 @@ export default {
                 this.accidents = response.data.data
         },
 
-        // async destroyAccident(id,pos){
-        //      if (!window.confirm( 'Supprimer ce enregistrement ?')) return;
+        async destroyAccident(id,pos){
+             if (!window.confirm( 'Supprimer ce enregistrement ?')) return;
 
-        //     await axios.delete('/accidents/delete/' + id);
+            await axios.delete('/accidents/delete/' + id);
 
-        //     this.typesMat.splice(pos,1)
-        // },
+            this.accidents.splice(pos,1)
+        },
+
         afficherDocument(u) {
             window.open(u)
         },
@@ -115,11 +117,20 @@ export default {
 }
 
 #rlinkEdit {
-    margin-right: 20px;
+    background-color: lime;
+    color: black;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 85px;
+    margin-bottom: 20px;
+    margin-left: 10px;
 }
 
 #btnSupp {
-    margin-left: 10px;
+    background-color: red;
+    color: black;
+    border-radius: 8px;
+    font-size: 18px;
 
 }
 
@@ -144,5 +155,14 @@ export default {
 #previewPDF {
     color: blue;
     text-decoration: underline;
+}
+#previewPDF:hover{
+    color: red;
+}
+#imgDoc1{
+    width: 60px;
+    height: 70px;
+    text-align: center;
+    display: inline-block;
 }
 </style>

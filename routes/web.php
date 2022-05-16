@@ -33,7 +33,7 @@ Route::post('/qualites/update', "App\Http\Controllers\QualiteController@update")
 Route::delete('/qualites/delete/{id}', "App\Http\Controllers\QualiteController@destroy");
 
 //Route Employees------------------------------------------------
-Route::get('employees/all', "App\Http\Controllers\EmployeeController@index");
+Route::get('/employees/all', "App\Http\Controllers\EmployeeController@index");
 Route::post('/employees/create', "App\Http\Controllers\EmployeeController@create");
 Route::get('/employees/get/{id}', "App\Http\Controllers\EmployeeController@show");
 Route::post('/employees/update', "App\Http\Controllers\EmployeeController@update");
@@ -62,7 +62,12 @@ Route::post('/materiels/update', "App\Http\Controllers\MaterielController@update
 Route::delete('/materiels/delete/{id}', "App\Http\Controllers\MaterielController@destroy");
 
 //Route Accident--------------------------------
-Route::get('accidents/all', "App\Http\Controllers\AccidentController@index");
+Route::get('/accidents/all', "App\Http\Controllers\AccidentController@index");
+Route::post('/accidents/create', "App\Http\Controllers\AccidentController@create");
+Route::get('/accidents/get/{id}', "App\Http\Controllers\AccidentController@show");
+Route::post('/accidents/update', "App\Http\Controllers\AccidentController@update");
+Route::delete('/accidents/delete/{id}', "App\Http\Controllers\AccidentController@destroy");
+
 
 
 Route::get('/dashboard', function () {
