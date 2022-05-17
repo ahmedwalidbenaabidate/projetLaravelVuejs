@@ -27,6 +27,12 @@ import Accidentindex from "../components/AccidentDoss/Accidentindex.vue";
 import AccidentCreate from "../components/AccidentDoss/AccidentCreate.vue";
 import AccidentEdit from "../components/AccidentDoss/AccidentEdit.vue";
 
+import AffectationMaterielindex from "../components/AffectationMaterielDoss/AffectationMaterielindex.vue";
+import AffectationMaterielCreate from "../components/AffectationMaterielDoss/AffectationMaterielCreate.vue";
+import AffectationMaterielEdit from "../components/AffectationMaterielDoss/AffectationMaterielEdit.vue";
+
+
+
 
 
 const routes =[
@@ -150,6 +156,24 @@ const routes =[
         
     },
     
+    //Route AffectationMateriel--------------------------------
+    {
+        path : '/affectationMateriels',
+        name: 'affectationMateriels.index',
+        component: AffectationMaterielindex
+    },
+    {
+        path : '/affectationMateriels/create',
+        name: 'affectationMateriels.create',
+        component: AffectationMaterielCreate
+    },
+    {
+        path : '/affectationMateriels/:id/edit',
+        name: 'affectationMateriels.edit',
+        component: AffectationMaterielEdit,
+        
+    },
+
 
 ];
 

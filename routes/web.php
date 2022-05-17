@@ -68,6 +68,12 @@ Route::get('/accidents/get/{id}', "App\Http\Controllers\AccidentController@show"
 Route::post('/accidents/update', "App\Http\Controllers\AccidentController@update");
 Route::delete('/accidents/delete/{id}', "App\Http\Controllers\AccidentController@destroy");
 
+//Route AffectationMateriel-----------------------------------
+Route::get('/affectationMateriels/all', "App\Http\Controllers\AffectationMaterielController@index");
+Route::post('/affectationMateriels/create', "App\Http\Controllers\AffectationMaterielController@create");
+Route::get('/affectationMateriels/get/{id}', "App\Http\Controllers\AffectationMaterielController@show");
+Route::post('/affectationMateriels/update', "App\Http\Controllers\AffectationMaterielController@update");
+Route::delete('/affectationMateriels/delete/{id}', "App\Http\Controllers\AffectationMaterielController@destroy");
 
 
 Route::get('/dashboard', function () {
