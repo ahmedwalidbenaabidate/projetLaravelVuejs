@@ -75,6 +75,12 @@ Route::get('/affectationMateriels/get/{id}', "App\Http\Controllers\AffectationMa
 Route::post('/affectationMateriels/update', "App\Http\Controllers\AffectationMaterielController@update");
 Route::delete('/affectationMateriels/delete/{id}', "App\Http\Controllers\AffectationMaterielController@destroy");
 
+//Route Depense-----------------------
+Route::get('/depenses/all', "App\Http\Controllers\DepenseController@index");
+Route::post('/depenses/create', "App\Http\Controllers\DepenseController@create");
+Route::get('/depenses/get/{id}', "App\Http\Controllers\DepenseController@show");
+Route::post('/depenses/update', "App\Http\Controllers\DepenseController@update");
+Route::delete('/depenses/delete/{id}', "App\Http\Controllers\DepenseController@destroy");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

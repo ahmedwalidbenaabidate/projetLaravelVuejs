@@ -31,6 +31,9 @@ import AffectationMaterielindex from "../components/AffectationMaterielDoss/Affe
 import AffectationMaterielCreate from "../components/AffectationMaterielDoss/AffectationMaterielCreate.vue";
 import AffectationMaterielEdit from "../components/AffectationMaterielDoss/AffectationMaterielEdit.vue";
 
+import Depenseindex from "../components/DepenseDoss/Depenseindex.vue";
+import DepenseCreate from "../components/DepenseDoss/DepenseCreate.vue";
+import DepenseEdit from "../components/DepenseDoss/DepenseEdit.vue";
 
 
 
@@ -173,7 +176,23 @@ const routes =[
         component: AffectationMaterielEdit,
         
     },
-
+    //Route Depense-----------------------------------------------
+    {
+        path : '/depenses',
+        name: 'depenses.index',
+        component: Depenseindex
+    },
+    {
+        path : '/depenses/create',
+        name: 'depenses.create',
+        component: DepenseCreate
+    },
+    {
+        path : '/depenses/:id/edit',
+        name: 'depenses.edit',
+        component: DepenseEdit,
+        
+    },
 
 ];
 
