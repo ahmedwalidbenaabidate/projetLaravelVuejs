@@ -35,6 +35,9 @@ import Depenseindex from "../components/DepenseDoss/Depenseindex.vue";
 import DepenseCreate from "../components/DepenseDoss/DepenseCreate.vue";
 import DepenseEdit from "../components/DepenseDoss/DepenseEdit.vue";
 
+import Carburantindex from "../components/CarburantDoss/Carburantindex.vue";
+import CarburantCreate from "../components/CarburantDoss/CarburantCreate.vue";
+import CarburantEdit from "../components/CarburantDoss/CarburantEdit.vue";
 
 
 
@@ -191,6 +194,24 @@ const routes =[
         path : '/depenses/:id/edit',
         name: 'depenses.edit',
         component: DepenseEdit,
+        
+    },
+
+    //Route Carburant--------------------------------------------
+    {
+        path : '/carburants',
+        name: 'carburants.index',
+        component: Carburantindex
+    },
+    {
+        path : '/carburants/create',
+        name: 'carburants.create',
+        component: CarburantCreate
+    },
+    {
+        path : '/carburants/:id/edit',
+        name: 'carburants.edit',
+        component: CarburantEdit,
         
     },
 

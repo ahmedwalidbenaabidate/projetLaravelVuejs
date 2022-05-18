@@ -82,6 +82,14 @@ Route::get('/depenses/get/{id}', "App\Http\Controllers\DepenseController@show");
 Route::post('/depenses/update', "App\Http\Controllers\DepenseController@update");
 Route::delete('/depenses/delete/{id}', "App\Http\Controllers\DepenseController@destroy");
 
+//Route Carburant----------------------------------------
+Route::get('/carburants/all', "App\Http\Controllers\CarburantController@index");
+Route::post('/carburants/create', "App\Http\Controllers\CarburantController@create");
+Route::get('/carburants/get/{id}', "App\Http\Controllers\CarburantController@show");
+Route::post('/carburants/update', "App\Http\Controllers\CarburantController@update");
+Route::delete('/carburants/delete/{id}', "App\Http\Controllers\CarburantController@destroy");
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
