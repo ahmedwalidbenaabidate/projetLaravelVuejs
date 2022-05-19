@@ -56,9 +56,13 @@ class CarburantController extends Controller
      * @param  \App\Models\Carburant  $carburant
      * @return \Illuminate\Http\Response
      */
-    public function show(Carburant $carburant)
+    public function show($id)
     {
-        //
+        $data= Carburant::where('id',$id)->first();
+        return \response()->json([
+            "data"=>$data,
+            "status"=>1,
+        ]);
     }
 
     /**
@@ -79,9 +83,11 @@ class CarburantController extends Controller
      * @param  \App\Models\Carburant  $carburant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carburant $carburant)
+    public function update(Request $request)
     {
-        //
+        $Carburant =  Carburant::where('id', $request->id)->first();
+        $Carburant->fill($request->all());
+        $Carburant->save();
     }
 
     /**
