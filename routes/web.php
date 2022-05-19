@@ -89,6 +89,13 @@ Route::get('/carburants/get/{id}', "App\Http\Controllers\CarburantController@sho
 Route::post('/carburants/update', "App\Http\Controllers\CarburantController@update");
 Route::delete('/carburants/delete/{id}', "App\Http\Controllers\CarburantController@destroy");
 
+//Route Administratif-------------------------------------
+Route::get('/administratifs/all', "App\Http\Controllers\AdministratifController@index");
+Route::post('/administratifs/create', "App\Http\Controllers\AdministratifController@create");
+Route::get('/administratifs/get/{id}', "App\Http\Controllers\AdministratifController@show");
+Route::post('/administratifs/update', "App\Http\Controllers\AdministratifController@update");
+Route::delete('/administratifs/delete/{id}', "App\Http\Controllers\AdministratifController@destroy");
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

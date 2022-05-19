@@ -39,6 +39,10 @@ import Carburantindex from "../components/CarburantDoss/Carburantindex.vue";
 import CarburantCreate from "../components/CarburantDoss/CarburantCreate.vue";
 import CarburantEdit from "../components/CarburantDoss/CarburantEdit.vue";
 
+import Administratifindex from "../components/AdministratifDoss/Administratifindex.vue";
+import AdministratifCreate from "../components/AdministratifDoss/AdministratifCreate.vue";
+import AdministratifEdit from "../components/AdministratifDoss/AdministratifEdit.vue";
+
 
 
 const routes =[
@@ -212,6 +216,24 @@ const routes =[
         path : '/carburants/:id/edit',
         name: 'carburants.edit',
         component: CarburantEdit,
+        
+    },
+
+    //Route Administratif-----------------------------------------
+    {
+        path : '/administratifs',
+        name: 'administratifs.index',
+        component: Administratifindex
+    },
+    {
+        path : '/administratifs/create',
+        name: 'administratifs.create',
+        component: AdministratifCreate
+    },
+    {
+        path : '/administratifs/:id/edit',
+        name: 'administratifs.edit',
+        component: AdministratifEdit,
         
     },
 
