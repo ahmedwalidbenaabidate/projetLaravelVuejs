@@ -1,6 +1,6 @@
 <template>
   <div>
-      <VueSidebarMenuAkahon menuTitle="mebuuu" :menuItems="vars_" />
+      <VueSidebarMenuAkahon menuTitle="BTP" menuLogo="/storage/images/logo1.png" profileRole="" profileImg="/storage/images/deconnexion.png" :profileName="''" :menuItems="vars_" />
   </div>
 </template>
 

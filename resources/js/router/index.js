@@ -42,6 +42,7 @@ import CarburantEdit from "../components/CarburantDoss/CarburantEdit.vue";
 import Administratifindex from "../components/AdministratifDoss/Administratifindex.vue";
 import AdministratifCreate from "../components/AdministratifDoss/AdministratifCreate.vue";
 import AdministratifEdit from "../components/AdministratifDoss/AdministratifEdit.vue";
+import Accueil from "../components/page/Accueil.vue";
 
 
 
@@ -51,6 +52,11 @@ const routes =[
         path : '/chantiers',
         name: 'chantiers.index',
         component: Chantierindex
+    },
+    {
+        path : '/Accueil',
+        name: 'Accueil',
+        component: Accueil
     },
     {
         path : '/chantiers/create',

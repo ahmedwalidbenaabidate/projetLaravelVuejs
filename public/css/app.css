@@ -1131,6 +1131,36 @@ select {
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+.bx{
+    font-size: 25px !important
+}
+.profile-details img{
+    width: 82% !important;
+    border-radius: 20px !important;
+}
+#rlinkEdit {
+  display: inline-block;
+    background-color: lime;
+    color: black;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 120px;
+    margin-left: 10px;
+    padding: 10px;
+    margin-top: 15px;
+    
+    
+}
+#btnSupp {
+    background-color: red;
+    color: black;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 15px;
+    width: 120px;
+
+}
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -1386,4 +1416,3 @@ select {
     padding-right: 2rem;
   }
 }
-

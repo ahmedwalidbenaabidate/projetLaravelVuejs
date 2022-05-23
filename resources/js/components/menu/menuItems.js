@@ -1,18 +1,18 @@
 const navMenu = 
     [
-        {link: '#',name: 'Accueil', tooltip: 'Accueil', icon: 'bx-grid-alt' },
-        {link: '/administratifs',name: 'Administratif', tooltip: 'Administratif', icon: 'bx-grid-alt' },
-        {link: '/employees',name: 'Employées', tooltip: 'Employées', icon: 'bx-grid-alt' },
-        {link: '/qualites',name: 'Qualités employées', tooltip: 'Qualités employées', icon: 'bx-grid-alt' },
-        {link: '/materiels',name: 'Matériels', tooltip: 'Matériels', icon: 'bx-grid-alt' },
-        {link: '/typemarteriels',name: 'Type matériels', tooltip: 'Type matériels', icon: 'bx-grid-alt' },
-        {link: 'carburants',name: 'Carburant', tooltip: 'Carburant', icon: 'bx-grid-alt' },
-        {link: '/depenses',name: 'Dépenses', tooltip: 'Dépenses', icon: 'bx-grid-alt' },
-        {link: '/pointages',name: 'Pointage employées', tooltip: 'Pointage employées', icon: 'bx-grid-alt' },
-        {link: '/affectationMateriels',name: 'Pointage matériels', tooltip: 'Pointage matériels', icon: 'bx-grid-alt' },
-        {link: '/accidents',name: 'Accidents', tooltip: 'Accidents', icon: 'bx-grid-alt' },
-        {link: '/chantiers',name: 'Chantiers', tooltip: 'Chantiers', icon: 'bx-grid-alt' },
-        {link: '#',name: 'Users', tooltip: 'Users', icon: 'bx-grid-alt' },
+        {link: '/Accueil',name: 'Accueil', tooltip: 'Accueil', icon: 'bx-home' },
+        {link: '/administratifs',name: 'Administratif', tooltip: 'Administratif', icon: 'bx-briefcase-alt-2' },
+        {link: '/employees',name: 'Employées', tooltip: 'Employées', icon: 'bx-group' },
+        {link: '/qualites',name: 'Qualités employées', tooltip: 'Qualités employées', icon: 'bx-id-card' },
+        {link: '/materiels',name: 'Matériels', tooltip: 'Matériels', icon: 'bx-wrench' },
+        {link: '/typemarteriels',name: 'Type matériels', tooltip: 'Type matériels', icon: 'bx-category-alt' },
+        {link: 'carburants',name: 'Carburant', tooltip: 'Carburant', icon: 'bx-gas-pump' },
+        {link: '/depenses',name: 'Dépenses', tooltip: 'Dépenses', icon: 'bx-money' },
+        {link: '/pointages',name: 'Pointage employées', tooltip: 'Pointage employées', icon: 'bx-user-check' },
+        {link: '/affectationMateriels',name: 'Pointage matériels', tooltip: 'Pointage matériels', icon: 'bx-spreadsheet' },
+        {link: '/accidents',name: 'Accidents', tooltip: 'Accidents', icon: 'bx-traffic-cone' },
+        {link: '/chantiers',name: 'Chantiers', tooltip: 'Chantiers', icon: 'bx-buildings' },
+        {link: '#',name: 'Users', tooltip: 'Users', icon: 'bx-user-circle' },
     ]
 
 

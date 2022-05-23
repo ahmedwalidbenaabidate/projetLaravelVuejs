@@ -156,12 +156,6 @@ export default {
     margin-left: 10px;
 }
 
-#btnSupp {
-    background-color: red;
-    color: black;
-    border-radius: 8px;
-    font-size: 18px;
-}
 
 #btnRech {
     background-color: aqua;

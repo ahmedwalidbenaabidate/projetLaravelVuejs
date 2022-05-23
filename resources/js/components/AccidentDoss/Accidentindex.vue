@@ -116,23 +116,7 @@ export default {
     background-color: aqua;
 }
 
-#rlinkEdit {
-    background-color: lime;
-    color: black;
-    border-radius: 8px;
-    font-size: 18px;
-    width: 85px;
-    margin-bottom: 20px;
-    margin-left: 10px;
-}
 
-#btnSupp {
-    background-color: red;
-    color: black;
-    border-radius: 8px;
-    font-size: 18px;
-
-}
 
 #trl1 {
     text-align: center;
