@@ -18,7 +18,7 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-
+import VueSidebarMenuAkahon from "vue-sidebar-menu-akahon";
 
 createApp({
     components: {
@@ -28,6 +28,7 @@ createApp({
         PointageCreate,
         PointageEdit,
         TypeMaterielindex,
+        'vue-sidebar-menu-akahon' : VueSidebarMenuAkahon
     }
 })
 .use(router)
