@@ -23,6 +23,7 @@
     "dependencies": {
         "boxicons": "^2.1.2",
         "vue": "^3.2.31",
+        "vue-apexcharts": "^1.6.2",
         "vue-loader": "^17.0.0",
         "vue-router": "^4.0.13",
         "vue-sidebar-menu-akahon": "^0.1.4"

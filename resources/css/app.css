@@ -2,9 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-
+/* ------------------------------ */
 .bx{
-    font-size: 25px !important
+    font-size: 30px !important
 }
 
 .profile-details img{
@@ -17,9 +17,10 @@
     color: black;
     border-radius: 8px;
     font-size: 18px;
-    width: 85px;
+    width: 120px;
     margin-bottom: 20px;
-    margin-left: 10px;
+    padding:10px;
+    DISPLAY: inline-block;
 }
 
 #btnSupp {
@@ -27,5 +28,25 @@
     color: black;
     border-radius: 8px;
     font-size: 18px;
-
+    padding:10px;
+    width: 120px;
+    /* margin-left: 0px !important; */
 }
+/* -------------------------------------- */
+
+#divCreer{
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+#search{
+width: 100% !important;
+height: 100% !important;
+}
+#divCreer .container-4{
+width: 900px !important;
+height: 80px !important;
+}
+#divCreer .container-4 .icon{
+height: 100% !important;
+}
+

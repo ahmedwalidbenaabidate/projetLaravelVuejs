@@ -1131,35 +1131,48 @@ select {
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+/* ------------------------------ */
 .bx{
-    font-size: 25px !important
+    font-size: 30px !important
 }
 .profile-details img{
     width: 82% !important;
     border-radius: 20px !important;
 }
 #rlinkEdit {
-  display: inline-block;
     background-color: lime;
     color: black;
     border-radius: 8px;
     font-size: 18px;
     width: 120px;
-    margin-left: 10px;
-    padding: 10px;
-    margin-top: 15px;
-    
-    
+    margin-bottom: 20px;
+    padding:10px;
+    DISPLAY: inline-block;
 }
 #btnSupp {
     background-color: red;
     color: black;
     border-radius: 8px;
     font-size: 18px;
-    padding: 10px;
-    margin-top: 15px;
+    padding:10px;
     width: 120px;
-
+    /* margin-left: 0px !important; */
+}
+/* -------------------------------------- */
+#divCreer{
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+#search{
+width: 100% !important;
+height: 100% !important;
+}
+#divCreer .container-4{
+width: 900px !important;
+height: 80px !important;
+}
+#divCreer .container-4 .icon{
+height: 100% !important;
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
@@ -1416,3 +1429,5 @@ select {
     padding-right: 2rem;
   }
 }
+
+
