@@ -97,6 +97,12 @@ Route::post('/administratifs/update', "App\Http\Controllers\AdministratifControl
 Route::delete('/administratifs/delete/{id}', "App\Http\Controllers\AdministratifController@destroy");
 
 
+//Route stats
+Route::get('/stats/get/', "App\Http\Controllers\statsController@index");
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

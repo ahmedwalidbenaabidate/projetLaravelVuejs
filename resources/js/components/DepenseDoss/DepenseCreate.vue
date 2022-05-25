@@ -33,7 +33,7 @@
 
     <div>
         <label for="bonDepense" class="block">Bon des dépenses</label>
-        <input type="file" name="bonDepense" id="bonDepense" ref="bonDepense" required>
+        <input type="file" name="bonDepense" id="bonDepense" ref="bonDepense" >
     </div>
 
     <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>

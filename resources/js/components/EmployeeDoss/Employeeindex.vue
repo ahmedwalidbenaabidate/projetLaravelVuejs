@@ -81,8 +81,10 @@
                         </td>
 
                         <td class="px-6 py-4 text-right">
-                            <router-link :to="{name: 'employees.edit', params:{id: employee.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
-                            <button @click="destroyEmployee(employee.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <!-- <router-link :to="{name: 'employees.edit', params:{id: employee.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><i class="bx bx-edit icon_table"></i>Modifier</router-link> -->
+                            <button @click="$router.push('/employees/'+employee.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Modifier</button>
+                            <button @click="destroyEmployee(employee.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Supprimer</button>
+                            <!-- $router.push('/employees/edit') -->
                         </td>
                     </tr>
                 </template>
@@ -140,7 +142,8 @@ export default {
 }
 </script>
 
-<style>
+<style  >
+
 #rlink1 {
     background-color: aqua;
     align-content: center;
@@ -248,4 +251,47 @@ export default {
 #divCreer .container-4 .icon{
     height: 100% !important;
 } */
+
+
+/* ----------------------------------------------- */
+/* table {
+  width: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(51, 62, 87, 0.986);
+}
+
+
+th,
+td {
+  padding: 15px;
+  background-color: rgba(107, 99, 99, 0.2);
+  color: rgb(0, 0, 0);
+}
+
+thead th {
+  background-color: #1d1b31;
+  height: 90px;
+  color: white;
+}
+tbody{
+    background: #65737e !important;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+tbody td {
+  position: relative;
+}
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgb(255, 0, 0);
+  z-index: -1;
+} */
+/* ------------------------------------------------------- */
 </style>

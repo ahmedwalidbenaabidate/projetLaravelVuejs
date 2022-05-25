@@ -1148,6 +1148,7 @@ select {
     margin-bottom: 20px;
     padding:10px;
     DISPLAY: inline-block;
+    margin-left: 32px;
 }
 #btnSupp {
     background-color: red;
@@ -1184,6 +1185,47 @@ height: 80px !important;
 #divCreer .container-4 .icon{
 height: 100% !important;
 }
+/* --------------------------------------------------------- */
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(51, 62, 87, 0.986);
+  }
+th,
+  td {
+    padding: 15px;
+    background-color: rgba(107, 99, 99, 0.2);
+    color: rgb(0, 0, 0);
+  }
+thead th {
+    background-color: #1d1b31;
+    height: 90px;
+    color: white;
+  }
+tbody{
+      background: #65737e !important;
+  }
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+tbody td {
+    position: relative;
+  }
+tbody td:hover:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgb(255, 0, 0);
+    z-index: -1;
+  }
+table .icon_table{
+      
+  }
+/* -------------------------------------------------------------- */
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -1439,6 +1481,5 @@ height: 100% !important;
     padding-right: 2rem;
   }
 }
-
 
 

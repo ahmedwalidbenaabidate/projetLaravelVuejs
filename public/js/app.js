@@ -28280,18 +28280,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
  // import VueApexCharts from 'vue-apexcharts'
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    menu__2: _menu_menu_vue__WEBPACK_IMPORTED_MODULE_0__["default"] // VueApexCharts
+    menu__2: _menu_menu_vue__WEBPACK_IMPORTED_MODULE_1__["default"] // VueApexCharts
 
   },
   data: function data() {
     return {
-      status: 1
+      status: 1,
+      stats: false
     };
+  },
+  methods: {
+    load: function load() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/stats/get/');
+
+              case 2:
+                res = _context.sent;
+                _this.stats = res.data;
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    this.load();
   },
   computed: {
     options: function options() {
@@ -30583,8 +30624,7 @@ var _hoisted_10 = {
   type: "file",
   name: "bonDepense",
   id: "bonDepense",
-  ref: "bonDepense",
-  required: ""
+  ref: "bonDepense"
 };
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -31649,14 +31689,30 @@ var _hoisted_26 = ["textContent"];
 var _hoisted_27 = {
   "class": "px-6 py-4 text-right"
 };
+var _hoisted_28 = ["onClick"];
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Modifier");
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-trash icon_table"
+}, null, -1
+/* HOISTED */
+);
 
-var _hoisted_29 = ["onClick"];
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Modifier");
+
+var _hoisted_31 = [_hoisted_29, _hoisted_30];
+var _hoisted_32 = ["onClick"];
+
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-trash icon_table"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Supprimer");
+
+var _hoisted_35 = [_hoisted_33, _hoisted_34];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_menu__2 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("menu__2");
-
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "search",
@@ -31713,33 +31769,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.libelleFonction)
     }, null, 8
     /* PROPS */
-    , _hoisted_26)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-      to: {
-        name: 'employees.edit',
-        params: {
-          id: employee.id
-        }
+    , _hoisted_26)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.edit', params:{id: employee.id}}\" id=\"rlinkEdit\" class=\"font-medium text-blue-600 dark:text-blue-500 hover:underline\"><i class=\"bx bx-edit icon_table\"></i>Modifier</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: function onClick($event) {
+        return _ctx.$router.push('/employees/' + employee.id + '/edit');
       },
       id: "rlinkEdit",
-      "class": "font-medium text-blue-600 dark:text-blue-500 hover:underline"
-    }, {
-      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_28];
-      }),
-      _: 2
-      /* DYNAMIC */
-
-    }, 1032
-    /* PROPS, DYNAMIC_SLOTS */
-    , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
+    }, _hoisted_31, 8
+    /* PROPS */
+    , _hoisted_28), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.destroyEmployee(employee.id, i);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
-    }, "Supprimer", 8
+    }, _hoisted_35, 8
     /* PROPS */
-    , _hoisted_29)])]);
+    , _hoisted_32), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" $router.push('/employees/edit') ")])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])])]);
@@ -33344,13 +33390,176 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "dashboard"
 };
+var _hoisted_2 = {
+  "class": "content-wrap"
+};
+var _hoisted_3 = {
+  key: 0,
+  "class": "content"
+};
+var _hoisted_4 = {
+  "class": "info-boxes"
+};
+var _hoisted_5 = {
+  "class": "info-box"
+};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<main class=\"content-wrap\"><div class=\"content\"><section class=\"info-boxes\"><div class=\"info-box\"><div class=\"box-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21 20V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1zm-2-1H5V5h14v14z\"></path><path d=\"M10.381 12.309l3.172 1.586a1 1 0 0 0 1.305-.38l3-5-1.715-1.029-2.523 4.206-3.172-1.586a1.002 1.002 0 0 0-1.305.38l-3 5 1.715 1.029 2.523-4.206z\"></path></svg></div><div class=\"box-content\"><span class=\"big\">44.51</span> Current price ($) </div></div><div class=\"info-box\"><div class=\"box-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 10H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V11a1 1 0 0 0-1-1zm-1 10H5v-8h14v8zM5 6h14v2H5zM7 2h10v2H7z\"></path></svg></div><div class=\"box-content\"><span class=\"big\">132</span> Related articles </div></div><div class=\"info-box active\"><div class=\"box-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3,21c0,0.553,0.448,1,1,1h16c0.553,0,1-0.447,1-1v-1c0-3.714-2.261-6.907-5.478-8.281C16.729,10.709,17.5,9.193,17.5,7.5 C17.5,4.468,15.032,2,12,2C8.967,2,6.5,4.468,6.5,7.5c0,1.693,0.771,3.209,1.978,4.219C5.261,13.093,3,16.287,3,20V21z M8.5,7.5 C8.5,5.57,10.07,4,12,4s3.5,1.57,3.5,3.5S13.93,11,12,11S8.5,9.43,8.5,7.5z M12,13c3.859,0,7,3.141,7,7H5C5,16.141,8.14,13,12,13z\"></path></svg></div><div class=\"box-content\"><span class=\"big\">18</span> Key executives </div></div><div class=\"info-box\"><div class=\"box-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 3C6.486 3 2 6.364 2 10.5c0 2.742 1.982 5.354 5 6.678V21a.999.999 0 0 0 1.707.707l3.714-3.714C17.74 17.827 22 14.529 22 10.5 22 6.364 17.514 3 12 3zm0 13a.996.996 0 0 0-.707.293L9 18.586V16.5a1 1 0 0 0-.663-.941C5.743 14.629 4 12.596 4 10.5 4 7.468 7.589 5 12 5s8 2.468 8 5.5-3.589 5.5-8 5.5z\"></path></svg></div><div class=\"box-content\"><span class=\"big\">24</span> Conversations </div></div><div class=\"info-box\"><div class=\"box-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 3C6.486 3 2 6.364 2 10.5c0 2.742 1.982 5.354 5 6.678V21a.999.999 0 0 0 1.707.707l3.714-3.714C17.74 17.827 22 14.529 22 10.5 22 6.364 17.514 3 12 3zm0 13a.996.996 0 0 0-.707.293L9 18.586V16.5a1 1 0 0 0-.663-.941C5.743 14.629 4 12.596 4 10.5 4 7.468 7.589 5 12 5s8 2.468 8 5.5-3.589 5.5-8 5.5z\"></path></svg></div><div class=\"box-content\"><span class=\"big\">24</span> Conversations </div></div></section></div></main>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "box-icon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M21 20V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1zm-2-1H5V5h14v14z"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M10.381 12.309l3.172 1.586a1 1 0 0 0 1.305-.38l3-5-1.715-1.029-2.523 4.206-3.172-1.586a1.002 1.002 0 0 0-1.305.38l-3 5 1.715 1.029 2.523-4.206z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  "class": "box-content"
+};
+var _hoisted_8 = {
+  "class": "big"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Employées ");
+
+var _hoisted_10 = {
+  "class": "info-box"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "box-icon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M20 10H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V11a1 1 0 0 0-1-1zm-1 10H5v-8h14v8zM5 6h14v2H5zM7 2h10v2H7z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "box-content"
+};
+var _hoisted_13 = {
+  "class": "big"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Matériels ");
+
+var _hoisted_15 = {
+  "class": "info-box active"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "box-icon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M3,21c0,0.553,0.448,1,1,1h16c0.553,0,1-0.447,1-1v-1c0-3.714-2.261-6.907-5.478-8.281C16.729,10.709,17.5,9.193,17.5,7.5 C17.5,4.468,15.032,2,12,2C8.967,2,6.5,4.468,6.5,7.5c0,1.693,0.771,3.209,1.978,4.219C5.261,13.093,3,16.287,3,20V21z M8.5,7.5 C8.5,5.57,10.07,4,12,4s3.5,1.57,3.5,3.5S13.93,11,12,11S8.5,9.43,8.5,7.5z M12,13c3.859,0,7,3.141,7,7H5C5,16.141,8.14,13,12,13z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
+  "class": "box-content"
+};
+var _hoisted_18 = {
+  "class": "big"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Pointage des employées ");
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("par jour ");
+
+var _hoisted_22 = {
+  "class": "info-box"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "box-icon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M12 3C6.486 3 2 6.364 2 10.5c0 2.742 1.982 5.354 5 6.678V21a.999.999 0 0 0 1.707.707l3.714-3.714C17.74 17.827 22 14.529 22 10.5 22 6.364 17.514 3 12 3zm0 13a.996.996 0 0 0-.707.293L9 18.586V16.5a1 1 0 0 0-.663-.941C5.743 14.629 4 12.596 4 10.5 4 7.468 7.589 5 12 5s8 2.468 8 5.5-3.589 5.5-8 5.5z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_24 = {
+  "class": "box-content"
+};
+var _hoisted_25 = {
+  "class": "big"
+};
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Pointage matériel ");
+
+var _hoisted_27 = {
+  "class": "info-box"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "box-icon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M12 3C6.486 3 2 6.364 2 10.5c0 2.742 1.982 5.354 5 6.678V21a.999.999 0 0 0 1.707.707l3.714-3.714C17.74 17.827 22 14.529 22 10.5 22 6.364 17.514 3 12 3zm0 13a.996.996 0 0 0-.707.293L9 18.586V16.5a1 1 0 0 0-.663-.941C5.743 14.629 4 12.596 4 10.5 4 7.468 7.589 5 12 5s8 2.468 8 5.5-3.589 5.5-8 5.5z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_29 = {
+  "class": "box-content"
+};
+var _hoisted_30 = {
+  "class": "big"
+};
+
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dépenses du jour ");
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "chart_"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "chart_content"
+}, " dd ")], -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_menu__2 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("menu__2");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_menu__2), _hoisted_2]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_menu__2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [$data.stats ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.stats.emp), 1
+  /* TEXT */
+  ), _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.stats.mat), 1
+  /* TEXT */
+  ), _hoisted_14])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.stats.Pemp), 1
+  /* TEXT */
+  ), _hoisted_19, _hoisted_20, _hoisted_21])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.stats.Pmat), 1
+  /* TEXT */
+  ), _hoisted_26])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.stats.dep), 1
+  /* TEXT */
+  ), _hoisted_31])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_32]);
 }
 
 /***/ }),
@@ -34269,7 +34478,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#rlink1 {\r\n    background-color: aqua;\r\n    align-content: center;\r\n    border-radius: 6px;\r\n    width: 220px;\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n\r\n/* ---------------------------------- */\r\n/* input Rechercher */\n.container-4{\r\n  overflow: hidden;\r\n  width: 300px;\r\n  vertical-align: middle;\r\n  white-space: nowrap;\n}\n.container-4 input#search{\r\n  width: 300px;\r\n  height: 50px;\r\n  background: #2b303b;\r\n  border: none;\r\n  font-size: 10pt;\r\n  float: left;\r\n  color: #fff;\r\n  padding-left: 15px;\r\n  border-radius: 5px;\n}\n.container-4 input#search::-webkit-input-placeholder {\r\n   color: #65737e;\n}\n.container-4 input#search:-moz-placeholder { /* Firefox 18- */\r\n   color: #65737e;\n}\n.container-4 input#search::-moz-placeholder {  /* Firefox 19+ */\r\n   color: #65737e;\n}\n.container-4 input#search:-ms-input-placeholder {  \r\n   color: #65737e;\n}\n.container-4 button.icon{\r\n  -webkit-border-top-right-radius: 5px;\r\n  -webkit-border-bottom-right-radius: 5px;\r\n  -moz-border-radius-topright: 5px;\r\n  -moz-border-radius-bottomright: 5px;\r\n  border-top-right-radius: 5px;\r\n  border-bottom-right-radius: 5px;\r\n \r\n  border: none;\r\n  background: #232833;\r\n  height: 50px;\r\n  width: 50px;\r\n  color: #4f5b66;\r\n  opacity: 0;\r\n  font-size: 10pt;\r\n  transition: all .55s ease;\n}\n.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{\r\n  outline: none;\r\n  opacity: 1;\r\n  margin-left: -50px;\n}\n.container-4:hover button.icon:hover{\r\n  background: white;\n}\r\n/* ---------------------------------- */\r\n/* #divCreer{\r\n        justify-content: flex-end;\r\n    \r\n}\r\n#search{\r\n    width: 100% !important;\r\n    height: 100% !important;\r\n}\r\n#divCreer .container-4{\r\n    width: 900px !important;\r\n    height: 80px !important;\r\n}\r\n#divCreer .container-4 .icon{\r\n    height: 100% !important;\r\n} */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#rlink1 {\r\n    background-color: aqua;\r\n    align-content: center;\r\n    border-radius: 6px;\r\n    width: 220px;\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n\r\n/* ---------------------------------- */\r\n/* input Rechercher */\n.container-4{\r\n  overflow: hidden;\r\n  width: 300px;\r\n  vertical-align: middle;\r\n  white-space: nowrap;\n}\n.container-4 input#search{\r\n  width: 300px;\r\n  height: 50px;\r\n  background: #2b303b;\r\n  border: none;\r\n  font-size: 10pt;\r\n  float: left;\r\n  color: #fff;\r\n  padding-left: 15px;\r\n  border-radius: 5px;\n}\n.container-4 input#search::-webkit-input-placeholder {\r\n   color: #65737e;\n}\n.container-4 input#search:-moz-placeholder { /* Firefox 18- */\r\n   color: #65737e;\n}\n.container-4 input#search::-moz-placeholder {  /* Firefox 19+ */\r\n   color: #65737e;\n}\n.container-4 input#search:-ms-input-placeholder {  \r\n   color: #65737e;\n}\n.container-4 button.icon{\r\n  -webkit-border-top-right-radius: 5px;\r\n  -webkit-border-bottom-right-radius: 5px;\r\n  -moz-border-radius-topright: 5px;\r\n  -moz-border-radius-bottomright: 5px;\r\n  border-top-right-radius: 5px;\r\n  border-bottom-right-radius: 5px;\r\n \r\n  border: none;\r\n  background: #232833;\r\n  height: 50px;\r\n  width: 50px;\r\n  color: #4f5b66;\r\n  opacity: 0;\r\n  font-size: 10pt;\r\n  transition: all .55s ease;\n}\n.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{\r\n  outline: none;\r\n  opacity: 1;\r\n  margin-left: -50px;\n}\n.container-4:hover button.icon:hover{\r\n  background: white;\n}\r\n/* ---------------------------------- */\r\n/* #divCreer{\r\n        justify-content: flex-end;\r\n    \r\n}\r\n#search{\r\n    width: 100% !important;\r\n    height: 100% !important;\r\n}\r\n#divCreer .container-4{\r\n    width: 900px !important;\r\n    height: 80px !important;\r\n}\r\n#divCreer .container-4 .icon{\r\n    height: 100% !important;\r\n} */\r\n\r\n\r\n/* ----------------------------------------------- */\r\n/* table {\r\n  width: 800px;\r\n  border-collapse: collapse;\r\n  overflow: hidden;\r\n  box-shadow: 0 0 20px rgba(51, 62, 87, 0.986);\r\n}\r\n\r\n\r\nth,\r\ntd {\r\n  padding: 15px;\r\n  background-color: rgba(107, 99, 99, 0.2);\r\n  color: rgb(0, 0, 0);\r\n}\r\n\r\nthead th {\r\n  background-color: #1d1b31;\r\n  height: 90px;\r\n  color: white;\r\n}\r\ntbody{\r\n    background: #65737e !important;\r\n}\r\ntbody tr:hover {\r\n  background-color: rgba(255, 255, 255, 0.3);\r\n}\r\ntbody td {\r\n  position: relative;\r\n}\r\ntbody td:hover:before {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 0;\r\n  right: 0;\r\n  top: -9999px;\r\n  bottom: -9999px;\r\n  background-color: rgb(255, 0, 0);\r\n  z-index: -1;\r\n} */\r\n/* ------------------------------------------------------- */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -34557,7 +34766,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.dashboard {\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  grid-gap: 0;\r\n  grid-template-columns: 300px auto;\r\n  grid-template-rows: 80px auto;\r\n  grid-template-areas: 'menu search' 'menu content';\n}\n.search-wrap {\r\n  grid-area: search;\r\n  background: #fff;\r\n  border-bottom: 1px solid #ede8f0;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  padding: 0 3em;\n}\n.search-wrap .search {\r\n  height: 40px;\n}\n.search-wrap .search label {\r\n  display: flex;\r\n  align-items: center;\r\n  height: 100%;\n}\n.search-wrap .search label svg {\r\n  display: block;\n}\n.search-wrap .search label svg path,\r\n.search-wrap .search label svg circle {\r\n  fill: #b6bbc6;\r\n  transition: fill 0.15s ease;\n}\n.search-wrap .search label input {\r\n  display: block;\r\n  padding-left: 1em;\r\n  height: 100%;\r\n  margin: 0;\r\n  border: 0;\n}\n.search-wrap .search label input:focus {\r\n  background: #f5f5fa;\n}\n.search-wrap .search label:hover svg path,\r\n.search-wrap .search label:hover svg circle {\r\n  fill: #2b3a60;\n}\n.search-wrap .user-actions button {\r\n  border: 0;\r\n  background: none;\r\n  width: 32px;\r\n  height: 32px;\r\n  margin: 0;\r\n  padding: 0;\r\n  margin-left: 0.5em;\n}\n.search-wrap .user-actions button svg {\r\n  position: relative;\r\n  top: 2px;\n}\n.search-wrap .user-actions button svg path,\r\n.search-wrap .user-actions button svg circle {\r\n  fill: #b6bbc6;\r\n  transition: fill 0.15s ease;\n}\n.search-wrap .user-actions button:hover svg path,\r\n.search-wrap .user-actions button:hover svg circle {\r\n  fill: #2b3a60;\n}\n.menu-wrap {\r\n  grid-area: menu;\r\n  padding-bottom: 3em;\r\n  overflow: auto;\r\n  background: #fff;\r\n  border-right: 1px solid #ede8f0;\n}\n.menu-wrap .user {\r\n  height: 80px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: flex-start;\r\n  margin: 0;\r\n  padding: 0 3em;\n}\n.menu-wrap .user .user-avatar {\r\n  width: 40px;\r\n  height: 40px;\r\n  border-radius: 50%;\r\n  overflow: hidden;\n}\n.menu-wrap .user .user-avatar img {\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\n}\n.menu-wrap .user figcaption {\r\n  margin: 0;\r\n  padding: 0 0 0 1em;\r\n  color: #1b253d;\r\n  font-weight: 700;\r\n  font-size: 0.875em;\r\n  line-height: 100%;\n}\n.menu-wrap nav {\r\n  display: block;\r\n  padding: 0 3em;\n}\n.menu-wrap nav section {\r\n  display: block;\r\n  padding: 3em 0 0;\n}\n.menu-wrap nav h3 {\r\n  margin: 0;\r\n  font-size: 0.875em;\r\n  text-transform: uppercase;\r\n  color: #4b84fe;\r\n  font-weight: 600;\n}\n.menu-wrap nav ul {\r\n  display: block;\r\n  padding: 0;\r\n  margin: 0;\n}\n.menu-wrap nav li {\r\n  display: block;\r\n  padding: 0;\r\n  margin: 1em 0 0;\n}\n.menu-wrap nav li a {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: flex-start;\r\n  color: #99a0b0;\r\n  text-decoration: none;\r\n  font-weight: 600;\r\n  font-size: 0.875em;\r\n  transition: color 0.15s ease;\n}\n.menu-wrap nav li a svg {\r\n  display: block;\r\n  margin-right: 1em;\n}\n.menu-wrap nav li a svg path,\r\n.menu-wrap nav li a svg circle {\r\n  fill: #b6bbc6;\r\n  transition: fill 0.15s ease;\n}\n.menu-wrap nav li a:hover {\r\n  color: #1b253d;\n}\n.menu-wrap nav li a:hover svg path,\r\n.menu-wrap nav li a:hover svg circle {\r\n  fill: #2b3a60;\n}\n.menu-wrap nav li a.active {\r\n  color: #4b84fe;\n}\n.menu-wrap nav li a.active svg path,\r\n.menu-wrap nav li a.active svg circle {\r\n  fill: #4b84fe;\n}\n.content-wrap {\r\n  grid-area: content;\r\n  padding: 3em;\r\n  overflow: auto;\n}\n.content-wrap .content-head {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\n}\n.content-wrap .content-head h1 {\r\n  font-size: 1.375em;\r\n  line-height: 100%;\r\n  color: #1b253d;\r\n  font-weight: 500;\r\n  margin: 0;\r\n  padding: 0;\n}\n.content-wrap .content-head .action button {\r\n  border: 0;\r\n  background: #4b84fe;\r\n  color: #fff;\r\n  width: auto;\r\n  height: 3.5em;\r\n  padding: 0 2.25em;\r\n  border-radius: 3.5em;\r\n  font-size: 1em;\r\n  text-transform: uppercase;\r\n  font-weight: 600;\r\n  transition: background-color 0.15s ease;\n}\n.content-wrap .content-head .action button:hover {\r\n  background-color: #1861fe;\n}\n.content-wrap .content-head .action button:hover:active {\r\n  background-color: #0149e2;\r\n  transition: none;\n}\n.content-wrap .info-boxes {\r\n  padding: 3em 0 2em;\r\n  display: flex;\r\n  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n  grid-gap: 2em;\n}\n.content-wrap .info-boxes .info-box {\r\n  background: #fff;\r\n  height: 160px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: flex-start;\r\n  padding: 0 3em;\r\n  border: 1px solid #ede8f0;\r\n  border-radius: 5px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg {\r\n  display: block;\r\n  width: 48px;\r\n  height: 48px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg path,\r\n.content-wrap .info-boxes .info-box .box-icon svg circle {\r\n  fill: #99a0b0;\n}\n.content-wrap .info-boxes .info-box .box-content {\r\n  padding-left: 1.25em;\r\n  white-space: nowrap;\n}\n.content-wrap .info-boxes .info-box .box-content .big {\r\n  display: block;\r\n  font-size: 2em;\r\n  line-height: 150%;\r\n  color: #1b253d;\n}\n.content-wrap .info-boxes .info-box.active svg circle,\r\n.content-wrap .info-boxes .info-box.active svg path {\r\n  fill: #4b84fe;\n}\n.content-wrap .person-boxes {\r\n  padding: 0;\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n  grid-gap: 2em;\n}\n.content-wrap .person-boxes .person-box {\r\n  background: #fff;\r\n  height: 320px;\r\n  text-align: center;\r\n  padding: 3em;\r\n  border: 1px solid #ede8f0;\r\n  border-radius: 5px;\n}\n.content-wrap .person-boxes .person-box:nth-child(2n) .box-avatar .no-name {\r\n  background: #4b84fe;\n}\n.content-wrap .person-boxes .person-box:nth-child(5n) .box-avatar .no-name {\r\n  background: #ffbb09;\n}\n.content-wrap .person-boxes .person-box .box-avatar {\r\n  width: 100px;\r\n  height: 100px;\r\n  border-radius: 50%;\r\n  margin: 0px auto;\r\n  overflow: hidden;\n}\n.content-wrap .person-boxes .person-box .box-avatar img {\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\n}\n.content-wrap .person-boxes .person-box .box-avatar .no-name {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n  color: #fff;\r\n  font-size: 1.5em;\r\n  font-weight: 600;\r\n  text-transform: uppercase;\r\n  width: 100%;\r\n  height: 100%;\r\n  background: #fa5b67;\n}\n.content-wrap .person-boxes .person-box .box-bio {\r\n  white-space: no-wrap;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-name {\r\n  margin: 2em 0 0.75em;\r\n  color: #1b253d;\r\n  font-size: 1em;\r\n  font-weight: 700;\r\n  line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-position {\r\n  margin: 0;\r\n  font-size: 0.875em;\r\n  line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-actions {\r\n  margin-top: 1.25em;\r\n  padding-top: 1.25em;\r\n  width: 100%;\r\n  border-top: 1px solid #ede8f0;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\n}\n.content-wrap .person-boxes .person-box .box-actions button {\r\n  border: 0;\r\n  background: none;\r\n  width: 32px;\r\n  height: 32px;\r\n  margin: 0;\r\n  padding: 0;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg {\r\n  position: relative;\r\n  top: 2px;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button svg circle {\r\n  fill: #b6bbc6;\r\n  transition: fill 0.15s ease;\n}\n.content-wrap .person-boxes .person-box .box-actions button:hover svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button:hover svg circle {\r\n  fill: #2b3a60;\n}\r\n\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.chart_{\r\n    background: white;\r\n    width: 100%;\r\n     height: 100px;\r\n      padding: 0 3em;\r\n      margin-top: 10px;\n}\n.dashboard {\r\n    width: 100%;\r\n    height: 100%;\r\n    grid-gap: 0;\r\n    grid-template-columns: 300px auto;\r\n    grid-template-rows: 80px auto;\r\n    grid-template-areas: 'menu search', 'menu content';\n}\n.search-wrap {\r\n    grid-area: search;\r\n    background: #fff;\r\n    border-bottom: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    padding: 0 3em;\n}\n.search-wrap .search {\r\n    height: 40px;\n}\n.search-wrap .search label {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 100%;\n}\n.search-wrap .search label svg {\r\n    display: block;\n}\n.search-wrap .search label svg path,\r\n.search-wrap .search label svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .search label input {\r\n    display: block;\r\n    padding-left: 1em;\r\n    height: 100%;\r\n    margin: 0;\r\n    border: 0;\n}\n.search-wrap .search label input:focus {\r\n    background: #f5f5fa;\n}\n.search-wrap .search label:hover svg path,\r\n.search-wrap .search label:hover svg circle {\r\n    fill: #2b3a60;\n}\n.search-wrap .user-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\r\n    margin-left: 0.5em;\n}\n.search-wrap .user-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.search-wrap .user-actions button svg path,\r\n.search-wrap .user-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .user-actions button:hover svg path,\r\n.search-wrap .user-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap {\r\n    grid-area: menu;\r\n    padding-bottom: 3em;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-right: 1px solid #ede8f0;\n}\n.menu-wrap .user {\r\n    height: 80px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    margin: 0;\r\n    padding: 0 3em;\n}\n.menu-wrap .user .user-avatar {\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    overflow: hidden;\n}\n.menu-wrap .user .user-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.menu-wrap .user figcaption {\r\n    margin: 0;\r\n    padding: 0 0 0 1em;\r\n    color: #1b253d;\r\n    font-weight: 700;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.menu-wrap nav {\r\n    display: block;\r\n    padding: 0 3em;\n}\n.menu-wrap nav section {\r\n    display: block;\r\n    padding: 3em 0 0;\n}\n.menu-wrap nav h3 {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    text-transform: uppercase;\r\n    color: #4b84fe;\r\n    font-weight: 600;\n}\n.menu-wrap nav ul {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 0;\n}\n.menu-wrap nav li {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 1em 0 0;\n}\n.menu-wrap nav li a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    color: #99a0b0;\r\n    text-decoration: none;\r\n    font-weight: 600;\r\n    font-size: 0.875em;\r\n    transition: color 0.15s ease;\n}\n.menu-wrap nav li a svg {\r\n    display: block;\r\n    margin-right: 1em;\n}\n.menu-wrap nav li a svg path,\r\n.menu-wrap nav li a svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.menu-wrap nav li a:hover {\r\n    color: #1b253d;\n}\n.menu-wrap nav li a:hover svg path,\r\n.menu-wrap nav li a:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap nav li a.active {\r\n    color: #4b84fe;\n}\n.menu-wrap nav li a.active svg path,\r\n.menu-wrap nav li a.active svg circle {\r\n    fill: #4b84fe;\n}\n.content-wrap {\r\n    position: relative;\r\n    grid-area: content;\r\n    padding: 3em;\r\n    width: 100%;\r\n    /* overflow: auto; */\n}\n.content-wrap .content-head {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .content-head h1 {\r\n    font-size: 1.375em;\r\n    line-height: 100%;\r\n    color: #1b253d;\r\n    font-weight: 500;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .content-head .action button {\r\n    border: 0;\r\n    background: #4b84fe;\r\n    color: #fff;\r\n    width: auto;\r\n    height: 3.5em;\r\n    padding: 0 2.25em;\r\n    border-radius: 3.5em;\r\n    font-size: 1em;\r\n    text-transform: uppercase;\r\n    font-weight: 600;\r\n    transition: background-color 0.15s ease;\n}\n.content-wrap .content-head .action button:hover {\r\n    background-color: #1861fe;\n}\n.content-wrap .content-head .action button:hover:active {\r\n    background-color: #0149e2;\r\n    transition: none;\n}\n.content-wrap .info-boxes {\r\n    padding: 3em 0 2em;\r\n    display: flex;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .info-boxes .info-box {\r\n    background: #fff;\r\n    height: 160px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    padding: 0 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg {\r\n    display: block;\r\n    width: 48px;\r\n    height: 48px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg path,\r\n.content-wrap .info-boxes .info-box .box-icon svg circle {\r\n    fill: #99a0b0;\n}\n.content-wrap .info-boxes .info-box .box-content {\r\n    padding-left: 1.25em;\r\n    white-space: nowrap;\n}\n.content-wrap .info-boxes .info-box .box-content .big {\r\n    display: block;\r\n    font-size: 2em;\r\n    line-height: 150%;\r\n    color: #1b253d;\n}\n.content-wrap .info-boxes .info-box.active svg circle,\r\n.content-wrap .info-boxes .info-box.active svg path {\r\n    fill: #4b84fe;\n}\n.content-wrap .person-boxes {\r\n    padding: 0;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .person-boxes .person-box {\r\n    background: #fff;\r\n    height: 320px;\r\n    text-align: center;\r\n    padding: 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .person-boxes .person-box:nth-child(2n) .box-avatar .no-name {\r\n    background: #4b84fe;\n}\n.content-wrap .person-boxes .person-box:nth-child(5n) .box-avatar .no-name {\r\n    background: #ffbb09;\n}\n.content-wrap .person-boxes .person-box .box-avatar {\r\n    width: 100px;\r\n    height: 100px;\r\n    border-radius: 50%;\r\n    margin: 0px auto;\r\n    overflow: hidden;\n}\n.content-wrap .person-boxes .person-box .box-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.content-wrap .person-boxes .person-box .box-avatar .no-name {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    text-align: center;\r\n    color: #fff;\r\n    font-size: 1.5em;\r\n    font-weight: 600;\r\n    text-transform: uppercase;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #fa5b67;\n}\n.content-wrap .person-boxes .person-box .box-bio {\r\n    white-space: no-wrap;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-name {\r\n    margin: 2em 0 0.75em;\r\n    color: #1b253d;\r\n    font-size: 1em;\r\n    font-weight: 700;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-position {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-actions {\r\n    margin-top: 1.25em;\r\n    padding-top: 1.25em;\r\n    width: 100%;\r\n    border-top: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .person-boxes .person-box .box-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.content-wrap .person-boxes .person-box .box-actions button:hover svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
