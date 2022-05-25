@@ -72,21 +72,22 @@
 
         </div>
     </main>
-    
 
     <div class="chart_">
         <div class="chart_content">
-            dd
+            <canvas id="myChart1" width="400" height="400"></canvas>
+
         </div>
     </div>
 </div>
-
 </template>
 
 <script>
 import menu__2 from "../menu/menu.vue";
 // import VueApexCharts from 'vue-apexcharts'
 import axios from "axios";
+import Chart from "chart.js/auto";
+
 export default {
     components: {
         menu__2
@@ -101,69 +102,73 @@ export default {
     methods: {
         async load() {
             let res = await axios.get('/stats/get/');
-            this.stats = res.data
-        }
-    },
-    mounted() {
-        this.load();
-    },
-
-    computed: {
-        options() {
-
-            let options = {
-                chart: {
-                    id: 'vuechart-example'
+            this.stats = res.data;
+            this.load_charts();
+        },
+        load_charts() {
+            const ctx = document.getElementById('myChart1').getContext('2d');
+            let data_1 = {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
                 },
-                xaxis: {
-                    categories: ["a", "b"]
-                },
-                colors: ['#13d8aa', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
-                    '#f48024', '#69d2e7'
-                ],
-                subtitle: {
-                    text: 'Campaigns',
-                    align: 'center',
-                },
-                tooltip: {
-                    theme: 'dark',
-                    x: {
-                        show: false
-                    },
-                    y: {
-                        title: {
-                            formatter: function () {
-                                return ''
-                            }
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
                         }
                     }
                 }
             }
-            // this.stats.chart.map(itms => options.xaxis.categories.push(itms.name))
-            return options;
-        },
-        series() {
-            let series = [{
-                name: "Screens",
-                data: [75, 76]
-            }, ]
-            // this.stats.chart.map(itms => {
-            //     series[0].data.push(itms.count_screens);
-            // })
-            return series;
-        },
-    }
+
+            let i = 0;
+            for (i = 0; i < this.stats.chart1.length; i++) {
+                      data_1.data.labels.push(this.stats.chart1[i].marqueM)
+                data_1.data.datasets[0].data.push(this.stats.chart1[i].count1)
+            }
+            
+            let myChart = new Chart(ctx, data_1);
+        }
+    },
+    mounted() {
+        this.load();
+
+    },
+
+    computed: {}
 }
 </script>
 
 <style>
-.chart_{
+.chart_ {
     background: white;
     width: 100%;
-     height: 100px;
-      padding: 0 3em;
-      margin-top: 10px;
+    height: max-content;
+    padding: 0 3em;
+    margin-top: 10px;
 }
+
 .dashboard {
     width: 100%;
     height: 100%;
