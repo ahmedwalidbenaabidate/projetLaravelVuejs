@@ -41,12 +41,17 @@
 #search{
 width: 100% !important;
 height: 100% !important;
+
+}
+::placeholder{
+    font-size: 20px;
 }
 #divCreer .container-4{
-width: 900px !important;
+width: 600px !important;
 height: 80px !important;
 }
 #divCreer .container-4 .icon{
 height: 100% !important;
 }
+
 

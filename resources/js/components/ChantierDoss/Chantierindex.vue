@@ -1,7 +1,19 @@
 <template>
 <div class="flex flex-col">
-    <div class="flex ">
+    <!-- <div class="flex ">
         <router-link :to="{name: 'chantiers.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un chantier</router-link>
+    </div> -->
+    <div class="flex " id="divCreer">
+    
+        <div class="box" style="    margin-right: 40px;">
+            <div class="container-4">
+                <input type="search" v-model="search" id="search" placeholder="Search..." />
+                <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+                <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
+                <button id="rlink1" @click="$router.push('/chantiers/create')">Créer un chantier</button>
+
     </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
     
@@ -24,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <template v-for="chantier,i in chantiers" :key="i">
+            <template v-for="chantier,i in chantiers_filter" :key="i">
                 <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                         <div v-text="chantier.code"></div>
@@ -56,8 +68,19 @@ import axios from "axios";
 export default {
     data() {
         return {
-            chantiers: []
+            chantiers: [],
+            search:'',
         };
+    },
+    computed:{
+      chantiers_filter(){
+          let res = this.chantiers;
+        //   let searchBy = this.search.toLocaleLowerCase();
+          if(this.search.toLocaleLowerCase() != ""){
+              res = res.filter(item=>item.code.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.libelle.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.abreviation.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+          }
+          return res;
+      }
     },
     methods: {
       async  getC() {
