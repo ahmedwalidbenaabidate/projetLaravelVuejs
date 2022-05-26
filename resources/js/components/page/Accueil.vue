@@ -75,9 +75,14 @@
 
     <div class="chart_">
         <div class="chart_content">
-            <canvas id="myChart1" width="400" height="400"></canvas>
-
+            <h3 class="H3_style"> Matériels les plus demandé</h3>
+            <canvas id="myChart1" width="100%" height="100%"></canvas>
         </div>
+        <div class="chart_content">
+            <h3 class="H3_style"> Employées très présent</h3>
+            <canvas id="myChart2" width="100%" height="100%"></canvas>
+        </div>
+
     </div>
 </div>
 </template>
@@ -106,8 +111,44 @@ export default {
             this.load_charts();
         },
         load_charts() {
-            const ctx = document.getElementById('myChart1').getContext('2d');
+            const ctx1 = document.getElementById('myChart1').getContext('2d');
+            const ctx2 = document.getElementById('myChart2').getContext('2d');
+
             let data_1 = {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            }
+            let data_2 = {
                 type: 'bar',
                 data: {
                     labels: [],
@@ -144,11 +185,18 @@ export default {
 
             let i = 0;
             for (i = 0; i < this.stats.chart1.length; i++) {
-                      data_1.data.labels.push(this.stats.chart1[i].marqueM)
+                data_1.data.labels.push(this.stats.chart1[i].marqueM)
                 data_1.data.datasets[0].data.push(this.stats.chart1[i].count1)
             }
-            
-            let myChart = new Chart(ctx, data_1);
+
+            for (i = 0; i < this.stats.chart2.length; i++) {
+                data_2.data.labels.push(this.stats.chart2[i].nom + " " + this.stats.chart2[i].prenom)
+                data_2.data.datasets[0].data.push(this.stats.chart2[i].count1)
+            }
+
+            let myChart1 = new Chart(ctx1, data_1);
+            let myChart2 = new Chart(ctx2, data_2);
+
         }
     },
     mounted() {
@@ -167,6 +215,21 @@ export default {
     height: max-content;
     padding: 0 3em;
     margin-top: 10px;
+    display: inline-flex;
+    justify-content: space-between;
+    height: max-content;
+
+}
+
+.chart_ .chart_content {
+    height: max-content;
+    width: 45%;
+}
+
+#myChart1,
+#myChart2 {
+    height: 100%;
+    width: 100%;
 }
 
 .dashboard {
@@ -559,5 +622,14 @@ export default {
 .content-wrap .person-boxes .person-box .box-actions button:hover svg path,
 .content-wrap .person-boxes .person-box .box-actions button:hover svg circle {
     fill: #2b3a60;
+}
+
+.H3_style {
+    text-align: center;
+    font-family: cursive;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: darkblue;
+
 }
 </style>

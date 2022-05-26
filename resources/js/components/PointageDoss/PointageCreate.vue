@@ -4,15 +4,15 @@
         <router-link :to="{name: 'pointages.edit'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Modifier Pointage</router-link>
     </div> -->
     <div class="flex " id="divCreer">
-    
+
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Search..." />
                 <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
             </div>
         </div>
-                <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/pointages/edit')">Modifier un Pointage</button>
+        <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
+        <button id="rlink1" @click="$router.push('/pointages/edit')">Modifier un Pointage</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -54,7 +54,7 @@
                     <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                            {{employee.id}}
+                            {{employee.id_employee}}
                         </th>
                         <td class="px-6 py-4">
                             {{employee.nom}}<!-- {{chantier.libelle}} -->
@@ -68,7 +68,7 @@
 
                         <!-- <form v-on:submit.prevent="create_pointage(i)"> -->
                         <td class="px-6 py-4">
-                            <select class="inp1" v-model="list_create_pointage[i].presence" required>
+                            <select class="inp1" v-model="employee.presence" required>
                                 <option value="0">ABSENT</option>
                                 <option value="1">PRÉSENT</option>
                                 <option value="0.5">DEMI JOURNÉE</option>
@@ -76,10 +76,10 @@
                             </select>
                         </td>
                         <td class="px-6 py-4">
-                            <input type="number" v-model="list_create_pointage[i].heurs_suppl" min="0" class="inp1" required>
+                            <input type="number" v-model="employee.heurs_suppl" min="0" class="inp1" required>
                         </td>
                         <td class="px-6 py-4">
-                            <textarea class="inp1" v-model="list_create_pointage[i].remarque" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque" required></textarea>
+                            <textarea class="inp1" v-model="employee.remarque" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque" required></textarea>
                         </td>
 
                         <!-- <td class="px-6 py-4">
@@ -88,7 +88,7 @@
 
                         <td class="px-6 py-4 text-right">
 
-                            <button id="btnEnr" @click="create_pointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>
+                            <button id="btnEnr" @click="create_pointage(employee.id_employee)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>
                         </td>
                         <!-- </form>                 -->
 
@@ -108,7 +108,7 @@ export default {
     data() {
         return {
             employees: [],
-            search:'',
+            search: '',
             list_create_pointage: [],
             Object_pointage: {
                 //date_pointage: '',
@@ -116,19 +116,23 @@ export default {
                 presence: '',
                 remarque: '',
                 heurs_suppl: '0',
+                nom:"",
+                prenom:"",
+                libelleFonction:"",
+
 
             }
         };
     },
-    computed:{
-      employees_filter(){
-          let res = this.employees;
-        //   let searchBy = this.search.toLocaleLowerCase();
-          if(this.search.toLocaleLowerCase() != ""){
-              res = res.filter(item=>item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) );
-          }
-          return res;
-      }
+    computed: {
+        employees_filter() {
+            let res = this.list_create_pointage;
+            //   let searchBy = this.search.toLocaleLowerCase();
+            if (this.search.toLocaleLowerCase() != "") {
+                res = res.filter(item => item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+            }
+            return res;
+        }
     },
     methods: {
         async getEmployee() {
@@ -140,6 +144,10 @@ export default {
                 for (i = 0; i < this.employees.length; i++) {
                     let item__ = Object.assign({}, this.Object_pointage)
                     item__.id_employee = this.employees[i].id;
+                    item__.nom = this.employees[i].nom;
+
+                    item__.prenom = this.employees[i].prenom;
+              item__.libelleFonction = this.employees[i].libelleFonction;
                     this.list_create_pointage.push(item__)
                 }
 
@@ -149,14 +157,23 @@ export default {
             await axios.post('/pointages/create', data);
             this.$router.push("/pointages");
         },
+        search__id(id) {
+            let i = 0;
 
-        async create_pointage(i) {
-            if (this.list_create_pointage[i].presence != '' && this.list_create_pointage[i].heurs_suppl !== '' && this.list_create_pointage[i].remarque != '') {
-                await this.createpointData(this.list_create_pointage[i]);
-                this.list_create_pointage.splice(i, 1);
-                this.employees.splice(i, 1);
-            }else
-            alert("Veuillez remplir les champs vide");
+            for (i = 0; i < this.list_create_pointage.length; i++)
+                if (  this.list_create_pointage[i].id_employee == id)
+                    return i
+            return -1
+        },
+        async create_pointage(id) {
+            let pos = this.search__id(id);
+alert(pos)
+            if (this.list_create_pointage[pos].presence != '' && this.list_create_pointage[pos].heurs_suppl !== '' && this.list_create_pointage[pos].remarque != '') {
+                await this.createpointData(this.list_create_pointage[pos]);
+                this.list_create_pointage.splice(pos, 1);
+                this.employees.splice(pos, 1);
+            } else
+                alert("Veuillez remplir les champs vide");
 
             // this.$router.push("/pointages");
             //console.log(this.list_create_pointage[i])

@@ -9,7 +9,7 @@
             </div>
         </div>
                 <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/employees/create')">Créer un employé</button>
+                <button id="rlink1" @click="$router.push('/employees/create')"><i class="bx bx-user-check icon_table"></i>Créer un employé</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -82,7 +82,7 @@
 
                         <td class="px-6 py-4 text-right">
                             <!-- <router-link :to="{name: 'employees.edit', params:{id: employee.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><i class="bx bx-edit icon_table"></i>Modifier</router-link> -->
-                            <button @click="$router.push('/employees/'+employee.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Modifier</button>
+                            <button @click="$router.push('/employees/'+employee.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
                             <button @click="destroyEmployee(employee.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Supprimer</button>
                             <!-- $router.push('/employees/edit') -->
                         </td>

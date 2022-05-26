@@ -4,15 +4,15 @@
         <router-link :to="{name: 'affectationMateriels.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un pointage</router-link>
     </div> -->
     <div class="flex " id="divCreer">
-    
+
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Search..." />
                 <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
             </div>
         </div>
-                <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/affectationMateriels/create')">Créer un pointage</button>
+        <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
+        <button id="rlink1" @click="$router.push('/affectationMateriels/create')">Créer un pointage</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -76,7 +76,7 @@
                         <td class="px-6 py-4 text-right">
                             <button :class="affectMat.statut=='pas encore' ? 'pas_encore__'  : 'retour__'" @click="saveStatut(i)" id="btnStatut">Statut</button>
                             <router-link :to="{name: 'affectationMateriels.edit', params:{id: affectMat.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
-                            <button @click="destroyAffectationM(affectMat.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <button @click="destroyAffectationM(affectMat.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -93,18 +93,18 @@ export default {
     data() {
         return {
             affectMats: [],
-            search:'',
+            search: '',
         };
     },
-    computed:{
-      affectMats_filter(){
-          let res = this.affectMats;
-        //   let searchBy = this.search.toLocaleLowerCase();
-          if(this.search.toLocaleLowerCase() != ""){
-              res = res.filter(item=>item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.reference.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.marqueM.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.statut.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
-          }
-          return res;
-      }
+    computed: {
+        affectMats_filter() {
+            let res = this.affectMats;
+            //   let searchBy = this.search.toLocaleLowerCase();
+            if (this.search.toLocaleLowerCase() != "") {
+                res = res.filter(item => item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.reference.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.marqueM.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.statut.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+            }
+            return res;
+        }
     },
     methods: {
         async saveStatut(index) {
@@ -124,9 +124,18 @@ export default {
             if (response.data.status == 1)
                 this.affectMats = response.data.data
         },
-        async destroyAffectationM(id, pos) {
+        search__id(id) {
+            let i = 0;
+
+            for (i = 0; i < this.affectMats.length; i++)
+                if (this.affectMats[i].id == id)
+                    return i
+            return -1
+        },
+        async destroyAffectationM(id) {
             if (!window.confirm('Supprimer cette affectation de matériel?')) return;
 
+            let pos = this.search__id(id)
             await axios.delete('/affectationMateriels/delete/' + id);
 
             this.affectMats.splice(pos, 1)

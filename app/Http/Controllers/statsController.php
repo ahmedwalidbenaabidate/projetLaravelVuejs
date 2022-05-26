@@ -25,6 +25,12 @@ class statsController extends Controller
         ->select(DB::raw("count(affectation_materiels.id_materiel) as count1"),"materiels.marqueM")->Limit(5)
         ->orderBy("count1","desc")
         ->get();
+        $chart2 = Employee::join("p_persones","p_persones.id_employee","employees.id")
+        ->where("presence","=","0")
+        ->groupBy("p_persones.id_employee","employees.nom","employees.prenom")
+        ->select(DB::raw("count(p_persones.id_employee) as count1"),"employees.nom","employees.prenom")->Limit(5)
+        ->orderBy("count1","desc")
+        ->get();
         return \response()->json([
             "emp"=>$emp,
             "Pemp"=>$Pemp,
@@ -32,7 +38,8 @@ class statsController extends Controller
             "Pmat"=>$Pmat,
             "dep"=>$dep,
             "status"=>1,
-            'chart1'=>$chart1
+            'chart1'=>$chart1,
+            'chart2'=>$chart2,
         ]); 
     }
 }

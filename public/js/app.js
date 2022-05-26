@@ -25533,10 +25533,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    destroyAffectationM: function destroyAffectationM(id, pos) {
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.affectMats.length; i++) {
+        if (this.affectMats[i].id == id) return i;
+      }
+
+      return -1;
+    },
+    destroyAffectationM: function destroyAffectationM(id) {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -25549,14 +25559,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context3.abrupt("return");
 
               case 2:
-                _context3.next = 4;
+                pos = _this4.search__id(id);
+                _context3.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/affectationMateriels/delete/' + id);
 
-              case 4:
+              case 5:
                 _this4.affectMats.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
 
 
-              case 5:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -27622,7 +27633,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         id_employee: -1,
         presence: '',
         remarque: '',
-        heurs_suppl: '0'
+        heurs_suppl: '0',
+        nom: "",
+        prenom: "",
+        libelleFonction: ""
       }
     };
   },
@@ -27630,7 +27644,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     employees_filter: function employees_filter() {
       var _this = this;
 
-      var res = this.employees; //   let searchBy = this.search.toLocaleLowerCase();
+      var res = this.list_create_pointage; //   let searchBy = this.search.toLocaleLowerCase();
 
       if (this.search.toLocaleLowerCase() != "") {
         res = res.filter(function (item) {
@@ -27664,6 +27678,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   for (i = 0; i < _this2.employees.length; i++) {
                     item__ = Object.assign({}, _this2.Object_pointage);
                     item__.id_employee = _this2.employees[i].id;
+                    item__.nom = _this2.employees[i].nom;
+                    item__.prenom = _this2.employees[i].prenom;
+                    item__.libelleFonction = _this2.employees[i].libelleFonction;
 
                     _this2.list_create_pointage.push(item__);
                   }
@@ -27699,34 +27716,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    create_pointage: function create_pointage(i) {
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.list_create_pointage.length; i++) {
+        if (this.list_create_pointage[i].id_employee == id) return i;
+      }
+
+      return -1;
+    },
+    create_pointage: function create_pointage(id) {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                if (!(_this4.list_create_pointage[i].presence != '' && _this4.list_create_pointage[i].heurs_suppl !== '' && _this4.list_create_pointage[i].remarque != '')) {
-                  _context3.next = 7;
+                pos = _this4.search__id(id);
+                alert(pos);
+
+                if (!(_this4.list_create_pointage[pos].presence != '' && _this4.list_create_pointage[pos].heurs_suppl !== '' && _this4.list_create_pointage[pos].remarque != '')) {
+                  _context3.next = 9;
                   break;
                 }
 
-                _context3.next = 3;
-                return _this4.createpointData(_this4.list_create_pointage[i]);
+                _context3.next = 5;
+                return _this4.createpointData(_this4.list_create_pointage[pos]);
 
-              case 3:
-                _this4.list_create_pointage.splice(i, 1);
+              case 5:
+                _this4.list_create_pointage.splice(pos, 1);
 
-                _this4.employees.splice(i, 1);
+                _this4.employees.splice(pos, 1);
 
-                _context3.next = 8;
+                _context3.next = 10;
                 break;
 
-              case 7:
+              case 9:
                 alert("Veuillez remplir les champs vide");
 
-              case 8:
+              case 10:
               case "end":
                 return _context3.stop();
             }
@@ -28335,8 +28365,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     load_charts: function load_charts() {
-      var ctx = document.getElementById('myChart1').getContext('2d');
+      var ctx1 = document.getElementById('myChart1').getContext('2d');
+      var ctx2 = document.getElementById('myChart2').getContext('2d');
       var data_1 = {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [{
+            label: '# of Votes',
+            data: [],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      };
+      var data_2 = {
         type: 'bar',
         data: {
           labels: [],
@@ -28363,7 +28414,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         data_1.data.datasets[0].data.push(this.stats.chart1[i].count1);
       }
 
-      var myChart = new chart_js_auto__WEBPACK_IMPORTED_MODULE_3__["default"](ctx, data_1);
+      for (i = 0; i < this.stats.chart2.length; i++) {
+        data_2.data.labels.push(this.stats.chart2[i].nom + " " + this.stats.chart2[i].prenom);
+        data_2.data.datasets[0].data.push(this.stats.chart2[i].count1);
+      }
+
+      var myChart1 = new chart_js_auto__WEBPACK_IMPORTED_MODULE_3__["default"](ctx1, data_1);
+      var myChart2 = new chart_js_auto__WEBPACK_IMPORTED_MODULE_3__["default"](ctx2, data_2);
     }
   },
   mounted: function mounted() {
@@ -29698,7 +29755,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS, DYNAMIC_SLOTS */
     , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
-        return $options.destroyAffectationM(affectMat.id, i);
+        return $options.destroyAffectationM(affectMat.id);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
@@ -31598,14 +31655,23 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_6 = {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-user-check icon_table"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Créer un employé");
+
+var _hoisted_8 = [_hoisted_6, _hoisted_7];
+var _hoisted_9 = {
   "class": "relative overflow-x-auto shadow-md sm:rounded-lg mt-4"
 };
-var _hoisted_7 = {
+var _hoisted_10 = {
   "class": "w-full text-sm text-left text-gray-500 dark:text-gray-400"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
   "class": "text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
@@ -31643,68 +31709,68 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_9 = {
+var _hoisted_12 = {
   scope: "row",
   "class": "px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
 };
-var _hoisted_10 = ["textContent"];
-var _hoisted_11 = {
+var _hoisted_13 = ["textContent"];
+var _hoisted_14 = {
   "class": "px-6 py-4"
 };
-var _hoisted_12 = ["textContent"];
-var _hoisted_13 = {
+var _hoisted_15 = ["textContent"];
+var _hoisted_16 = {
   "class": "px-6 py-4"
 };
-var _hoisted_14 = ["textContent"];
-var _hoisted_15 = {
+var _hoisted_17 = ["textContent"];
+var _hoisted_18 = {
   "class": "px-6 py-4"
 };
-var _hoisted_16 = ["textContent"];
-var _hoisted_17 = {
+var _hoisted_19 = ["textContent"];
+var _hoisted_20 = {
   "class": "px-6 py-4"
 };
-var _hoisted_18 = ["textContent"];
-var _hoisted_19 = {
+var _hoisted_21 = ["textContent"];
+var _hoisted_22 = {
   "class": "px-6 py-4"
 };
-var _hoisted_20 = ["textContent"];
-var _hoisted_21 = {
+var _hoisted_23 = ["textContent"];
+var _hoisted_24 = {
   "class": "px-6 py-4"
 };
-var _hoisted_22 = ["textContent"];
-var _hoisted_23 = {
+var _hoisted_25 = ["textContent"];
+var _hoisted_26 = {
   "class": "px-6 py-4"
 };
-var _hoisted_24 = ["textContent"];
-var _hoisted_25 = {
+var _hoisted_27 = ["textContent"];
+var _hoisted_28 = {
   "class": "px-6 py-4"
 };
-var _hoisted_26 = ["textContent"];
-var _hoisted_27 = {
+var _hoisted_29 = ["textContent"];
+var _hoisted_30 = {
   "class": "px-6 py-4 text-right"
 };
-var _hoisted_28 = ["onClick"];
+var _hoisted_31 = ["onClick"];
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-edit icon_table"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Modifier");
+
+var _hoisted_34 = [_hoisted_32, _hoisted_33];
+var _hoisted_35 = ["onClick"];
+
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-trash icon_table"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Modifier");
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Supprimer");
 
-var _hoisted_31 = [_hoisted_29, _hoisted_30];
-var _hoisted_32 = ["onClick"];
-
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-trash icon_table"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Supprimer");
-
-var _hoisted_35 = [_hoisted_33, _hoisted_34];
+var _hoisted_38 = [_hoisted_36, _hoisted_37];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_menu__2 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("menu__2");
 
@@ -31722,64 +31788,64 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$router.push('/employees/create');
     })
-  }, "Créer un employé")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_menu__2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.employees_filter, function (employee, i) {
+  }, _hoisted_8)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_menu__2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.employees_filter, function (employee, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: i,
       id: "trl1",
       "class": "bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.reference)
     }, null, 8
     /* PROPS */
-    , _hoisted_10)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.nom)
     }, null, 8
     /* PROPS */
-    , _hoisted_12)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.prenom)
     }, null, 8
     /* PROPS */
-    , _hoisted_14)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.adresse)
     }, null, 8
     /* PROPS */
-    , _hoisted_16)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_19)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.cin)
     }, null, 8
     /* PROPS */
-    , _hoisted_18)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_21)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.salaire)
     }, null, 8
     /* PROPS */
-    , _hoisted_20)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_23)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.type_salaire)
     }, null, 8
     /* PROPS */
-    , _hoisted_22)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_25)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.permisDate)
     }, null, 8
     /* PROPS */
-    , _hoisted_24)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_27)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.libelleFonction)
     }, null, 8
     /* PROPS */
-    , _hoisted_26)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.edit', params:{id: employee.id}}\" id=\"rlinkEdit\" class=\"font-medium text-blue-600 dark:text-blue-500 hover:underline\"><i class=\"bx bx-edit icon_table\"></i>Modifier</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_29)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.edit', params:{id: employee.id}}\" id=\"rlinkEdit\" class=\"font-medium text-blue-600 dark:text-blue-500 hover:underline\"><i class=\"bx bx-edit icon_table\"></i>Modifier</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return _ctx.$router.push('/employees/' + employee.id + '/edit');
       },
       id: "rlinkEdit",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
-    }, _hoisted_31, 8
+    }, _hoisted_34, 8
     /* PROPS */
-    , _hoisted_28), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_31), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.destroyEmployee(employee.id, i);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
-    }, _hoisted_35, 8
+    }, _hoisted_38, 8
     /* PROPS */
-    , _hoisted_32), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" $router.push('/employees/edit') ")])]);
+    , _hoisted_35), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" $router.push('/employees/edit') ")])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])])]);
@@ -32827,7 +32893,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: i,
       id: "trl1",
       "class": "bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.id), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.id_employee), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(employee.nom), 1
     /* TEXT */
@@ -32838,25 +32904,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <form v-on:submit.prevent=\"create_pointage(i)\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
       "class": "inp1",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return $data.list_create_pointage[i].presence = $event;
+        return employee.presence = $event;
       },
       required: ""
     }, _hoisted_19, 8
     /* PROPS */
-    , _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.list_create_pointage[i].presence]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, employee.presence]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "number",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return $data.list_create_pointage[i].heurs_suppl = $event;
+        return employee.heurs_suppl = $event;
       },
       min: "0",
       "class": "inp1",
       required: ""
     }, null, 8
     /* PROPS */
-    , _hoisted_21), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.list_create_pointage[i].heurs_suppl]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    , _hoisted_21), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, employee.heurs_suppl]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
       "class": "inp1",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return $data.list_create_pointage[i].remarque = $event;
+        return employee.remarque = $event;
       },
       name: "textarea1",
       id: "txtare1",
@@ -32866,10 +32932,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       required: ""
     }, null, 8
     /* PROPS */
-    , _hoisted_23), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.list_create_pointage[i].remarque]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td class=\"px-6 py-4\">\r\n                            <input type=\"date\" class=\"inp1\" v-model=\"list_create_pointage[i].date_pointage\">\r\n                        </td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_23), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, employee.remarque]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td class=\"px-6 py-4\">\r\n                            <input type=\"date\" class=\"inp1\" v-model=\"list_create_pointage[i].date_pointage\">\r\n                        </td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       id: "btnEnr",
       onClick: function onClick($event) {
-        return $options.create_pointage(i);
+        return $options.create_pointage(employee.id_employee);
       },
       "class": "font-medium text-black-600 dark:text-black-500 hover:underline"
     }, "Enregistrer", 8
@@ -33532,17 +33598,7 @@ var _hoisted_30 = {
 
 var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dépenses du jour ");
 
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "chart_"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "chart_content"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("canvas", {
-  id: "myChart1",
-  width: "400",
-  height: "400"
-})])], -1
-/* HOISTED */
-);
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"chart_\"><div class=\"chart_content\"><h3 class=\"H3_style\"> Matériels les plus demandé</h3><canvas id=\"myChart1\" width=\"100%\" height=\"100%\"></canvas></div><div class=\"chart_content\"><h3 class=\"H3_style\"> Employées très présent</h3><canvas id=\"myChart2\" width=\"100%\" height=\"100%\"></canvas></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_menu__2 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("menu__2");
@@ -48223,7 +48279,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.chart_ {\r\n    background: white;\r\n    width: 100%;\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    padding: 0 3em;\r\n    margin-top: 10px;\n}\n.dashboard {\r\n    width: 100%;\r\n    height: 100%;\r\n    grid-gap: 0;\r\n    grid-template-columns: 300px auto;\r\n    grid-template-rows: 80px auto;\r\n    grid-template-areas: 'menu search', 'menu content';\n}\n.search-wrap {\r\n    grid-area: search;\r\n    background: #fff;\r\n    border-bottom: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    padding: 0 3em;\n}\n.search-wrap .search {\r\n    height: 40px;\n}\n.search-wrap .search label {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 100%;\n}\n.search-wrap .search label svg {\r\n    display: block;\n}\n.search-wrap .search label svg path,\r\n.search-wrap .search label svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .search label input {\r\n    display: block;\r\n    padding-left: 1em;\r\n    height: 100%;\r\n    margin: 0;\r\n    border: 0;\n}\n.search-wrap .search label input:focus {\r\n    background: #f5f5fa;\n}\n.search-wrap .search label:hover svg path,\r\n.search-wrap .search label:hover svg circle {\r\n    fill: #2b3a60;\n}\n.search-wrap .user-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\r\n    margin-left: 0.5em;\n}\n.search-wrap .user-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.search-wrap .user-actions button svg path,\r\n.search-wrap .user-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .user-actions button:hover svg path,\r\n.search-wrap .user-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap {\r\n    grid-area: menu;\r\n    padding-bottom: 3em;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-right: 1px solid #ede8f0;\n}\n.menu-wrap .user {\r\n    height: 80px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    margin: 0;\r\n    padding: 0 3em;\n}\n.menu-wrap .user .user-avatar {\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    overflow: hidden;\n}\n.menu-wrap .user .user-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.menu-wrap .user figcaption {\r\n    margin: 0;\r\n    padding: 0 0 0 1em;\r\n    color: #1b253d;\r\n    font-weight: 700;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.menu-wrap nav {\r\n    display: block;\r\n    padding: 0 3em;\n}\n.menu-wrap nav section {\r\n    display: block;\r\n    padding: 3em 0 0;\n}\n.menu-wrap nav h3 {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    text-transform: uppercase;\r\n    color: #4b84fe;\r\n    font-weight: 600;\n}\n.menu-wrap nav ul {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 0;\n}\n.menu-wrap nav li {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 1em 0 0;\n}\n.menu-wrap nav li a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    color: #99a0b0;\r\n    text-decoration: none;\r\n    font-weight: 600;\r\n    font-size: 0.875em;\r\n    transition: color 0.15s ease;\n}\n.menu-wrap nav li a svg {\r\n    display: block;\r\n    margin-right: 1em;\n}\n.menu-wrap nav li a svg path,\r\n.menu-wrap nav li a svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.menu-wrap nav li a:hover {\r\n    color: #1b253d;\n}\n.menu-wrap nav li a:hover svg path,\r\n.menu-wrap nav li a:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap nav li a.active {\r\n    color: #4b84fe;\n}\n.menu-wrap nav li a.active svg path,\r\n.menu-wrap nav li a.active svg circle {\r\n    fill: #4b84fe;\n}\n.content-wrap {\r\n    position: relative;\r\n    grid-area: content;\r\n    padding: 3em;\r\n    width: 100%;\r\n    /* overflow: auto; */\n}\n.content-wrap .content-head {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .content-head h1 {\r\n    font-size: 1.375em;\r\n    line-height: 100%;\r\n    color: #1b253d;\r\n    font-weight: 500;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .content-head .action button {\r\n    border: 0;\r\n    background: #4b84fe;\r\n    color: #fff;\r\n    width: auto;\r\n    height: 3.5em;\r\n    padding: 0 2.25em;\r\n    border-radius: 3.5em;\r\n    font-size: 1em;\r\n    text-transform: uppercase;\r\n    font-weight: 600;\r\n    transition: background-color 0.15s ease;\n}\n.content-wrap .content-head .action button:hover {\r\n    background-color: #1861fe;\n}\n.content-wrap .content-head .action button:hover:active {\r\n    background-color: #0149e2;\r\n    transition: none;\n}\n.content-wrap .info-boxes {\r\n    padding: 3em 0 2em;\r\n    display: flex;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .info-boxes .info-box {\r\n    background: #fff;\r\n    height: 160px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    padding: 0 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg {\r\n    display: block;\r\n    width: 48px;\r\n    height: 48px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg path,\r\n.content-wrap .info-boxes .info-box .box-icon svg circle {\r\n    fill: #99a0b0;\n}\n.content-wrap .info-boxes .info-box .box-content {\r\n    padding-left: 1.25em;\r\n    white-space: nowrap;\n}\n.content-wrap .info-boxes .info-box .box-content .big {\r\n    display: block;\r\n    font-size: 2em;\r\n    line-height: 150%;\r\n    color: #1b253d;\n}\n.content-wrap .info-boxes .info-box.active svg circle,\r\n.content-wrap .info-boxes .info-box.active svg path {\r\n    fill: #4b84fe;\n}\n.content-wrap .person-boxes {\r\n    padding: 0;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .person-boxes .person-box {\r\n    background: #fff;\r\n    height: 320px;\r\n    text-align: center;\r\n    padding: 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .person-boxes .person-box:nth-child(2n) .box-avatar .no-name {\r\n    background: #4b84fe;\n}\n.content-wrap .person-boxes .person-box:nth-child(5n) .box-avatar .no-name {\r\n    background: #ffbb09;\n}\n.content-wrap .person-boxes .person-box .box-avatar {\r\n    width: 100px;\r\n    height: 100px;\r\n    border-radius: 50%;\r\n    margin: 0px auto;\r\n    overflow: hidden;\n}\n.content-wrap .person-boxes .person-box .box-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.content-wrap .person-boxes .person-box .box-avatar .no-name {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    text-align: center;\r\n    color: #fff;\r\n    font-size: 1.5em;\r\n    font-weight: 600;\r\n    text-transform: uppercase;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #fa5b67;\n}\n.content-wrap .person-boxes .person-box .box-bio {\r\n    white-space: no-wrap;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-name {\r\n    margin: 2em 0 0.75em;\r\n    color: #1b253d;\r\n    font-size: 1em;\r\n    font-weight: 700;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-position {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-actions {\r\n    margin-top: 1.25em;\r\n    padding-top: 1.25em;\r\n    width: 100%;\r\n    border-top: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .person-boxes .person-box .box-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.content-wrap .person-boxes .person-box .box-actions button:hover svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.chart_ {\r\n    background: white;\r\n    width: 100%;\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    padding: 0 3em;\r\n    margin-top: 10px;\r\n    display: inline-flex;\r\n    justify-content: space-between;\r\n    height: max-content;\n}\n.chart_ .chart_content {\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    width: 45%;\n}\n#myChart1,\r\n#myChart2 {\r\n    height: 100%;\r\n    width: 100%;\n}\n.dashboard {\r\n    width: 100%;\r\n    height: 100%;\r\n    grid-gap: 0;\r\n    grid-template-columns: 300px auto;\r\n    grid-template-rows: 80px auto;\r\n    grid-template-areas: 'menu search', 'menu content';\n}\n.search-wrap {\r\n    grid-area: search;\r\n    background: #fff;\r\n    border-bottom: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    padding: 0 3em;\n}\n.search-wrap .search {\r\n    height: 40px;\n}\n.search-wrap .search label {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 100%;\n}\n.search-wrap .search label svg {\r\n    display: block;\n}\n.search-wrap .search label svg path,\r\n.search-wrap .search label svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .search label input {\r\n    display: block;\r\n    padding-left: 1em;\r\n    height: 100%;\r\n    margin: 0;\r\n    border: 0;\n}\n.search-wrap .search label input:focus {\r\n    background: #f5f5fa;\n}\n.search-wrap .search label:hover svg path,\r\n.search-wrap .search label:hover svg circle {\r\n    fill: #2b3a60;\n}\n.search-wrap .user-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\r\n    margin-left: 0.5em;\n}\n.search-wrap .user-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.search-wrap .user-actions button svg path,\r\n.search-wrap .user-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .user-actions button:hover svg path,\r\n.search-wrap .user-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap {\r\n    grid-area: menu;\r\n    padding-bottom: 3em;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-right: 1px solid #ede8f0;\n}\n.menu-wrap .user {\r\n    height: 80px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    margin: 0;\r\n    padding: 0 3em;\n}\n.menu-wrap .user .user-avatar {\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    overflow: hidden;\n}\n.menu-wrap .user .user-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.menu-wrap .user figcaption {\r\n    margin: 0;\r\n    padding: 0 0 0 1em;\r\n    color: #1b253d;\r\n    font-weight: 700;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.menu-wrap nav {\r\n    display: block;\r\n    padding: 0 3em;\n}\n.menu-wrap nav section {\r\n    display: block;\r\n    padding: 3em 0 0;\n}\n.menu-wrap nav h3 {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    text-transform: uppercase;\r\n    color: #4b84fe;\r\n    font-weight: 600;\n}\n.menu-wrap nav ul {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 0;\n}\n.menu-wrap nav li {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 1em 0 0;\n}\n.menu-wrap nav li a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    color: #99a0b0;\r\n    text-decoration: none;\r\n    font-weight: 600;\r\n    font-size: 0.875em;\r\n    transition: color 0.15s ease;\n}\n.menu-wrap nav li a svg {\r\n    display: block;\r\n    margin-right: 1em;\n}\n.menu-wrap nav li a svg path,\r\n.menu-wrap nav li a svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.menu-wrap nav li a:hover {\r\n    color: #1b253d;\n}\n.menu-wrap nav li a:hover svg path,\r\n.menu-wrap nav li a:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap nav li a.active {\r\n    color: #4b84fe;\n}\n.menu-wrap nav li a.active svg path,\r\n.menu-wrap nav li a.active svg circle {\r\n    fill: #4b84fe;\n}\n.content-wrap {\r\n    position: relative;\r\n    grid-area: content;\r\n    padding: 3em;\r\n    width: 100%;\r\n    /* overflow: auto; */\n}\n.content-wrap .content-head {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .content-head h1 {\r\n    font-size: 1.375em;\r\n    line-height: 100%;\r\n    color: #1b253d;\r\n    font-weight: 500;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .content-head .action button {\r\n    border: 0;\r\n    background: #4b84fe;\r\n    color: #fff;\r\n    width: auto;\r\n    height: 3.5em;\r\n    padding: 0 2.25em;\r\n    border-radius: 3.5em;\r\n    font-size: 1em;\r\n    text-transform: uppercase;\r\n    font-weight: 600;\r\n    transition: background-color 0.15s ease;\n}\n.content-wrap .content-head .action button:hover {\r\n    background-color: #1861fe;\n}\n.content-wrap .content-head .action button:hover:active {\r\n    background-color: #0149e2;\r\n    transition: none;\n}\n.content-wrap .info-boxes {\r\n    padding: 3em 0 2em;\r\n    display: flex;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .info-boxes .info-box {\r\n    background: #fff;\r\n    height: 160px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    padding: 0 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg {\r\n    display: block;\r\n    width: 48px;\r\n    height: 48px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg path,\r\n.content-wrap .info-boxes .info-box .box-icon svg circle {\r\n    fill: #99a0b0;\n}\n.content-wrap .info-boxes .info-box .box-content {\r\n    padding-left: 1.25em;\r\n    white-space: nowrap;\n}\n.content-wrap .info-boxes .info-box .box-content .big {\r\n    display: block;\r\n    font-size: 2em;\r\n    line-height: 150%;\r\n    color: #1b253d;\n}\n.content-wrap .info-boxes .info-box.active svg circle,\r\n.content-wrap .info-boxes .info-box.active svg path {\r\n    fill: #4b84fe;\n}\n.content-wrap .person-boxes {\r\n    padding: 0;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .person-boxes .person-box {\r\n    background: #fff;\r\n    height: 320px;\r\n    text-align: center;\r\n    padding: 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .person-boxes .person-box:nth-child(2n) .box-avatar .no-name {\r\n    background: #4b84fe;\n}\n.content-wrap .person-boxes .person-box:nth-child(5n) .box-avatar .no-name {\r\n    background: #ffbb09;\n}\n.content-wrap .person-boxes .person-box .box-avatar {\r\n    width: 100px;\r\n    height: 100px;\r\n    border-radius: 50%;\r\n    margin: 0px auto;\r\n    overflow: hidden;\n}\n.content-wrap .person-boxes .person-box .box-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.content-wrap .person-boxes .person-box .box-avatar .no-name {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    text-align: center;\r\n    color: #fff;\r\n    font-size: 1.5em;\r\n    font-weight: 600;\r\n    text-transform: uppercase;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #fa5b67;\n}\n.content-wrap .person-boxes .person-box .box-bio {\r\n    white-space: no-wrap;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-name {\r\n    margin: 2em 0 0.75em;\r\n    color: #1b253d;\r\n    font-size: 1em;\r\n    font-weight: 700;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-position {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-actions {\r\n    margin-top: 1.25em;\r\n    padding-top: 1.25em;\r\n    width: 100%;\r\n    border-top: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .person-boxes .person-box .box-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.content-wrap .person-boxes .person-box .box-actions button:hover svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\n.H3_style {\r\n    text-align: center;\r\n    font-family: cursive;\r\n    font-size: 30px;\r\n    margin-bottom: 10px;\r\n    color: darkblue;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
