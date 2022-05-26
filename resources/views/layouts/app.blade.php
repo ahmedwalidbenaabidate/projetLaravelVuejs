@@ -19,7 +19,10 @@
     </head>
     <body class="font-sans antialiased" id="app">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            <div id="loggg">
+                @include('layouts.navigation')
+
+            </div>
 
             <!-- Page Heading -->
             {{-- <header class="bg-white shadow">

@@ -97,9 +97,15 @@ Route::post('/administratifs/update', "App\Http\Controllers\AdministratifControl
 Route::delete('/administratifs/delete/{id}', "App\Http\Controllers\AdministratifController@destroy");
 
 
-//Route stats
+//Route Stats
 Route::get('/stats/get/', "App\Http\Controllers\statsController@index");
 
+//Route User----------------------------------------
+Route::get('/users/all', "App\Http\Controllers\UserController@index");
+Route::post('/users/create', "App\Http\Controllers\UserController@create");
+Route::get('/users/get/{id}', "App\Http\Controllers\UserController@show");
+Route::post('/users/update', "App\Http\Controllers\UserController@update");
+Route::delete('/users/delete/{id}', "App\Http\Controllers\UserController@destroy");
 
 
 

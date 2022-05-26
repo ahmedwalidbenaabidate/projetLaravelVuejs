@@ -42,8 +42,12 @@ import CarburantEdit from "../components/CarburantDoss/CarburantEdit.vue";
 import Administratifindex from "../components/AdministratifDoss/Administratifindex.vue";
 import AdministratifCreate from "../components/AdministratifDoss/AdministratifCreate.vue";
 import AdministratifEdit from "../components/AdministratifDoss/AdministratifEdit.vue";
+
 import Accueil from "../components/page/Accueil.vue";
 
+import Userindex from "../components/UserDoss/Userindex.vue";
+import UserCreate from "../components/UserDoss/UserCreate.vue";
+import UserEdit from "../components/UserDoss/UserEdit.vue";
 
 
 const routes =[
@@ -53,11 +57,7 @@ const routes =[
         name: 'chantiers.index',
         component: Chantierindex
     },
-    {
-        path : '/Accueil',
-        name: 'Accueil',
-        component: Accueil
-    },
+    
     {
         path : '/chantiers/create',
         name: 'chantiers.create',
@@ -241,6 +241,30 @@ const routes =[
         name: 'administratifs.edit',
         component: AdministratifEdit,
         
+    },
+
+    //Route User--------------------------------------------------
+    {
+        path : '/users',
+        name: 'users.index',
+        component: Userindex
+    },
+    {
+        path : '/users/create',
+        name: 'users.create',
+        component: UserCreate
+    },
+    {
+        path : '/users/:id/edit',
+        name: 'users.edit',
+        component: UserEdit,
+        
+    },
+    //Route Accueil--------------------------------------
+    {
+        path : '/Accueil',
+        name: 'Accueil',
+        component: Accueil
     },
 
 ];
