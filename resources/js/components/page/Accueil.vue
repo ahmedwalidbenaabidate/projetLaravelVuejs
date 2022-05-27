@@ -82,20 +82,21 @@
             <canvas id="myChart1" width="100%" height="100%"></canvas>
         </div>
         <div class="chart_content">
-            <h3 class="H3_style"> Employées très présent</h3>
-            <canvas id="myChart2" width="100%" height="100%"></canvas>
+            <h3 class="H3_style" id="h3_1"> Dix premières qualités des employés qui contient le plus grand nombre d'employés</h3>
+            <canvas id="myChart4" width="100%" height="100%"></canvas>
         </div>
 
     </div>
     <div class="chart_">
         <div class="chart_content">
-            <h3 class="H3_style"> Matériels les plus demandé</h3>
+            <h3 class="H3_style"> Dix premières types qui contient le plus grand nombre de matériel</h3>
             <canvas id="myChart3" width="100%" height="100%"></canvas>
         </div>
         <div class="chart_content">
-            <h3 class="H3_style"> Matériels les plus demandé</h3>
-            <canvas id="myChart4" width="100%" height="100%"></canvas>
+            <h3 class="H3_style"> Employées très présent</h3>
+            <canvas id="myChart2" width="100%" height="100%"></canvas>
         </div>
+        
 
     </div>
 </div>
@@ -138,6 +139,7 @@ export default {
                         label: '# of Votes',
                         data: [],
                         backgroundColor: [
+                            'rgba(6, 67, 244 , 0.6)',
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 206, 86, 0.2)',
@@ -205,8 +207,10 @@ export default {
                     data: [],
                     backgroundColor: [
                         'rgb(255, 99, 132)',
+                        'rgb(77, 81, 90 )',
                         'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
+                        'rgb(255, 205, 86)',
+                        'rgb(160, 24, 2 )'
                     ],
                     hoverOffset: 4
                 }]
@@ -219,7 +223,8 @@ export default {
                     backgroundColor: [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
+                        'rgb(255, 205, 86)',
+                        'rgb(37, 150, 26 )'
                     ],
                     hoverOffset: 4
                 }]
@@ -248,7 +253,7 @@ export default {
                 data: data_3,
             };
             let config4 = {
-                type: 'doughnut',
+                type: 'pie',
                 data: data_4,
             };
             let myChart1 = new Chart(ctx1, data_1);
@@ -695,5 +700,11 @@ export default {
 #iconDep {
     font-size: 69px !important;
     color: darkolivegreen;
+}
+#h3_1{
+/* margin-bottom: 60px; */
+}
+#myChart1{
+    margin-top: 70px;
 }
 </style>

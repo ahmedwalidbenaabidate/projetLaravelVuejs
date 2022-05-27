@@ -2,7 +2,6 @@ require('./bootstrap');
 
 import { createApp } from "vue";
 import router from "./router";
-import App from './App.vue'
 
 import Chantierindex from "./components/ChantierDoss/Chantierindex.vue";
 import Qualiteindex from "./components/QualiteDoss/Qualiteindex.vue";
@@ -20,9 +19,10 @@ window.Alpine = Alpine;
 Alpine.start();
 
 import VueSidebarMenuAkahon from "vue-sidebar-menu-akahon";
-import Swal from 'sweetalert2'
 
-// CommonJS
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 createApp({
     components: {
         Chantierindex,
@@ -30,8 +30,7 @@ createApp({
         Employeeindex,
         PointageCreate,
         PointageEdit,
-        TypeMaterielindex,
-        Swal,
+        TypeMaterielindex,Swal,
         'vue-sidebar-menu-akahon' : VueSidebarMenuAkahon
     }
 })

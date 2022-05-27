@@ -26,7 +26,7 @@ class statsController extends Controller
         ->orderBy("count1","desc")
         ->get();
         $chart2 = Employee::join("p_persones","p_persones.id_employee","employees.id")
-        ->where("presence","=","0")
+        ->where("presence","=","1")
         ->groupBy("p_persones.id_employee","employees.nom","employees.prenom")
         ->select(DB::raw("count(p_persones.id_employee) as count1"),"employees.nom","employees.prenom")->Limit(5)
         ->orderBy("count1","desc")
