@@ -167,7 +167,7 @@ export default {
         },
         async create_pointage(id) {
             let pos = this.search__id(id);
-alert(pos)
+// alert(pos)
             if (this.list_create_pointage[pos].presence != '' && this.list_create_pointage[pos].heurs_suppl !== '' && this.list_create_pointage[pos].remarque != '') {
                 await this.createpointData(this.list_create_pointage[pos]);
                 this.list_create_pointage.splice(pos, 1);

@@ -1,15 +1,15 @@
 <template>
-<div class="flex flex-col" >
+<div class="flex flex-col">
     <div class="flex " id="divCreer">
-    
+
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Search..." />
                 <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
             </div>
         </div>
-                <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/employees/create')"><i class="bx bx-user-check icon_table"></i>Créer un employé</button>
+        <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
+        <button id="rlink1" @click="$router.push('/employees/create')"><i class="bx bx-user-check icon_table"></i>Créer un employé</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -105,18 +105,18 @@ export default {
     data() {
         return {
             employees: [],
-            search:"",
+            search: "",
         };
     },
-    computed:{
-      employees_filter(){
-          let res = this.employees;
-        //   let searchBy = this.search.toLocaleLowerCase();
-          if(this.search.toLocaleLowerCase() != ""){
-              res = res.filter(item=>item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
-          }
-          return res;
-      }
+    computed: {
+        employees_filter() {
+            let res = this.employees;
+            //   let searchBy = this.search.toLocaleLowerCase();
+            if (this.search.toLocaleLowerCase() != "") {
+                res = res.filter(item => item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+            }
+            return res;
+        }
     },
     methods: {
         async getEmployee() {
@@ -126,6 +126,11 @@ export default {
                 this.employees = response.data.data
         },
         async destroyEmployee(id, pos) {
+            Swal.fire(
+                'The Internet?',
+                'That thing is still around?',
+                'question'
+            )
             if (!window.confirm('Supprimer cet employee ?')) return;
 
             await axios.delete('/employees/delete/' + id);
@@ -142,8 +147,7 @@ export default {
 }
 </script>
 
-<style  >
-
+<style>
 #rlink1 {
     background-color: aqua;
     align-content: center;
@@ -166,79 +170,84 @@ export default {
 
 /* ---------------------------------- */
 /* input Rechercher */
-.container-4{
-  overflow: hidden;
-  width: 300px;
-  vertical-align: middle;
-  white-space: nowrap;
+.container-4 {
+    overflow: hidden;
+    width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
-.container-4 input#search{
-  width: 300px;
-  height: 50px;
-  background: #2b303b;
-  border: none;
-  font-size: 10pt;
-  float: left;
-  color: #fff;
-  padding-left: 15px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+.container-4 input#search {
+    width: 300px;
+    height: 50px;
+    background: #2b303b;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #fff;
+    padding-left: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .container-4 input#search::-webkit-input-placeholder {
-   color: #65737e;
-}
- 
-.container-4 input#search:-moz-placeholder { /* Firefox 18- */
-   color: #65737e;  
-}
- 
-.container-4 input#search::-moz-placeholder {  /* Firefox 19+ */
-   color: #65737e;  
-}
- 
-.container-4 input#search:-ms-input-placeholder {  
-   color: #65737e;  
+    color: #65737e;
 }
 
-.container-4 button.icon{
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -moz-border-radius-bottomright: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
- 
-  border: none;
-  background: #232833;
-  height: 50px;
-  width: 50px;
-  color: #4f5b66;
-  opacity: 0;
-  font-size: 10pt;
- 
-  -webkit-transition: all .55s ease;
-  -moz-transition: all .55s ease;
-  -ms-transition: all .55s ease;
-  -o-transition: all .55s ease;
-  transition: all .55s ease;
+.container-4 input#search:-moz-placeholder {
+    /* Firefox 18- */
+    color: #65737e;
 }
 
-.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
-  outline: none;
-  opacity: 1;
-  margin-left: -50px;
+.container-4 input#search::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #65737e;
 }
- 
-.container-4:hover button.icon:hover{
-  background: white;
+
+.container-4 input#search:-ms-input-placeholder {
+    color: #65737e;
 }
+
+.container-4 button.icon {
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    border: none;
+    background: #232833;
+    height: 50px;
+    width: 50px;
+    color: #4f5b66;
+    opacity: 0;
+    font-size: 10pt;
+
+    -webkit-transition: all .55s ease;
+    -moz-transition: all .55s ease;
+    -ms-transition: all .55s ease;
+    -o-transition: all .55s ease;
+    transition: all .55s ease;
+}
+
+.container-4:hover button.icon,
+.container-4:active button.icon,
+.container-4:focus button.icon {
+    outline: none;
+    opacity: 1;
+    margin-left: -50px;
+}
+
+.container-4:hover button.icon:hover {
+    background: white;
+}
+
 /* ---------------------------------- */
 /* #divCreer{
         justify-content: flex-end;
-    
+
 }
 #search{
     width: 100% !important;
@@ -252,7 +261,6 @@ export default {
     height: 100% !important;
 } */
 
-
 /* ----------------------------------------------- */
 /* table {
   width: 800px;
@@ -260,7 +268,6 @@ export default {
   overflow: hidden;
   box-shadow: 0 0 20px rgba(51, 62, 87, 0.986);
 }
-
 
 th,
 td {

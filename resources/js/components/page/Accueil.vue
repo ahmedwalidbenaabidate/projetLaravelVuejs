@@ -57,11 +57,14 @@
 
                 </div>
                 <div class="info-box">
-                    <div class="box-icon">
+                    <!-- <div class="box-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M12 3C6.486 3 2 6.364 2 10.5c0 2.742 1.982 5.354 5 6.678V21a.999.999 0 0 0 1.707.707l3.714-3.714C17.74 17.827 22 14.529 22 10.5 22 6.364 17.514 3 12 3zm0 13a.996.996 0 0 0-.707.293L9 18.586V16.5a1 1 0 0 0-.663-.941C5.743 14.629 4 12.596 4 10.5 4 7.468 7.589 5 12 5s8 2.468 8 5.5-3.589 5.5-8 5.5z" /></svg>
+                    </div> -->
+                    <div>
+                        <!-- <i class='bx bxs-user-check' id="iconDep"></i> -->
+                        <i class='bx bx-money' id="iconDep"></i>
                     </div>
-
                     <div class="box-content">
                         <span class="big">{{stats.dep}}</span>
                         Dépenses du jour
@@ -81,6 +84,17 @@
         <div class="chart_content">
             <h3 class="H3_style"> Employées très présent</h3>
             <canvas id="myChart2" width="100%" height="100%"></canvas>
+        </div>
+
+    </div>
+    <div class="chart_">
+        <div class="chart_content">
+            <h3 class="H3_style"> Matériels les plus demandé</h3>
+            <canvas id="myChart3" width="100%" height="100%"></canvas>
+        </div>
+        <div class="chart_content">
+            <h3 class="H3_style"> Matériels les plus demandé</h3>
+            <canvas id="myChart4" width="100%" height="100%"></canvas>
         </div>
 
     </div>
@@ -113,6 +127,8 @@ export default {
         load_charts() {
             const ctx1 = document.getElementById('myChart1').getContext('2d');
             const ctx2 = document.getElementById('myChart2').getContext('2d');
+            const ctx3 = document.getElementById('myChart3').getContext('2d');
+            const ctx4 = document.getElementById('myChart4').getContext('2d');
 
             let data_1 = {
                 type: 'bar',
@@ -182,6 +198,32 @@ export default {
                     }
                 }
             }
+            let data_3 = {
+                labels: [],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+            let data_4 = {
+                labels: [],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            };
 
             let i = 0;
             for (i = 0; i < this.stats.chart1.length; i++) {
@@ -193,9 +235,26 @@ export default {
                 data_2.data.labels.push(this.stats.chart2[i].nom + " " + this.stats.chart2[i].prenom)
                 data_2.data.datasets[0].data.push(this.stats.chart2[i].count1)
             }
-
+            for (i = 0; i < this.stats.chart3.length; i++) {
+                data_3.labels.push(this.stats.chart3[i].libelleMateriel)
+                data_3.datasets[0].data.push(this.stats.chart3[i].count1)
+            }
+            for (i = 0; i < this.stats.chart4.length; i++) {
+                data_4.labels.push(this.stats.chart4[i].libelleFonction)
+                data_4.datasets[0].data.push(this.stats.chart4[i].count1)
+            }
+            let config3 = {
+                type: 'doughnut',
+                data: data_3,
+            };
+            let config4 = {
+                type: 'doughnut',
+                data: data_4,
+            };
             let myChart1 = new Chart(ctx1, data_1);
             let myChart2 = new Chart(ctx2, data_2);
+            let myChart3 = new Chart(ctx3, config3);
+            let myChart4 = new Chart(ctx4, config4);
 
         }
     },
@@ -631,5 +690,10 @@ export default {
     margin-bottom: 10px;
     color: darkblue;
 
+}
+
+#iconDep {
+    font-size: 69px !important;
+    color: darkolivegreen;
 }
 </style>

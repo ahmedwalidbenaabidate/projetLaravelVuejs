@@ -2,7 +2,7 @@
 <form class="space-y-6" @submit.prevent="storeUser">
     <div>
         <label for="name" class="block">Nom utilisateur</label>
-        <input type="text" class="inp1" id="name" v-model="form1.name" maxlength="10" required>
+        <input type="text" class="inp1" id="name" v-model="form1.name" placeholder="Entrez le votre nom" maxlength="10" required>
     </div>
     <div>
         <label for="email" class="block">E-mail utilisateur</label>
