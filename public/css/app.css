@@ -647,6 +647,9 @@ select {
 .mt-2 {
   margin-top: 0.5rem;
 }
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -664,9 +667,6 @@ select {
 }
 .-mt-px {
   margin-top: -1px;
-}
-.mt-6 {
-  margin-top: 1.5rem;
 }
 .-mr-2 {
   margin-right: -0.5rem;
@@ -734,11 +734,11 @@ select {
 .w-6 {
   width: 1.5rem;
 }
-.max-w-6xl {
-  max-width: 72rem;
-}
 .max-w-xl {
   max-width: 36rem;
+}
+.max-w-6xl {
+  max-width: 72rem;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -911,13 +911,13 @@ select {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .py-12 {
   padding-top: 3rem;
@@ -948,11 +948,11 @@ select {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
-.pt-8 {
-  padding-top: 2rem;
-}
 .pt-6 {
   padding-top: 1.5rem;
+}
+.pt-8 {
+  padding-top: 2rem;
 }
 .text-center {
   text-align: center;
@@ -1080,14 +1080,14 @@ select {
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.shadow {
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .ring-1 {
@@ -1229,6 +1229,120 @@ table .icon_table{
     cursor: pointer;
   }
 /* -------------------------------------------------------------- */
+/* boutton Imprimer Pointage Edit */
+.custom-btn {
+  width: 180px;
+  height: 45px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0px 10px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-2 {
+  background: rgb(28,26,49);
+  background: linear-gradient(0deg, rgb(38, 26, 58) 0%, rgb(100, 68, 128) 100%);
+  border: none;
+  /* margin-bottom: 6px; */
+  
+  
+}
+.btn-2:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-2:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+#iImpri,#iRech{
+  margin-left: -20px;
+  margin-right: 8px;
+}
+#dateP{
+  padding-top: 14px;
+}
+#btn2Impr{
+  margin-right: 20px;
+  padding-bottom: 2px;
+  /* margin-bottom: 30px; */
+}
+.btn-1 {
+  background: rgb(28,26,49);
+  background: linear-gradient(0deg, rgb(38, 26, 58) 0%, rgb(100, 68, 128) 100%);
+  border: none;
+  margin-left: -10px;
+}
+.btn-1:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-1:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+.btn-1Employee{
+  background: rgb(28,26,49);
+  background: linear-gradient(0deg, rgb(38, 26, 58) 0%, rgb(100, 68, 128) 100%);
+  border: none;
+  margin-left: -10px !important;
+  height: 80px !important;
+  font-size: 20px;
+  
+}
+.btn-1Employee:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-1Employee:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+#iAddEmpl{
+  font-size: 34px !important;
+  margin-right: 6px;
+}
+#rlink1{
+  width: 300px !important;
+}
+#divImg{
+  
+  /* background-color:red; */
+}
+.loginStyle{
+  color: rgba(26, 24, 24, 0.692) !important;
+  font-size: large;
+  font-size: 25px;
+}
+.ml-3{
+  width: 30% !important;
+  height: 60px !important;
+  text-align: center !important;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  font-size:14px;
+}
+#email1,#password1{
+  color: black;
+  border: 0.5px solid rgb(103, 88, 158);
+  box-shadow:  rgb(250, 0, 0);
+}
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -1484,5 +1598,4 @@ table .icon_table{
     padding-right: 2rem;
   }
 }
-
 

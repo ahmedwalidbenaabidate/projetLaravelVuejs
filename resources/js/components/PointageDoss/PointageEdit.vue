@@ -1,10 +1,12 @@
 <template>
+<menu__2 />
 <div class="flex flex-col">
     <div class="DivRecherche">
-        <input type="button" @click="export_()" value="export" name="" id="">
-
-        <input type="date" v-model="$datePP" class="inp1" name="datePointage" id="dateP">
-        <button id="btnRech" @click="getEmployeeParDate($datePP)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Recherche</button>
+        <button @click="export_()" class="custom-btn btn-2" id="btn2Impr" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
+        <!-- <input type="button" @click="export_()" class="custom-btn btn-2" value="export"  name="" id="imprimer"> -->
+        <!-- <i class='bx bx-printer'></i> -->
+        <input type="date" v-model="$datePP" style="background-color:rgb(214, 205, 228);" class="inp1" name="datePointage" id="dateP">
+        <button id="btnRech" @click="getEmployeeParDate($datePP)" class="custom-btn btn-1"><i id="iRech" class='bx bx-search-alt'></i><i>Recherche</i></button>
     </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -78,8 +80,8 @@
 
                         <td class="px-6 py-4 text-right">
                             <!-- <button id="btnEnr" @click="create_pointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>  -->
-                            <button id="btnEnr" @click="savePointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Modifier</button>
-                            <button id="btnSupp" @click="destroyPointage(employee.id,i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <button id="rlinkEdit" @click="savePointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline"><i class="bx bx-edit icon_table"></i>Modifier</button>
+                            <button id="btnSupp" @click="destroyPointage(employee.id,i)" class="font-medium text-black-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i>Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -159,14 +161,17 @@
 
 <script>
 import axios from "axios";
+import menu__2 from "../menu/menu.vue";
 
 export default {
+    components: {
+        menu__2
+    },
     data() {
         return {
             employees: [],
         };
     },
-    components: {},
     methods: {
         async getEmployee() {
 

@@ -1,4 +1,5 @@
 <template>
+<menu__2 />
 <div class="flex flex-col" v-if="list_create_pointage.length">
     <!-- <div class="flex ">
         <router-link :to="{name: 'pointages.edit'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Modifier Pointage</router-link>
@@ -12,7 +13,7 @@
             </div>
         </div>
         <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-        <button id="rlink1" @click="$router.push('/pointages/edit')">Modifier un Pointage</button>
+        <button id="rlink1" class="custom-btn btn-1Employee" @click="$router.push('/pointages/edit')"><i id="iAddEmpl" class="bx bx-edit icon_table"></i>Modifier un Pointage</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -103,8 +104,12 @@
 
 <script>
 import axios from "axios";
+import menu__2 from "../menu/menu.vue";
 
 export default {
+    components: {
+        menu__2
+    },
     data() {
         return {
             employees: [],

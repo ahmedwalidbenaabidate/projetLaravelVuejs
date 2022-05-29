@@ -1,5 +1,6 @@
 <template>
-<form class="space-y-6" @submit.prevent="storeEmployee">
+<menu__2 />
+<form class="space-y-6" @submit.prevent="storeEmployee" >
     <div>
         <label for="reference" class="block">Référence</label>
         <input type="text" class="inp1" id="reference" v-model="form1.reference" maxlength="6" required>
@@ -49,14 +50,19 @@
             <input type="text" id="qualite_id" class="inp1" v-model="form1.qualite_id" required>
 
         </div> -->
-    <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>
+    <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>
 </form>
 </template>
 
 <script>
 import axios from "axios";
+import menu__2 from "../menu/menu.vue";
+
 
 export default {
+    components: {
+        menu__2
+    },
 
     data() {
         return {
@@ -121,8 +127,27 @@ form {
 }
 
 #btnEnreg {
-    background-color: aqua;
-    margin-top: 10px;
-
+   height: 50px !important;
+   
+}
+.space-y-6{
+    border: 2px;
+    border-color: black;
+    background-color: #1c0c30;
+    border-radius: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center !important;
+    display: block !important;
+    padding-bottom: 10px ;
+    padding-top: 10px;
+    font-family:"fantasy" !important;
+    color: rgb(31, 26, 59);
+}
+.block{
+    color: rgb(255, 255, 255);
+    font-family: cursive;
+    padding-bottom: 10px;
 }
 </style>

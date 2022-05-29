@@ -1,5 +1,6 @@
 <template>
 <div class="flex flex-col">
+    <menu__2 />
     <!-- <div class="flex ">
         <router-link :to="{name: 'administratifs.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter un document</router-link>
     </div> -->
@@ -66,8 +67,12 @@
 
 <script>
 import axios from "axios";
+import menu__2 from "../menu/menu.vue";
 
 export default {
+    components: {
+        menu__2
+    },
     data() {
         return {
             administratifs: [],

@@ -1,4 +1,5 @@
 <template>
+<menu__2 />
     <form class="space-y-6"  @submit.prevent="saveEmployee" >
         <div>
             <label for="reference" class="block">Référence</label>
@@ -55,8 +56,12 @@
 
 <script>
 import axios from "axios";
+import menu__2 from "../menu/menu.vue";
 
 export default {
+    components: {
+        menu__2
+    },
 
      props: {
         id: {
