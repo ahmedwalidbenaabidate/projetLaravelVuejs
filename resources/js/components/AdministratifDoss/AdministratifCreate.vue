@@ -19,7 +19,7 @@
         <input type="file" name="documentA" id="documentA" ref="documentA" required>
     </div>
 
-    <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>
+    <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>
 </form>
 </template>
 
@@ -106,11 +106,13 @@ form {
     margin-left: 110px;
     margin-top: 10px;
     border-radius: 4px;
+    color: darkgray;
 }
 
 #btnEnreg {
     background-color: aqua;
-    margin-top: 10px;
+    margin-top: 30px !important;
+    margin-bottom: 40px !important;
 
 }
 </style>

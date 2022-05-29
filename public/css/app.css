@@ -1325,23 +1325,52 @@ table .icon_table{
   /* background-color:red; */
 }
 .loginStyle{
-  color: rgba(26, 24, 24, 0.692) !important;
-  font-size: large;
-  font-size: 25px;
+  color: rgb(253, 253, 253) !important;
+  font-size: large !important;
+  font-size: 25px !important;
+  margin-bottom: 10px !important;
+  margin-top: 40px !important;
 }
 .ml-3{
   width: 30% !important;
-  height: 60px !important;
+  height: 50px !important;
   text-align: center !important;
   display: block;
   margin-right: auto;
   margin-left: auto;
   font-size:14px;
+  background-color: #65737e;
+  
 }
 #email1,#password1{
-  color: black;
-  border: 0.5px solid rgb(103, 88, 158);
-  box-shadow:  rgb(250, 0, 0);
+  color: black !important;
+  border: 1px solid rgb(103, 88, 158) !important;
+  box-shadow: 2px 2px 2px 2px grey !important;
+  background-color: rgb(239, 240, 248) !important;
+  
+  
+}
+#email1:hover,#password1:hover{
+  background-color: rgba(229, 231, 233, 0.267) !important;
+}
+#logBack{
+  background-color: rgb(36, 28, 70) !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0,0,0,0.7)) !important;
+}
+#BackHome{
+  background-image: url("/storage/images/Background.jpg");
+  background-size:cover;
+	/* background-repeat:no-repeat; */
+	background-position: center;
+  
+  
+}
+#divEmailLogin,#divPassordLogin{
+  margin-bottom: 20px !important;
+}
+#loginSt{
+  margin-bottom: 30px !important;
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;

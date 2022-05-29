@@ -14,14 +14,14 @@
             @csrf
 
             <!-- Email Address -->
-            <div>
+            <div id="divEmailLogin">
                 <x-label for="email" class="loginStyle" :value="__('Email')" />
 
-                <x-input id="email1" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-input id="email1" class="block mt-1 w-full" type="email" name="email" :value="old('email')"  required autofocus />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
+            <div id="divPasswordLogin" class="mt-4">
                 <x-label for="password" class="loginStyle" :value="__('Password')" />
 
                 <x-input id="password1" class="block mt-1 w-full"
