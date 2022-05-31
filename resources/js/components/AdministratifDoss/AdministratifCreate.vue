@@ -16,7 +16,7 @@
 
     <div>
         <label for="documentA" class="block">Procès verbal</label>
-        <input type="file" name="documentA" id="documentA" ref="documentA" required>
+        <input type="file" name="documentA" id="documentA" ref="documentA" >
     </div>
 
     <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>

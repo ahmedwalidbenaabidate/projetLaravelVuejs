@@ -83,7 +83,7 @@
                         <td class="px-6 py-4 text-right">
                             <!-- <router-link :to="{name: 'employees.edit', params:{id: employee.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><i class="bx bx-edit icon_table"></i>Modifier</router-link> -->
                             <button @click="$router.push('/employees/'+employee.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
-                            <button @click="destroyEmployee(employee.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Supprimer</button>
+                            <button @click="destroyEmployee(employee.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Supprimer</button>
                             <!-- $router.push('/employees/edit') -->
                         </td>
                     </tr>
@@ -126,7 +126,15 @@ export default {
             if (response.data.status == 1)
                 this.employees = response.data.data
         },
-        async destroyEmployee(id, pos) {
+        search__id(id) {
+            let i = 0;
+
+            for (i = 0; i < this.employees.length; i++)
+                if (  this.employees[i].id == id)
+                    return i
+            return -1
+        },
+        async destroyEmployee(id) {
             Swal.fire(
                 'The Internet?',
                 'That thing is still around?',
@@ -169,7 +177,7 @@ export default {
             // })
 
             if (!window.confirm('Supprimer cet employee ?')) return;
-
+            let pos = this.search__id(id);
             await axios.delete('/employees/delete/' + id);
 
             this.employees.splice(pos, 1)

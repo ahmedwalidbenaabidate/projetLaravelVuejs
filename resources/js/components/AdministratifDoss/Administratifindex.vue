@@ -5,15 +5,15 @@
         <router-link :to="{name: 'administratifs.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter un document</router-link>
     </div> -->
     <div class="flex " id="divCreer">
-    
+
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Search..." />
                 <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
             </div>
         </div>
-                <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/administratifs/create')"><i id="iAddEmpl" class="bx bxs-file-plus"></i> Ajouter un document</button>
+        <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
+        <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/administratifs/create')"><i id="iAddEmpl" class="bx bxs-file-plus"></i> Ajouter un document</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -24,7 +24,7 @@
                     <th scope="col" class="px-6 py-3">
                         Déscription
                     </th>
-                    
+
                     <th scope="col" class="px-6 py-3">
                         Matériel
                     </th>
@@ -42,7 +42,7 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             <div v-text="administratif.descriptionA"></div>
                         </th>
-                        
+
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             <div v-text="administratif.marqueM"></div>
                         </th>
@@ -54,8 +54,9 @@
                         </th>
 
                         <td class="px-6 py-4 text-right">
-                            <router-link :to="{name: 'administratifs.edit', params:{id: administratif.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
-                        <button  @click="destroyAdministratif(administratif.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <!-- <router-link :to="{name: 'administratifs.edit', params:{id: administratif.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link> -->
+                            <button @click="$router.push('/administratifs/'+administratif.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
+                            <button @click="destroyAdministratif(administratif.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i>Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -76,18 +77,18 @@ export default {
     data() {
         return {
             administratifs: [],
-             search:"",
+            search: "",
         };
     },
-    computed:{
-      documents_filter(){
-          let res = this.administratifs;
-        //   let searchBy = this.search.toLocaleLowerCase();
-          if(this.search.toLocaleLowerCase() != ""){
-              res = res.filter(item=>item.marqueM.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) );
-          }
-          return res;
-      }
+    computed: {
+        documents_filter() {
+            let res = this.administratifs;
+            //   let searchBy = this.search.toLocaleLowerCase();
+            if (this.search.toLocaleLowerCase() != "") {
+                res = res.filter(item => item.marqueM.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+            }
+            return res;
+        }
     },
     methods: {
         async getAdministratifs() {
@@ -96,13 +97,21 @@ export default {
             if (response.data.status == 1)
                 this.administratifs = response.data.data
         },
+        search__id(id) {
+            let i = 0;
 
-        async destroyAdministratif(id,pos){
-             if (!window.confirm( 'Supprimer ce enregistrement ?')) return;
+            for (i = 0; i < this.administratifs.length; i++)
+                if (  this.administratifs[i].id == id)
+                    return i
+            return -1
+        },
 
+        async destroyAdministratif(id) {
+            if (!window.confirm('Supprimer ce enregistrement ?')) return;
+            let pos = this.search__id(id);
             await axios.delete('/administratifs/delete/' + id);
 
-            this.administratifs.splice(pos,1)
+            this.administratifs.splice(pos, 1)
         },
 
         afficherDocument(u) {
@@ -121,8 +130,6 @@ export default {
 #rlink1 {
     background-color: aqua;
 }
-
-
 
 #trl1 {
     text-align: center;
@@ -146,10 +153,12 @@ export default {
     color: blue;
     text-decoration: underline;
 }
-#previewPDF:hover{
+
+#previewPDF:hover {
     color: red;
 }
-#imgDoc1{
+
+#imgDoc1 {
     width: 60px;
     height: 70px;
     text-align: center;

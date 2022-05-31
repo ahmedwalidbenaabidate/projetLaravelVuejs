@@ -1,5 +1,6 @@
 <template>
 <div class="flex flex-col">
+    <menu__2 />
     <!-- <div class="flex ">
         <router-link :to="{name: 'qualites.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer une qualité</router-link>
     </div> -->
@@ -38,8 +39,9 @@
                     
                     
                     <td class="px-6 py-4 text-right">
-                        <router-link :to="{name: 'qualites.edit', params:{id: qualite.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link>
-                        <button  @click="destroyQualite(qualite.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                        <!-- <router-link :to="{name: 'qualites.edit', params:{id: qualite.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link> -->
+                        <button @click="$router.push('/qualites/'+qualite.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
+                        <button  @click="destroyQualite(qualite.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i>Supprimer</button>
                     </td>
                 </tr>
             </template>
@@ -51,8 +53,12 @@
 
 <script>
 import axios from "axios";
+import menu__2 from "../menu/menu.vue";
 
 export default {
+    components: {
+        menu__2
+    },
     data() {
         return {
             qualites: [],
@@ -76,12 +82,21 @@ export default {
             if (response.data.status == 1)
                 this.qualites = response.data.data
         },
-        async destroyQualite(id,pos){
-             if (!window.confirm( 'Supprimer cette qualité ?')) return;
+          search__id(id) {
+            let i = 0;
 
+            for (i = 0; i < this.qualites.length; i++)
+                if (  this.qualites[i].id == id)
+                    return i
+            return -1
+        },
+        async destroyQualite(id){
+             if (!window.confirm( 'Supprimer cette qualité ?')) return;
+             let pos = this.search__id(id);
             await axios.delete('/qualites/delete/' + id);
             
-            this.qualites.splice(pos,1)
+            this.qualites.splice(pos,1);
+            // $router.push('qualites/all');
         },
        
 

@@ -1,4 +1,5 @@
 <template>
+<menu__2 />
 <form class="space-y-6" @submit.prevent="storeMateriel">
     <div>
         <label for="marqueM" class="block">MARQUE MATÉRIEL</label>
@@ -38,8 +39,12 @@
 
 <script>
 import axios from "axios";
+import menu__2 from "../../menu/menu.vue";
 
 export default {
+    components: {
+        menu__2
+    },
 
     data() {
         return {

@@ -73,8 +73,9 @@
                     </td>
                     
                     <td class="px-6 py-4 text-right">
-                        <router-link :to="{name: 'materiels.edit', params:{id: materiel.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link>
-                        <button  @click="destroyMateriel(materiel.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                        <!-- <router-link :to="{name: 'materiels.edit', params:{id: materiel.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link> -->
+                        <button @click="$router.push('/materiels/'+materiel.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
+                        <button  @click="destroyMateriel(materiel.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i>Supprimer</button>
                     </td>
                 </tr>
             </template>
@@ -116,9 +117,18 @@ export default {
             if (response.data.status == 1)
                 this.materiels = response.data.data
         },
-        async destroyMateriel(id,pos){
-             if (!window.confirm( 'Voullez vous supprimer cet materiel ?')) return;
+        search__id(id) {
+            let i = 0;
 
+            for (i = 0; i < this.materiels.length; i++)
+                if (  this.materiels[i].id == id)
+                    return i
+            return -1
+        },
+
+        async destroyMateriel(id){
+             if (!window.confirm( 'Voullez vous supprimer cet materiel ?')) return;
+            let pos = this.search__id(id);
             await axios.delete('/materiels/delete/' + id);
             
             this.materiels.splice(pos,1)

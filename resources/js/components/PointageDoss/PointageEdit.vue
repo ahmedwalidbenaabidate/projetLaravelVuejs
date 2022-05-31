@@ -11,7 +11,7 @@
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
-        <table  class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -59,7 +59,7 @@
                             {{employee.libelleFonction}}
                         </td>
                         <td class="px-6 py-4">
-                             <select class="inp1" v-model="employee.presence">
+                            <select class="inp1" v-model="employee.presence">
                                 <option value="0">ABSENT</option>
                                 <option value="1">PRÉSENT</option>
                                 <option value="0.5">DEMI JOURNÉE</option>
@@ -89,7 +89,7 @@
         </table>
 
         <!-- ------------------------------- -->
-         <table v-show="false" id="table_export" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-show="false" id="table_export" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -134,11 +134,11 @@
                             {{employee.libelleFonction}}
                         </td>
                         <td class="px-6 py-4">
-                                <label v-if="employee.presence=='0'" >ABSENT</label >
-                                <label v-else-if="employee.presence=='1'">PRESENT</label >
-                                <label v-else-if="employee.presence=='0.5'">DEMI JOURNEE</label >
-                                <label v-else-if="employee.presence=='1.5'" >UN JOUR ET DEMI</label >
-                           {{employee.presence}}
+                            <label v-if="employee.presence=='0'">ABSENT</label>
+                            <label v-else-if="employee.presence=='1'">PRESENT</label>
+                            <label v-else-if="employee.presence=='0.5'">DEMI JOURNEE</label>
+                            <label v-else-if="employee.presence=='1.5'">UN JOUR ET DEMI</label>
+                            {{employee.presence}}
                         </td>
                         <td class="px-6 py-4">
                             {{employee.heurs_suppl}}
@@ -212,39 +212,39 @@ export default {
         },
         export_() {
             alert("ok");
-            this.exportTableToExcel("table_export","test")
-           
+            this.exportTableToExcel("table_export", "test")
+
         },
-        exportTableToExcel(tableID, filename = ''){
-    var downloadLink;
-    var dataType = 'application/vnd.ms-excel';
-    var tableSelect = document.getElementById(tableID);
-    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-    
-    // Specify file name
-    filename = filename?filename+'.xls':'excel_data.xls';
-    
-    // Create download link element
-    downloadLink = document.createElement("a");
-    
-    document.body.appendChild(downloadLink);
-    
-    if(navigator.msSaveOrOpenBlob){
-        var blob = new Blob(['\ufeff', tableHTML], {
-            type: dataType
-        });
-        navigator.msSaveOrOpenBlob( blob, filename);
-    }else{
-        // Create a link to the file
-        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-    
-        // Setting the file name
-        downloadLink.download = filename;
-        
-        //triggering the function
-        downloadLink.click();
-    }
-}
+        exportTableToExcel(tableID, filename = '') {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+        }
 
     },
     mounted() {
