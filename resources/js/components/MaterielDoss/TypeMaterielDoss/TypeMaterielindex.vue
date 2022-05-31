@@ -45,7 +45,7 @@
 
                         <td class="px-6 py-4 text-right">
                             <router-link :to="{name: 'typemarteriels.edit', params:{id: typeM.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link>
-                            <button @click="destroyTypeMateriel(typeM.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <button @click="destroyTypeMateriel(typeM.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -86,10 +86,18 @@ export default {
             if (response.data.status == 1)
                 this.typesMat = response.data.data
         },
+        search__id(id) {
+            let i = 0;
 
-        async destroyTypeMateriel(id, pos) {
+            for (i = 0; i < this.typesMat.length; i++)
+                if (  this.typesMat[i].id == id)
+                    return i
+            return -1
+        },
+
+        async destroyTypeMateriel(id) {
             if (!window.confirm('Supprimer ce type de matériel ?')) return;
-
+            let pos = this.search__id(id);
             await axios.delete('/typemarteriels/delete/' + id);
 
             this.typesMat.splice(pos, 1)

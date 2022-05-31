@@ -25913,10 +25913,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    destroyCarburant: function destroyCarburant(id, pos) {
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.carburants.length; i++) {
+        if (this.carburants[i].id == id) return i;
+      }
+
+      return -1;
+    },
+    destroyCarburant: function destroyCarburant(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -25929,14 +25939,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return");
 
               case 2:
-                _context2.next = 4;
+                pos = _this3.search__id(id);
+                _context2.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/carburants/delete/' + id);
 
-              case 4:
+              case 5:
                 _this3.carburants.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve ce carburant
 
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -26502,7 +26513,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("id_materiel", _this4.depense.id_materiel);
                 formData.append("totalTCC", _this4.depense.totalTCC);
                 _context4.next = 10;
-                return axios.post('/depenses/create', formData);
+                return axios.post('/depenses/update', formData);
 
               case 10:
                 res = _context4.sent;
@@ -26604,10 +26615,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    destroyDepenses: function destroyDepenses(id, pos) {
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.depenses.length; i++) {
+        if (this.depenses[i].id == id) return i;
+      }
+
+      return -1;
+    },
+    destroyDepenses: function destroyDepenses(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -26620,13 +26641,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return");
 
               case 2:
-                _context2.next = 4;
+                pos = _this3.search__id(id);
+                _context2.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/depenses/delete/' + id);
 
-              case 4:
+              case 5:
                 _this3.depenses.splice(pos, 1);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -27674,10 +27696,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    destroyTypeMateriel: function destroyTypeMateriel(id, pos) {
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.typesMat.length; i++) {
+        if (this.typesMat[i].id == id) return i;
+      }
+
+      return -1;
+    },
+    destroyTypeMateriel: function destroyTypeMateriel(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -27690,13 +27722,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return");
 
               case 2:
-                _context2.next = 4;
+                pos = _this3.search__id(id);
+                _context2.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/typemarteriels/delete/' + id);
 
-              case 4:
+              case 5:
                 _this3.typesMat.splice(pos, 1);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -30859,7 +30892,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS, DYNAMIC_SLOTS */
     , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
-        return $options.destroyCarburant(carburant.id, i);
+        return $options.destroyCarburant(carburant.id);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
@@ -31748,7 +31781,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS, DYNAMIC_SLOTS */
     , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
-        return $options.destroyDepenses(depense.id, i);
+        return $options.destroyDepenses(depense.id);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
@@ -33325,7 +33358,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS, DYNAMIC_SLOTS */
     , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
-        return $options.destroyTypeMateriel(typeM.id, i);
+        return $options.destroyTypeMateriel(typeM.id);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"

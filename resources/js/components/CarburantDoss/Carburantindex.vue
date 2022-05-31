@@ -74,7 +74,7 @@
                     
                     <td class="px-6 py-4 text-right">
                         <router-link :to="{name: 'carburants.edit', params:{id: carburant.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
-                        <button  @click="destroyCarburant(carburant.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                        <button  @click="destroyCarburant(carburant.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
                     </td>
                 </tr>
             </template>
@@ -111,9 +111,18 @@ export default {
             if (response.data.status == 1)
                 this.carburants = response.data.data
         },
-        async destroyCarburant(id,pos){
-             if (!window.confirm( 'Voulez vous supprimer cette enregistrement ?')) return;
+        search__id(id) {
+            let i = 0;
 
+            for (i = 0; i < this.carburants.length; i++)
+                if (  this.carburants[i].id == id)
+                    return i
+            return -1
+        },
+
+        async destroyCarburant(id){
+             if (!window.confirm( 'Voulez vous supprimer cette enregistrement ?')) return;
+            let pos = this.search__id(id);
             await axios.delete('/carburants/delete/' + id);
             
             this.carburants.splice(pos,1)

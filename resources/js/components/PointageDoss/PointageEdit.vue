@@ -199,6 +199,7 @@ export default {
             } else {
                 await axios.post('/pointages/update', this.employees[i]);
                 alert("Modification à été bien fait");
+                
             }
         },
 
