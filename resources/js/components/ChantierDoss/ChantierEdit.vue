@@ -1,4 +1,5 @@
 <template>
+<menu__2 />
     <form class="space-y-6"  @submit.prevent="saveChantier" >
         <div>
             <label for="code" class="block">Code chantier </label>
@@ -18,8 +19,13 @@
 
 <script>
 import axios from "axios";
+import menu__2 from "../menu/menu.vue";
+
 
 export default {
+    components: {
+        menu__2
+    },
 
      props: {
         id: {

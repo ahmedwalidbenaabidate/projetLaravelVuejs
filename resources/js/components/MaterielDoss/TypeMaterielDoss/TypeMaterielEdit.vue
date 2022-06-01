@@ -1,7 +1,8 @@
 <template>
+<menu__2 />
 <div class="flex ">
-        <router-link :to="{name: 'typemarteriels.index'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">List des types</router-link>
-    </div>
+    <!-- <router-link :to="{name: 'typemarteriels.index'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">List des types</router-link> -->
+</div>
 <form class="space-y-6" @submit.prevent="saveTypeMateriel">
     <div>
         <label for="libelleMateriel" class="block">Libelle Materiel</label>
@@ -10,7 +11,7 @@
     <div>
         <label for="photo" class="block">Photo</label>
 
-        <input type="file"  name="photo" id="photo1" ref="photo">
+        <input type="file" name="photo" id="photo1" ref="photo">
     </div>
     <div>
         <img :src="typeMateriel.photo" alt="vide" id="img1">
@@ -21,7 +22,12 @@
 </template>
 
 <script>
+import menu__2 from "../../menu/menu.vue";
+
 export default {
+    components: {
+        menu__2
+    },
 
     data() {
         return {
@@ -50,13 +56,12 @@ export default {
             formData.append("id", this.typeMateriel.id);
             formData.append("libelleMateriel", this.typeMateriel.libelleMateriel);
             let res = await axios.post('/typemarteriels/update', formData);
-            if (res.data.status == 1){
+            if (res.data.status == 1) {
                 this.typeMateriel.photo = res.data.image
-                 alert("Modification à été bien fait");
+                alert("Modification à été bien fait");
                 // this.$router.push("/typemarteriels");
 
-            }
-            else if(res.data.status == -1)
+            } else if (res.data.status == -1)
                 alert("Cet type exist déjà !!!!");
 
         },
@@ -103,7 +108,7 @@ form {
     height: 110px;
 }
 
-#rlink1{
+#rlink1 {
     background-color: aqua;
 }
 </style>

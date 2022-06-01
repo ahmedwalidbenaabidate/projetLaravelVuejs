@@ -1,4 +1,5 @@
 <template>
+<menu__2 />
 <form class="space-y-6" @submit.prevent="storeAffectationM">
     <div>
         <label for="nomEmploye" class="block">Employées</label>
@@ -35,8 +36,13 @@
 
 <script>
 import axios from "axios";
+import menu__2 from "../menu/menu.vue";
+
 
 export default {
+    components: {
+        menu__2
+    },
 
     data() {
         return {

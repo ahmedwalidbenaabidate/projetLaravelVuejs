@@ -1,4 +1,5 @@
 <template>
+<menu__2 />
 <form class="space-y-6" @submit.prevent="storeTypeMateriel">
     <div>
         <label for="libelleMateriel" class="block">Libelle Materiel</label>
@@ -14,7 +15,11 @@
 </template>
 
 <script>
+import menu__2 from "../../menu/menu.vue";
 export default {
+    components: {
+        menu__2
+    },
 
     data() {
         return {

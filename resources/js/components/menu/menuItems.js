@@ -6,7 +6,7 @@ const navMenu =
         {link: '/qualites',name: 'Qualités employées', tooltip: 'Qualités employées', icon: 'bx-id-card' },
         {link: '/materiels',name: 'Matériels', tooltip: 'Matériels', icon: 'bx-wrench' },
         {link: '/typemarteriels',name: 'Type matériels', tooltip: 'Type matériels', icon: 'bx-category-alt' },
-        {link: 'carburants',name: 'Carburant', tooltip: 'Carburant', icon: 'bx-gas-pump' },
+        {link: '/carburants',name: 'Carburant', tooltip: 'Carburant', icon: 'bx-gas-pump' },
         {link: '/depenses',name: 'Dépenses', tooltip: 'Dépenses', icon: 'bx-money' },
         {link: '/pointages',name: 'Pointage employées', tooltip: 'Pointage employées', icon: 'bx-user-check' },
         {link: '/affectationMateriels',name: 'Pointage matériels', tooltip: 'Pointage matériels', icon: 'bx-spreadsheet' },
