@@ -100,6 +100,7 @@ export default {
             formData.append("dateDepense", this.depense.dateDepense);
             formData.append("id_materiel", this.depense.id_materiel);
             formData.append("totalTCC", this.depense.totalTCC);
+            formData.append("id", this.depense.id);
             let res = await axios.post('/depenses/update', formData);
             if (res.data.status == 1){
                 this.depense.bonDepense = res.data.image

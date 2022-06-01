@@ -75,7 +75,7 @@
                         </td>
 
                         <td class="px-6 py-4 text-right">
-                            <button :class="affectMat.statut=='pas encore' ? 'pas_encore__'  : 'retour__'" @click="saveStatut(i)" id="btnStatut"><i class='bx bx-repost'></i> +   Statut</button>
+                            <button :class="affectMat.statut=='pas encore' ? 'pas_encore__'  : 'retour__'" @click="saveStatut(affectMat.id)" id="btnStatut"><i class='bx bx-repost'></i> +   Statut</button>
                             <!-- <router-link :to="{name: 'affectationMateriels.edit', params:{id: affectMat.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link> -->
                             <button @click="$router.push('/affectationMateriels/'+affectMat.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
                             <button @click="destroyAffectationM(affectMat.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i> Supprimer</button>
@@ -114,8 +114,10 @@ export default {
         }
     },
     methods: {
-        async saveStatut(index) {
+        async saveStatut(id) {
             if (!window.confirm('Voulez vous changer le statut de ce pointage?')) return;
+
+            let index = this.search__id(id)
             if (this.affectMats[index].statut == "pas encore")
                 this.affectMats[index].statut = "retour"
             else

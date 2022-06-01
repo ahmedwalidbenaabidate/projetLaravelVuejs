@@ -24789,10 +24789,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    destroyAccident: function destroyAccident(id, pos) {
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.accidents.length; i++) {
+        if (this.accidents[i].id == id) return i;
+      }
+
+      return -1;
+    },
+    destroyAccident: function destroyAccident(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -24805,13 +24815,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return");
 
               case 2:
-                _context2.next = 4;
+                pos = _this3.search__id(id);
+                _context2.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/accidents/delete/' + id);
 
-              case 4:
+              case 5:
                 _this3.accidents.splice(pos, 1);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -25537,10 +25548,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
-    saveStatut: function saveStatut(index) {
+    saveStatut: function saveStatut(id) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var index;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -25553,11 +25565,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return");
 
               case 2:
+                index = _this2.search__id(id);
                 if (_this2.affectMats[index].statut == "pas encore") _this2.affectMats[index].statut = "retour";else _this2.affectMats[index].statut = "pas encore";
-                _context.next = 5;
+                _context.next = 6;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/affectationMateriels/update', _this2.affectMats[index]);
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -26275,10 +26288,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    destroyChantier: function destroyChantier(id, pos) {
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.chantiers.length; i++) {
+        if (this.chantiers[i].id == id) return i;
+      }
+
+      return -1;
+    },
+    destroyChantier: function destroyChantier(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -26291,13 +26314,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return");
 
               case 2:
-                _context2.next = 4;
+                pos = _this3.search__id(id);
+                _context2.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/chantiers/delete/' + id);
 
-              case 4:
+              case 5:
                 _this3.chantiers.splice(pos, 1);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -26582,10 +26606,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("dateDepense", _this4.depense.dateDepense);
                 formData.append("id_materiel", _this4.depense.id_materiel);
                 formData.append("totalTCC", _this4.depense.totalTCC);
-                _context4.next = 10;
+                formData.append("id", _this4.depense.id);
+                _context4.next = 11;
                 return axios.post('/depenses/update', formData);
 
-              case 10:
+              case 11:
                 res = _context4.sent;
 
                 if (res.data.status == 1) {
@@ -26598,7 +26623,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 // // if (!window.confirm('Cet type exist déjà !!!!')) return;
 
 
-              case 12:
+              case 13:
               case "end":
                 return _context4.stop();
             }
@@ -28867,10 +28892,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    destroyUser: function destroyUser(id, pos) {
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.users.length; i++) {
+        if (this.users[i].id == id) return i;
+      }
+
+      return -1;
+    },
+    destroyUser: function destroyUser(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -28883,14 +28918,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return");
 
               case 2:
-                _context2.next = 4;
+                pos = _this3.search__id(id);
+                _context2.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/users/delete/' + id);
 
-              case 4:
+              case 5:
                 _this3.users.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet user
 
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -29201,8 +29237,7 @@ var _hoisted_8 = {
   "class": "doc_1",
   name: "proceV",
   id: "proceV",
-  ref: "proceV",
-  required: ""
+  ref: "proceV"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -29672,7 +29707,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS */
     , _hoisted_29), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
-        return $options.destroyAccident(accident.id, i);
+        return $options.destroyAccident(accident.id);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
@@ -30566,7 +30601,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_25)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(affectMat.statut == 'pas encore' ? 'pas_encore__' : 'retour__'),
       onClick: function onClick($event) {
-        return $options.saveStatut(i);
+        return $options.saveStatut(affectMat.id);
       },
       id: "btnStatut"
     }, _hoisted_30, 10
@@ -31487,7 +31522,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS */
     , _hoisted_19), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
-        return $options.destroyChantier(chantier.id, i);
+        return $options.destroyChantier(chantier.id);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"
@@ -34998,7 +35033,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS */
     , _hoisted_17), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
-        return $options.destroyUser(user.id, i);
+        return $options.destroyUser(user.id);
       },
       id: "btnSupp",
       "class": "font-medium text-red-600 dark:text-black-500 hover:underline"

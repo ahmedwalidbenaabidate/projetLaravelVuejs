@@ -29,7 +29,7 @@
 
     <div>
         <label for="proceV" class="block">Procès verbal</label>
-        <input type="file" class="doc_1" name="proceV" id="proceV" ref="proceV" required>
+        <input type="file" class="doc_1" name="proceV" id="proceV" ref="proceV" >
     </div>
 
     <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>

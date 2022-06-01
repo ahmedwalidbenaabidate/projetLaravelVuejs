@@ -78,7 +78,7 @@
                         <td class="px-6 py-4 text-right">
                             <!-- <router-link :to="{name: 'accidents.edit', params:{id: accident.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link> -->
                             <button @click="$router.push('/accidents/'+accident.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
-                        <button  @click="destroyAccident(accident.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i> Supprimer</button>
+                        <button  @click="destroyAccident(accident.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i> Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -121,10 +121,18 @@ export default {
             if (response.data.status == 1)
                 this.accidents = response.data.data
         },
+        search__id(id) {
+            let i = 0;
 
-        async destroyAccident(id,pos){
+            for (i = 0; i < this.accidents.length; i++)
+                if (this.accidents[i].id == id)
+                    return i
+            return -1
+        },
+
+        async destroyAccident(id){
              if (!window.confirm( 'Supprimer ce enregistrement ?')) return;
-
+            let pos = this.search__id(id);
             await axios.delete('/accidents/delete/' + id);
 
             this.accidents.splice(pos,1)

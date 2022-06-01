@@ -43,7 +43,7 @@
                         <td class="px-6 py-4 text-right">
                             <!-- <router-link :to="{name: 'employees.edit', params:{id: employee.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><i class="bx bx-edit icon_table"></i>Modifier</router-link> -->
                             <button @click="$router.push('/users/'+user.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
-                            <button @click="destroyUser(user.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Supprimer</button>
+                            <button @click="destroyUser(user.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Supprimer</button>
                             <!-- $router.push('/employees/edit') -->
                         </td>
                     </tr>
@@ -85,9 +85,17 @@ export default {
             if (response.data.status == 1)
                 this.users = response.data.data
         },
-        async destroyUser(id, pos) {
-            if (!window.confirm('Supprimer cet utilisateur ?')) return;
+        search__id(id) {
+            let i = 0;
 
+            for (i = 0; i < this.users.length; i++)
+                if (this.users[i].id == id)
+                    return i
+            return -1
+        },
+        async destroyUser(id) {
+            if (!window.confirm('Supprimer cet utilisateur ?')) return;
+            let pos = this.search__id(id);
             await axios.delete('/users/delete/' + id);
 
             this.users.splice(pos, 1)

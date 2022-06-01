@@ -54,7 +54,7 @@
                     <td class="px-6 py-4 text-right">
                         <!-- <router-link :to="{name: 'chantiers.edit', params:{id: chantier.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link> -->
                         <button @click="$router.push('/chantiers/'+chantier.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
-                        <button  @click="destroyChantier(chantier.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Supprimer</button>
+                        <button  @click="destroyChantier(chantier.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-trash icon_table"></i> Supprimer</button>
                     </td>
                 </tr>
             </template>
@@ -97,9 +97,17 @@ export default {
             if (response.data.status == 1)
                 this.chantiers = response.data.data
         },
-        async destroyChantier(id,pos){
-             if (!window.confirm( 'Supprimer ce chantier ?')) return;
+        search__id(id) {
+            let i = 0;
 
+            for (i = 0; i < this.chantiers.length; i++)
+                if (this.chantiers[i].id == id)
+                    return i
+            return -1
+        },
+        async destroyChantier(id){
+             if (!window.confirm( 'Supprimer ce chantier ?')) return;
+            let pos = this.search__id(id);
             await axios.delete('/chantiers/delete/' + id);
             
             this.chantiers.splice(pos,1)
