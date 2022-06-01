@@ -13,7 +13,7 @@
             <label for="abreviation" class="block">Abreviation</label>
             <input type="text" id="abreviation" v-model="form1.abreviation" required>
         </div>
-        <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>
+        <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>
     </form>
 </template>
 

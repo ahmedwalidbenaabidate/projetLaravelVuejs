@@ -28,7 +28,7 @@
         <!-- <input type="text" class="inp1" id="observation" v-model="form1.observation" required> -->
         <textarea class="inp1" v-model="carburant.observation" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Observation" required></textarea>
     </div>
-    <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>
+    <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Mettre à jour</button>
 </form>
 </template>
 

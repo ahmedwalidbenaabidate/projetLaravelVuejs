@@ -9,7 +9,7 @@
             </div>
         </div>
                 <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/users/create')"><i class="bx bx-user-check icon_table"></i>Créer un utilisateur</button>
+                <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/users/create')"><i id="iAddEmpl" class="bx bx-user-check icon_table"></i>Créer un utilisateur</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">

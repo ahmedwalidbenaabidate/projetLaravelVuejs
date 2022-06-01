@@ -7,10 +7,10 @@
     </div>
     <div>
         <label for="photo" class="block">Photo</label>
-        <input type="file" name="photo" id="photo1" ref="photo" required>
+        <input type="file" class="doc_1" name="photo" id="photo1" ref="photo" required>
     </div>
 
-    <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>
+    <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>
 </form>
 </template>
 
@@ -80,6 +80,7 @@ form {
     margin-top: 10px;
     border-radius: 4px;
 }
+
 
 #btnEnreg {
     background-color: aqua;

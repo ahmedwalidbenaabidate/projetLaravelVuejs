@@ -13,7 +13,7 @@
             </div>
         </div>
                 <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/accidents/create')">Ajouter un accident</button>
+                <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/accidents/create')"><i id="iAddEmpl" class='bx bxs-user-plus'></i> Ajouter un accident</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -76,8 +76,9 @@
                         </th>
 
                         <td class="px-6 py-4 text-right">
-                            <router-link :to="{name: 'accidents.edit', params:{id: accident.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
-                        <button  @click="destroyAccident(accident.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <!-- <router-link :to="{name: 'accidents.edit', params:{id: accident.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link> -->
+                            <button @click="$router.push('/accidents/'+accident.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
+                        <button  @click="destroyAccident(accident.id,i)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i> Supprimer</button>
                         </td>
                     </tr>
                 </template>

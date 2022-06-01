@@ -16,10 +16,10 @@
 
     <div>
         <label for="documentA" class="block">Procès verbal</label>
-        <input type="file" name="documentA" id="documentA" ref="documentA" >
+        <input type="file" class="doc_1" name="documentA" id="documentA" ref="documentA" >
     </div>
 
-    <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>
+    <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Mettre à jour</button>
 </form>
 </template>
 

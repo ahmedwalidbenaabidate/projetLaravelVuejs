@@ -13,7 +13,7 @@
             </div>
         </div>
                 <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/qualites/create')">Créer une qualité</button>
+                <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/qualites/create')"><i id="iAddEmpl" class='bx bxs-user-plus'></i>Créer une qualité</button>
 
     </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">

@@ -13,7 +13,7 @@
             </div>
         </div>
         <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-        <button id="rlink1" @click="$router.push('/typemarteriels/create')">Créer un type</button>
+        <button id="rlink1" @click="$router.push('/typemarteriels/create')" class="custom-btn btn-1Employee"><i id="iAddEmpl" class='bx bxs-add-to-queue'></i>Créer un type</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -44,8 +44,9 @@
                         </th>
 
                         <td class="px-6 py-4 text-right">
-                            <router-link :to="{name: 'typemarteriels.edit', params:{id: typeM.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link>
-                            <button @click="destroyTypeMateriel(typeM.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <!-- <router-link :to="{name: 'typemarteriels.edit', params:{id: typeM.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editer</router-link> -->
+                            <button @click="$router.push('/typemarteriels/'+typeM.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
+                            <button @click="destroyTypeMateriel(typeM.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i>Supprimer</button>
                         </td>
                     </tr>
                 </template>

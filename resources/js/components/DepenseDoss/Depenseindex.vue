@@ -5,15 +5,15 @@
         <router-link :to="{name: 'depenses.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter des dépenses</router-link>
     </div> -->
     <div class="flex " id="divCreer">
-    
+
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Search..." />
                 <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
             </div>
         </div>
-                <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/depenses/create')">Ajouter des dépenses</button>
+        <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
+        <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/depenses/create')"><i id="iAddEmpl" class='bx bxs-dollar-circle '></i>+ Ajouter des dépenses</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -40,7 +40,7 @@
                         Matériel
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Total T.T.C
+                        Total T.T.C <b id="L1"> (Dhs)</b>
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Bon des dépenses
@@ -69,9 +69,9 @@
                             <div v-text="depense.dateDepense"></div>
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                         <!-- pour afficher sur le tableau des dépenses "Autre dépenses si le id_materiel dans la base de données égale à -1" -->
-                         <div v-if="depense.id_materiel==-1" > Autre dépenses</div>
-                         <div v-else v-text="depense.marqueM"></div>
+                            <!-- pour afficher sur le tableau des dépenses "Autre dépenses si le id_materiel dans la base de données égale à -1" -->
+                            <div v-if="depense.id_materiel==-1"> Autre dépenses</div>
+                            <div v-else v-text="depense.marqueM"></div>
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             <div v-text="depense.totalTCC"></div>
@@ -84,8 +84,9 @@
                         </th>
 
                         <td class="px-6 py-4 text-right">
-                            <router-link :to="{name: 'depenses.edit', params:{id: depense.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
-                        <button  @click="destroyDepenses(depense.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <!-- <router-link :to="{name: 'depenses.edit', params:{id: depense.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link> -->
+                            <button @click="$router.push('/depenses/'+depense.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
+                            <button @click="destroyDepenses(depense.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i> Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -99,7 +100,6 @@
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
 
-
 export default {
     components: {
         menu__2
@@ -107,18 +107,18 @@ export default {
     data() {
         return {
             depenses: [],
-            search:"",
+            search: "",
         };
     },
-    computed:{
-      depenses_filter(){
-          let res = this.depenses;
-        //   let searchBy = this.search.toLocaleLowerCase();
-          if(this.search.toLocaleLowerCase() != ""){
-              res = res.filter(item=>item.description.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) ||   item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.reference.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
-          }
-          return res;
-      }
+    computed: {
+        depenses_filter() {
+            let res = this.depenses;
+            //   let searchBy = this.search.toLocaleLowerCase();
+            if (this.search.toLocaleLowerCase() != "") {
+                res = res.filter(item => item.description.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.reference.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+            }
+            return res;
+        }
     },
     methods: {
         async getDepenses() {
@@ -126,23 +126,23 @@ export default {
             let response = await axios.get('/depenses/all');
             if (response.data.status == 1)
                 this.depenses = response.data.data
-            
+
         },
         search__id(id) {
             let i = 0;
 
             for (i = 0; i < this.depenses.length; i++)
-                if (  this.depenses[i].id == id)
+                if (this.depenses[i].id == id)
                     return i
             return -1
         },
 
-        async destroyDepenses(id){
-             if (!window.confirm( 'Supprimer ce enregistrement ?')) return;
-             let pos = this.search__id(id);
+        async destroyDepenses(id) {
+            if (!window.confirm('Supprimer ce enregistrement ?')) return;
+            let pos = this.search__id(id);
             await axios.delete('/depenses/delete/' + id);
 
-            this.depenses.splice(pos,1)
+            this.depenses.splice(pos, 1)
         },
 
         afficherDocument(u) {
@@ -161,7 +161,6 @@ export default {
 #rlink1 {
     background-color: aqua;
 }
-
 
 #trl1 {
     text-align: center;
@@ -185,10 +184,12 @@ export default {
     color: blue;
     text-decoration: underline;
 }
-#previewPDF:hover{
+
+#previewPDF:hover {
     color: red;
 }
-#imgDoc1{
+
+#imgDoc1 {
     width: 60px;
     height: 70px;
     text-align: center;

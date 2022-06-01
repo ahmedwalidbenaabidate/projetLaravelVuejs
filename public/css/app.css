@@ -1372,6 +1372,9 @@ table .icon_table{
 #loginSt{
   margin-bottom: 30px !important;
 }
+.doc_1{
+  color:blue !important;
+}
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -1627,4 +1630,3 @@ table .icon_table{
     padding-right: 2rem;
   }
 }
-

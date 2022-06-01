@@ -13,7 +13,7 @@
             <label for="abreviation" class="block">Abreviation</label>
             <input type="text" id="abreviation" v-model="chantier.abreviation" required>
         </div>
-        <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Mettre à jour</button>
+        <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Mettre à jour</button>
     </form>
 </template>
 

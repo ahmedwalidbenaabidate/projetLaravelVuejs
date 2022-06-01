@@ -89,7 +89,7 @@
 
                         <td class="px-6 py-4 text-right">
 
-                            <button id="btnEnr" @click="create_pointage(employee.id_employee)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>
+                            <button id="btnEnr1" @click="create_pointage(employee.id_employee)" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>
                         </td>
                         <!-- </form>                 -->
 
@@ -192,8 +192,9 @@ export default {
 </script>
 
 <style scoped>
-#btnEnr {
-    background-color: aqua;
+#btnEnr1 {
+    width: 170px !important;
+    height: 50px !important;
 }
 
 .inp1 {

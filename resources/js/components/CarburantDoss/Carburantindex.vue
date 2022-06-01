@@ -13,7 +13,7 @@
             </div>
         </div>
                 <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button id="rlink1" @click="$router.push('/carburants/create')">Créer un remplissage</button>
+                <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/carburants/create')"><i id="iAddEmpl" class='bx bx-gas-pump'></i>+ Créer un remplissage</button>
 
     </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -74,8 +74,9 @@
                     </td>
                     
                     <td class="px-6 py-4 text-right">
-                        <router-link :to="{name: 'carburants.edit', params:{id: carburant.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
-                        <button  @click="destroyCarburant(carburant.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                        <!-- <router-link :to="{name: 'carburants.edit', params:{id: carburant.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link> -->
+                        <button @click="$router.push('/carburants/'+carburant.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
+                        <button  @click="destroyCarburant(carburant.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i> Supprimer</button>
                     </td>
                 </tr>
             </template>

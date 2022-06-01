@@ -13,7 +13,7 @@
             </div>
         </div>
         <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-        <button id="rlink1" @click="$router.push('/affectationMateriels/create')">Créer un pointage</button>
+        <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/affectationMateriels/create')"><i id="iAddEmpl" class='bx bx-check-square'></i>Créer un pointage</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -75,9 +75,10 @@
                         </td>
 
                         <td class="px-6 py-4 text-right">
-                            <button :class="affectMat.statut=='pas encore' ? 'pas_encore__'  : 'retour__'" @click="saveStatut(i)" id="btnStatut">Statut</button>
-                            <router-link :to="{name: 'affectationMateriels.edit', params:{id: affectMat.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link>
-                            <button @click="destroyAffectationM(affectMat.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline">Supprimer</button>
+                            <button :class="affectMat.statut=='pas encore' ? 'pas_encore__'  : 'retour__'" @click="saveStatut(i)" id="btnStatut"><i class='bx bx-repost'></i> +   Statut</button>
+                            <!-- <router-link :to="{name: 'affectationMateriels.edit', params:{id: affectMat.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link> -->
+                            <button @click="$router.push('/affectationMateriels/'+affectMat.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
+                            <button @click="destroyAffectationM(affectMat.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i> Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -174,8 +175,26 @@ export default {
     margin-right: 20px;
     /* background-color: rgb(0, 110, 255); */
     color: aliceblue;
-    border-radius: 10px;
-    width: 50px;
+    border-radius: 8px;
+    width: 120px;
+    font-size: 18px;
+    padding: 10px;
+    height: 70px;
+    margin-bottom: 20px;
+    DISPLAY: inline-block;
+    padding-top: -30px;
+
+
+/* 
+    background-color: lime;
+    color: black;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 120px;
+    margin-bottom: 20px;
+    padding:10px;
+    DISPLAY: inline-block;
+    margin-left: 32px; */
 }
 
 #rlinkEdit {

@@ -29,10 +29,10 @@
 
     <div>
         <label for="proceV" class="block">Procès verbal</label>
-        <input type="file" name="proceV" id="proceV" ref="proceV" >
+        <input type="file" class="doc_1" name="proceV" id="proceV" ref="proceV" >
     </div>
 
-    <button type="submit" id="btnEnreg" class="bg-blue-500 px-2 py-1 text-black rounded">Enregistrer</button>
+    <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Mettre à jour</button>
 </form>
 </template>
 

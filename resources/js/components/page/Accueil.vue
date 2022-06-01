@@ -94,11 +94,11 @@
     </div>
     <div class="chart_">
         <div class="chart_content">
-            <h3 class="H3_style"> Dix premières types qui contient le plus grand nombre de matériel</h3>
+            <h3 id="h3_Mt" class="H3_style"> Dix premières types qui contient le plus grand nombre de matériel</h3>
             <canvas id="myChart3" width="100%" height="100%"></canvas>
         </div>
         <div class="chart_content">
-            <h3 class="H3_style"> Employées très présent</h3>
+            <h3 id="h3_empP" class="H3_style"> Employées très présent</h3>
             <canvas id="myChart2" width="100%" height="100%"></canvas>
         </div>
         
@@ -697,8 +697,15 @@ export default {
     text-align: center;
     font-family: cursive;
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: darkblue;
+}
+#h3_empP{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#h3_Mt{
+        margin-top: 50px;
 
 }
 
