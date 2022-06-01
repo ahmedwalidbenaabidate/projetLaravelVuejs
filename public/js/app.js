@@ -26799,11 +26799,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -26881,7 +26886,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 _this3.$router.push("/employees");
 
-              case 3:
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Modification réussie',
+                  showConfirmButton: false,
+                  timer: 2200
+                });
+
+              case 4:
               case "end":
                 return _context3.stop();
             }
@@ -27018,7 +27031,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('The Internet?', 'That thing is still around?', 'question'); // const swalWithBootstrapButtons = Swal.mixin({
+                // Swal.fire(
+                //     'The Internet?',
+                //     'That thing is still around?',
+                //     'question'
+                // )
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Deleted!', 'Your file has been deleted.', 'success');
+                  }
+                }); // const swalWithBootstrapButtons = Swal.mixin({
                 //     customClass: {
                 //         confirmButton: 'btn btn-success',
                 //         cancelButton: 'btn btn-danger'
@@ -32125,8 +32155,11 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   id: "btnEnreg",
-  "class": "bg-blue-500 px-2 py-1 text-black rounded"
-}, "Mettre à jour", -1
+  "class": "custom-btn btn-1Employee"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  id: "iAddEmpl",
+  "class": "bx bx-save icon_table"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Mettre à jour")], -1
 /* HOISTED */
 );
 
@@ -32239,7 +32272,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     required: ""
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.employee.permisDate]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div>\r\n            <label for=\"qualite_id\" class=\"block\">Id du qualité</label>\r\n            <input type=\"text\" id=\"qualite_id\" class=\"inp1\" v-model=\"employee.qualite_id\" disabled required>\r\n            \r\n        </div> "), _hoisted_15], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.employee.permisDate]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div>\r\n            <label for=\"qualite_id\" class=\"block\">Id du qualité</label>\r\n            <input type=\"text\" id=\"qualite_id\" class=\"inp1\" v-model=\"employee.qualite_id\" disabled required>\r\n\r\n        </div> "), _hoisted_15], 32
   /* HYDRATE_EVENTS */
   )], 64
   /* STABLE_FRAGMENT */
@@ -49234,7 +49267,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nform{\r\n    text-align: center;\n}\n#code ,#libelle, #abreviation{\r\n    border-radius: 10px;\n}\n.inp1{\r\n    border-radius: 10px;\n}\n#btnEnreg{\r\n    background-color: aqua;\r\n    margin-top: 10px;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nform {\r\n    text-align: center;\n}\n#code,\r\n#libelle,\r\n#abreviation {\r\n    border-radius: 10px;\n}\n.inp1 {\r\n    border-radius: 10px;\n}\n#btnEnreg {\r\n    background-color: aqua;\r\n    margin-top: 10px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
