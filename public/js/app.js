@@ -76955,21 +76955,22 @@ const _hoisted_6 = {
 const _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", { class: "bx bx-search" }, null, -1 /* HOISTED */)
 const _hoisted_8 = ["placeholder"]
 const _hoisted_9 = { class: "tooltip" }
-const _hoisted_10 = ["href"]
-const _hoisted_11 = { class: "links_name" }
-const _hoisted_12 = { class: "tooltip" }
-const _hoisted_13 = { class: "profile" }
-const _hoisted_14 = { class: "profile-details" }
-const _hoisted_15 = ["src"]
-const _hoisted_16 = {
+const _hoisted_10 = { class: "links_name" }
+const _hoisted_11 = { class: "tooltip" }
+const _hoisted_12 = { class: "profile" }
+const _hoisted_13 = { class: "profile-details" }
+const _hoisted_14 = ["src"]
+const _hoisted_15 = {
   key: 1,
   class: "bx bxs-user-rectangle"
 }
-const _hoisted_17 = { class: "name_job" }
-const _hoisted_18 = { class: "name" }
-const _hoisted_19 = { class: "job" }
+const _hoisted_16 = { class: "name_job" }
+const _hoisted_17 = { class: "name" }
+const _hoisted_18 = { class: "job" }
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link")
+
   return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["sidebar", $data.isOpened ? 'open' : '']),
     style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)($options.cssVars)
@@ -77013,32 +77014,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.menuItems, (menuItem, index) => {
             return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", { key: index }, [
               (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-                  href: menuItem.link
-                }, [
-                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-                    class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bx", menuItem.icon || 'bx-square-rounded'])
-                  }, null, 2 /* CLASS */),
-                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.name), 1 /* TEXT */)
-                ], 8 /* PROPS */, _hoisted_10),
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.tooltip || menuItem.name), 1 /* TEXT */)
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+                  to: menuItem.link
+                }, {
+                  default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+                      class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bx", menuItem.icon || 'bx-square-rounded'])
+                    }, null, 2 /* CLASS */),
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.name), 1 /* TEXT */)
+                  ]),
+                  _: 2 /* DYNAMIC */
+                }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["to"]),
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.tooltip || menuItem.name), 1 /* TEXT */)
               ])
             ]))
           }), 128 /* KEYED_FRAGMENT */))
         ])
       ]),
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [
           ($props.profileImg)
             ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
                 key: 0,
                 src: $props.profileImg,
                 alt: "profileImg"
-              }, null, 8 /* PROPS */, _hoisted_15))
-            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_16)),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.profileName), 1 /* TEXT */),
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.profileRole), 1 /* TEXT */)
+              }, null, 8 /* PROPS */, _hoisted_14))
+            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_15)),
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.profileName), 1 /* TEXT */),
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.profileRole), 1 /* TEXT */)
           ])
         ]),
         ($props.isExitButton)
