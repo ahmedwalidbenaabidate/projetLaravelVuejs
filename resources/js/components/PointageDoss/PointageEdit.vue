@@ -162,6 +162,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -188,18 +190,36 @@ export default {
                     this.employees = response.data.data
                 }
             } else
-                alert("Veuillez choisir une date");
+                // alert("Veuillez choisir une date");
+                Swal.fire(
+                    'Attention !',
+                    'Veuillez choisir une date!!!',
+                    'info'
+                )
         },
 
         async savePointage(i) {
             console.log(this.employees[i].remarque)
             if (this.employees[i].presence === '' || this.employees[i].heurs_suppl === '' || this.employees[i].remarque == '') {
-                alert("Veuillez remplir les champs vide");
+                // alert("Veuillez remplir les champs vide");
+                Swal.fire(
+                    'Attention !',
+                    'Veuillez remplir les champs vide!!!',
+                    'info'
+                )
 
             } else {
                 await axios.post('/pointages/update', this.employees[i]);
-                alert("Modification à été bien fait");
-                
+                // alert("Modification à été bien fait");
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Modification réussie',
+                showConfirmButton: false,
+                timer: 2200
+            })
+
+
             }
         },
 

@@ -1,7 +1,7 @@
 <template>
 <menu__2 />
 <form class="space-y-6" @submit.prevent="saveAccident">
-    
+
     <div>
         <label for="description" class="block">Déscription</label>
         <textarea class="inp1" v-model="accident.description" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque" required></textarea>
@@ -29,7 +29,7 @@
 
     <div>
         <label for="proceV" class="block">Procès verbal</label>
-        <input type="file" class="doc_1" name="proceV" id="proceV" ref="proceV" >
+        <input type="file" class="doc_1" name="proceV" id="proceV" ref="proceV">
     </div>
 
     <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Mettre à jour</button>
@@ -38,6 +38,8 @@
 
 <script>
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -46,8 +48,8 @@ export default {
 
     data() {
         return {
-            Employees : [],
-            Materiels : [],
+            Employees: [],
+            Materiels: [],
             accident: {},
         };
     },
@@ -95,17 +97,23 @@ export default {
             formData.append("dateA", this.accident.dateA);
             formData.append("id_materiel", this.accident.id_materiel);
             let res = await axios.post('/accidents/update', formData);
-            if (res.data.status == 1){
+            if (res.data.status == 1) {
                 this.accident.proceV = res.data.image
-                 alert("Modification à été bien fait");
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Modification réussie',
+                    showConfirmButton: false,
+                    timer: 2200
+                })
                 this.$router.push("/accidents");
             }
         },
-        
 
     },
 
-    mounted(){
+    mounted() {
         this.getEmployees();
         this.getMateriel();
         this.getAccident(this.$route.params.id)
@@ -119,7 +127,8 @@ form {
     text-align: center;
 
 }
-#dateA{
+
+#dateA {
     border-radius: 10px;
 }
 

@@ -41,6 +41,9 @@
 <script>
 import axios from "axios";
 import menu__2 from "../../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 
 export default {
@@ -77,6 +80,13 @@ export default {
 
         async saveMateriel() {
             await this.updateMateriel();
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Modification réussie',
+                showConfirmButton: false,
+                timer: 2200
+            })
             this.$router.push("/materiels");
         },
 

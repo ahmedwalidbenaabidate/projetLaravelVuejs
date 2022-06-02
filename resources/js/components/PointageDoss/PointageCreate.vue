@@ -105,6 +105,9 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 export default {
     components: {
@@ -177,8 +180,21 @@ export default {
                 await this.createpointData(this.list_create_pointage[pos]);
                 this.list_create_pointage.splice(pos, 1);
                 this.employees.splice(pos, 1);
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Pointage enregistrer',
+                showConfirmButton: false,
+                timer: 2200
+            })
+
             } else
-                alert("Veuillez remplir les champs vide");
+                // alert("Veuillez remplir les champs vide");
+                Swal.fire(
+                    'Attention !',
+                    'Veuillez remplir les champs vide!!!',
+                    'info'
+                );
 
             // this.$router.push("/pointages");
             //console.log(this.list_create_pointage[i])

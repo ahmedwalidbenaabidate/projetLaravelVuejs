@@ -7,7 +7,7 @@
     </div>
     <div>
         <label for="photo" class="block">Photo</label>
-        <input type="file" class="doc_1" name="photo" id="photo1" ref="photo" required>
+        <input type="file" class="doc_1" name="photo" id="photo1" ref="photo" >
     </div>
 
     <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>

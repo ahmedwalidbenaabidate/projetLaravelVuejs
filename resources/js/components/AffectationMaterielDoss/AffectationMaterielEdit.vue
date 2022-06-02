@@ -37,6 +37,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 
 export default {
@@ -70,7 +72,13 @@ export default {
         async saveAffectationM(){
             await this.updateAffectationM();
             this.$router.push("/affectationMateriels");
-            alert("Le pointage matériel à été fait avec succes");
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Modification réussie',
+                showConfirmButton: false,
+                timer: 2200
+            })
         },
 
         async getEmployees() {

@@ -25,6 +25,9 @@
 
 <script>
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
+
 export default {
     components: {
         menu__2
@@ -62,10 +65,19 @@ export default {
             formData.append("id", this.administratif.id);
             formData.append("descriptionA", this.administratif.descriptionA);
             formData.append("id_materiel", this.administratif.id_materiel);
+            formData.append("id", this.administratif.id);
             let res = await axios.post('/administratifs/update', formData);
             if (res.data.status == 1)
             this.administratif.documentA = res.data.image
-                 alert("Modification à été bien fait");
+                 
+                 Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Modification réussie',
+                    showConfirmButton: false,
+                    timer: 2200
+                })
+
                 this.$router.push("/administratifs");
             //     else
             // alert("Cet type exist déjà !!!!");

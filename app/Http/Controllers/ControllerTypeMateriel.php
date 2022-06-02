@@ -138,7 +138,7 @@ class ControllerTypeMateriel extends Controller
             }
             else
             return \response()->json([
-                "status"=>-2,
+                "status"=>-1,
             ]);
     }
 

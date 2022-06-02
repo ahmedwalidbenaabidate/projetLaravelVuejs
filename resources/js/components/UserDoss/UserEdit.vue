@@ -22,6 +22,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 export default {
@@ -54,13 +56,30 @@ export default {
         },
 
       
-        async updateUser(){
-            await axios.post('/users/update',this.user);
-        },
+        // async updateUser(){
+        //     await axios.post('/users/update',this.user);
+        // },
 
         async saveUser(){
-            await this.updateUser();
+            // await this.updateUser();
+         let res =   await axios.post('/users/update',this.user);
+         if(res.status == 1){
             this.$router.push("/users");
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Modification réussie',
+                showConfirmButton: false,
+                timer: 2200
+            })
+            }
+            else
+                 Swal.fire(
+                'Attention !',
+                'Cette adresse email exist déjà !!!!',
+                'info'
+            )
+
         },
 
        
