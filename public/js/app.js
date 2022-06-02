@@ -35104,6 +35104,7 @@ var _hoisted_1 = {
   "class": "dashboard"
 };
 var _hoisted_2 = {
+  id: "mainStaq",
   "class": "content-wrap"
 };
 var _hoisted_3 = {
@@ -35111,6 +35112,7 @@ var _hoisted_3 = {
   "class": "content"
 };
 var _hoisted_4 = {
+  id: "sectStq",
   "class": "info-boxes Sect1"
 };
 var _hoisted_5 = {

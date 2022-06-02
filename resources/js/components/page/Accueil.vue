@@ -2,10 +2,10 @@
 <div class="dashboard">
     <menu__2 />
 
-    <main class="content-wrap">
+    <main id="mainStaq" class="content-wrap">
 
         <div class="content" v-if="stats">
-            <section class="info-boxes Sect1">
+            <section id="sectStq" class="info-boxes Sect1">
                 <div class="info-box em">
                     <div class="box-icon em1">
                         <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

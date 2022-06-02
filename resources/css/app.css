@@ -255,3 +255,24 @@ table {
 .doc_1{
   color:blue !important;
 }
+.py-12{
+  background-image:url("/storage/images/12.jpg"); 
+  height: 100vh;
+}
+/* .min-h-screen{
+  background-image:url("/storage/images/11.jpg");;
+} */
+#divImg{
+  background-image: linear-gradient(rgb(0 0 0 / 10%),rgb(0 0 0 / 48%)) !important;
+  background-color: transparent !important;
+}
+#bgTrans{
+  background-image: linear-gradient(rgb(0 0 0 / 10%),rgb(0 0 0 / 48%)) !important;
+    background-color: transparent !important; 
+}
+#sectStq{
+  padding-top: 0px;
+}
+#mainStaq{
+  padding-bottom: 0px;
+}
