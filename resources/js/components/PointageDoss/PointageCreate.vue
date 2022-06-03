@@ -77,7 +77,7 @@
                             </select>
                         </td>
                         <td class="px-6 py-4">
-                            <input type="number" v-model="employee.heurs_suppl" min="0" class="inp1" required>
+                            <input type="number" v-model="employee.heurs_suppl" min="0" max="24" class="inp1" required>
                         </td>
                         <td class="px-6 py-4">
                             <textarea class="inp1" v-model="employee.remarque" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque" required></textarea>

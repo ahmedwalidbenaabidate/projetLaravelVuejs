@@ -137,6 +137,7 @@ form {
     margin-left: 110px;
     margin-top: 10px;
     border-radius: 4px;
+    color: blue;
 }
 
 #btnEnreg {

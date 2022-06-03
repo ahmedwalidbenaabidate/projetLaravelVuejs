@@ -75,7 +75,7 @@
                         </td>
 
                         <td class="px-6 py-4 text-right">
-                            <button :class="affectMat.statut=='pas encore' ? 'pas_encore__'  : 'retour__'" @click="saveStatut(affectMat.id)" id="btnStatut"><i class='bx bx-repost'></i> +   Statut</button>
+                            <button :class="affectMat.statut=='pas encore' ? 'pas_encore__'  : 'retour__'" @click="saveStatut(affectMat.id)" id="btnStatut"><i class='bx bx-repost'></i> + Statut</button>
                             <!-- <router-link :to="{name: 'affectationMateriels.edit', params:{id: affectMat.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</router-link> -->
                             <button @click="$router.push('/affectationMateriels/'+affectMat.id+'/edit')" id="rlinkEdit" class="font-medium text-red-600 dark:text-black-500 hover:underline"> <i class="bx bx-edit icon_table"></i> Modifier</button>
                             <button @click="destroyAffectationM(affectMat.id)" id="btnSupp" class="font-medium text-red-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i> Supprimer</button>
@@ -91,7 +91,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
-
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -114,17 +115,44 @@ export default {
         }
     },
     methods: {
+      async  Axios_SaveStatut(index){
+          await axios.post('/affectationMateriels/update', this.affectMats[index]);
+
+        },
         async saveStatut(id) {
-            if (!window.confirm('Voulez vous changer le statut de ce pointage?')) return;
+            // if (!window.confirm('Voulez vous changer le statut de ce pointage?')) return;
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "voulez vous changer le statut!",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Changé!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //-----------Instruction---------------//
+                    let index = this.search__id(id)
+                    if (this.affectMats[index].statut == "pas encore")
+                        this.affectMats[index].statut = "retour"
+                    else {
+                        this.affectMats[index].statut = "pas encore"
+                    }
+                    this.Axios_SaveStatut(index);
 
-            let index = this.search__id(id)
-            if (this.affectMats[index].statut == "pas encore")
-                this.affectMats[index].statut = "retour"
-            else
-                this.affectMats[index].statut = "pas encore"
-            await axios.post('/affectationMateriels/update', this.affectMats[index]);
 
-            // alert("Le pointage matériel à été fait avec succes");
+                    // alert("Le pointage matériel à été fait avec succes");
+                    // ----------------------------//
+                    Swal.fire(
+                        'Changement!',
+                        'Le statut a été changé.',
+                        'Succès'
+                    )
+                }
+            })
+
+            
+
         },
 
         async getAffectationM() {
@@ -186,8 +214,7 @@ export default {
     DISPLAY: inline-block;
     padding-top: -30px;
 
-
-/* 
+    /* 
     background-color: lime;
     color: black;
     border-radius: 8px;

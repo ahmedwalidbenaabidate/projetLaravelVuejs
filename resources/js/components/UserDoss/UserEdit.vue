@@ -63,7 +63,7 @@ export default {
         async saveUser(){
             // await this.updateUser();
          let res =   await axios.post('/users/update',this.user);
-         if(res.status == 1){
+         if(res.data.status == 1){
             this.$router.push("/users");
             Swal.fire({
                 position: 'center',

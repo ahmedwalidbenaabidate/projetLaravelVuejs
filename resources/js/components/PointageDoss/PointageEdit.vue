@@ -87,7 +87,8 @@
                 </template>
             </tbody>
         </table>
-
+        <!-- On ajoute cette table pour éviter le probléme de ne pas amenné tous les donnnées car dans la table
+        il y a des "input", Export amenné seulement les données exist dans la table sur td {{___.___}} -->
         <!-- ------------------------------- -->
         <table v-show="false" id="table_export" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -154,6 +155,7 @@
                 </template>
             </tbody>
         </table>
+        <!-- --------------------------------------------------------------- -->
 
     </div>
 </div>
@@ -232,8 +234,27 @@ export default {
             //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
         },
         export_() {
-            alert("ok");
-            this.exportTableToExcel("table_export", "test")
+            // alert("ok");
+            // this.exportTableToExcel("table_export", "test")
+
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "voulez vous imprimer cette liste!",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Imprimer!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.exportTableToExcel("table_export", "test")
+                    Swal.fire(
+                        'Imprimé!',
+                        'Votre fichier a été imprimé.',
+                        'Succès'
+                    )
+                }
+            })
 
         },
         exportTableToExcel(tableID, filename = '') {

@@ -756,7 +756,7 @@ export default {
 }
 .PMat{
     background-color: #e60303d5 !important ;
-    border: 10px solid #e6030380 !important;
+    border: 10px solid #e60303 !important;
     width: 20% !important;
     color:white;
     font-size: 20px;
@@ -764,7 +764,7 @@ export default {
 }
 .dep{
     background-color: #56e603d5 !important ;
-    border: 10px solid #56e60371 !important;
+    border: 10px solid #56e603 !important;
     width: 18% !important;
     color:white;
     font-size: 20px;

@@ -37,6 +37,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 export default {
@@ -67,6 +69,14 @@ export default {
 
         async storeAffectationM() {
             await this.createAffectationM(this.form1);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'le pointage a été enregistré',
+                showConfirmButton: false,
+                timer: 2200
+            })
+
             this.$router.push("/affectationMateriels");
         },
 

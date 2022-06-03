@@ -24866,11 +24866,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -24939,11 +24944,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 7:
                 res = _context2.sent;
-                if (res.data.status == 1) _this2.$router.push("/administratifs"); //     else
+                if (res.data.status == 1) sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Le document a été enregistrer!!!',
+                  showConfirmButton: false,
+                  timer: 2200
+                });
+
+                _this2.$router.push("/administratifs"); //     else
                 // alert("Cet type exist déjà !!!!");
                 // // if (!window.confirm('Cet type exist déjà !!!!')) return;
 
-              case 9:
+
+              case 10:
               case "end":
                 return _context2.stop();
             }
@@ -25238,11 +25252,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -25293,9 +25312,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this.createAffectationM(_this.form1);
 
               case 2:
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'le pointage a été enregistré',
+                  showConfirmButton: false,
+                  timer: 2200
+                });
+
                 _this.$router.push("/affectationMateriels");
 
-              case 3:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -25548,11 +25575,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -25582,29 +25614,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
-    saveStatut: function saveStatut(id) {
+    Axios_SaveStatut: function Axios_SaveStatut(index) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var index;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (window.confirm('Voulez vous changer le statut de ce pointage?')) {
-                  _context.next = 2;
-                  break;
-                }
-
-                return _context.abrupt("return");
-
-              case 2:
-                index = _this2.search__id(id);
-                if (_this2.affectMats[index].statut == "pas encore") _this2.affectMats[index].statut = "retour";else _this2.affectMats[index].statut = "pas encore";
-                _context.next = 6;
+                _context.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/affectationMateriels/update', _this2.affectMats[index]);
 
-              case 6:
+              case 2:
               case "end":
                 return _context.stop();
             }
@@ -25612,28 +25633,70 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    getAffectationM: function getAffectationM() {
+    saveStatut: function saveStatut(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('affectationMateriels/all');
+                // if (!window.confirm('Voulez vous changer le statut de ce pointage?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "voulez vous changer le statut!",
+                  icon: 'info',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Changé!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    //-----------Instruction---------------//
+                    var index = _this3.search__id(id);
 
-              case 2:
-                response = _context2.sent;
-                if (response.data.status == 1) _this3.affectMats = response.data.data;
+                    if (_this3.affectMats[index].statut == "pas encore") _this3.affectMats[index].statut = "retour";else {
+                      _this3.affectMats[index].statut = "pas encore";
+                    }
 
-              case 4:
+                    _this3.Axios_SaveStatut(index); // alert("Le pointage matériel à été fait avec succes");
+                    // ----------------------------//
+
+
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Changement!', 'Le statut a été changé.', 'Succès');
+                  }
+                });
+
+              case 1:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    getAffectationM: function getAffectationM() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('affectationMateriels/all');
+
+              case 2:
+                response = _context3.sent;
+                if (response.data.status == 1) _this4.affectMats = response.data.data;
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     },
     search__id: function search__id(id) {
@@ -25646,36 +25709,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return -1;
     },
     destroyAffectationM: function destroyAffectationM(id) {
-      var _this4 = this;
+      var _this5 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var pos;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 if (window.confirm('Supprimer cette affectation de matériel?')) {
-                  _context3.next = 2;
+                  _context4.next = 2;
                   break;
                 }
 
-                return _context3.abrupt("return");
+                return _context4.abrupt("return");
 
               case 2:
-                pos = _this4.search__id(id);
-                _context3.next = 5;
+                pos = _this5.search__id(id);
+                _context4.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/affectationMateriels/delete/' + id);
 
               case 5:
-                _this4.affectMats.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
+                _this5.affectMats.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
 
 
               case 6:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3);
+        }, _callee4);
       }))();
     }
   },
@@ -28317,8 +28380,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     export_: function export_() {
-      alert("ok");
-      this.exportTableToExcel("table_export", "test");
+      var _this5 = this;
+
+      // alert("ok");
+      // this.exportTableToExcel("table_export", "test")
+      sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+        title: 'Êtes-vous sûr?',
+        text: "voulez vous imprimer cette liste!",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, Imprimer!'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this5.exportTableToExcel("table_export", "test");
+
+          sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Imprimé!', 'Votre fichier a été imprimé.', 'Succès');
+        }
+      });
     },
     exportTableToExcel: function exportTableToExcel(tableID) {
       var filename = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -28884,7 +28964,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 res = _context2.sent;
 
-                if (res.status == 1) {
+                if (res.data.status == 1) {
                   _this2.$router.push("/users");
 
                   sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
@@ -34073,6 +34153,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return employee.heurs_suppl = $event;
       },
       min: "0",
+      max: "24",
       "class": "inp1",
       required: ""
     }, null, 8
@@ -34472,7 +34553,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_34)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ------------------------------- "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_38, [_hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.employees, function (employee, i) {
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" On ajoute cette table pour éviter le probléme de ne pas amenné tous les donnnées car dans la table\r\n        il y a des \"input\", Export amenné seulement les données exist dans la table sur td {{___.___}} "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ------------------------------- "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_38, [_hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.employees, function (employee, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: i,
       id: "trl1",
@@ -34498,7 +34579,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))])], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, false]])])])], 64
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, false]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" --------------------------------------------------------------- ")])])], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -35451,71 +35532,88 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var navMenu = [{
+var navMenu = [
+/* J'ai ajouter type:to et type:... pour résoudre le probléme de la page d'accueil pour l'actualisé pour
+résoudre le probléme de résolution des charts c'est une solution provisoire le changement a été fait
+au niveau du component "Sidebar-menu-akahon.vue" dans le répertoire "node_modules" */
+{
   link: '/Accueil',
   name: 'Accueil',
   tooltip: 'Accueil',
-  icon: 'bx-home'
+  icon: 'bx-home',
+  type: "link"
 }, {
   link: '/administratifs',
   name: 'Administratif',
   tooltip: 'Administratif',
-  icon: 'bx-briefcase-alt-2'
+  icon: 'bx-briefcase-alt-2',
+  type: "to"
 }, {
   link: '/employees',
   name: 'Employés',
   tooltip: 'Employés',
-  icon: 'bx-group'
+  icon: 'bx-group',
+  type: "to"
 }, {
   link: '/qualites',
   name: 'Qualités Employés',
   tooltip: 'Qualités Employés',
-  icon: 'bx-id-card'
+  icon: 'bx-id-card',
+  type: "to"
 }, {
   link: '/materiels',
   name: 'Matériels',
   tooltip: 'Matériels',
-  icon: 'bx-wrench'
+  icon: 'bx-wrench',
+  type: "to"
 }, {
   link: '/typemarteriels',
   name: 'Type matériels',
   tooltip: 'Type matériels',
-  icon: 'bx-category-alt'
+  icon: 'bx-category-alt',
+  type: "to"
 }, {
   link: '/carburants',
   name: 'Carburant',
   tooltip: 'Carburant',
-  icon: 'bx-gas-pump'
+  icon: 'bx-gas-pump',
+  type: "to"
 }, {
   link: '/depenses',
   name: 'Dépenses',
   tooltip: 'Dépenses',
-  icon: 'bx-money'
+  icon: 'bx-money',
+  type: "to"
 }, {
   link: '/pointages',
   name: 'Pointage employés',
   tooltip: 'Pointage employés',
-  icon: 'bx-user-check'
+  icon: 'bx-user-check',
+  type: "to"
 }, {
   link: '/affectationMateriels',
   name: 'Pointage matériels',
   tooltip: 'Pointage matériels',
+  type: "to",
   icon: 'bx-spreadsheet'
 }, {
   link: '/accidents',
   name: 'Accidents',
   tooltip: 'Accidents',
-  icon: 'bx-traffic-cone'
+  icon: 'bx-traffic-cone',
+  type: "to"
 }, {
   link: '/chantiers',
   name: 'Chantiers',
   tooltip: 'Chantiers',
-  icon: 'bx-buildings'
+  icon: 'bx-buildings',
+  type: "to"
 }, {
   link: '/users',
   name: 'Users',
   tooltip: 'Users',
-  icon: 'bx-user-circle'
+  icon: 'bx-user-circle',
+  type: "to"
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (navMenu);
 
@@ -49492,7 +49590,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pas_encore__ {\r\n    background: rgb(255, 166, 0);\n}\n.retour__ {\r\n    background: blue;\n}\n#rlink1 {\r\n    background-color: aqua;\n}\n#btnStatut {\r\n    margin-right: 20px;\r\n    /* background-color: rgb(0, 110, 255); */\r\n    color: aliceblue;\r\n    border-radius: 8px;\r\n    width: 120px;\r\n    font-size: 18px;\r\n    padding: 10px;\r\n    height: 70px;\r\n    margin-bottom: 20px;\r\n    DISPLAY: inline-block;\r\n    padding-top: -30px;\r\n\r\n\r\n/* \r\n    background-color: lime;\r\n    color: black;\r\n    border-radius: 8px;\r\n    font-size: 18px;\r\n    width: 120px;\r\n    margin-bottom: 20px;\r\n    padding:10px;\r\n    DISPLAY: inline-block;\r\n    margin-left: 32px; */\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pas_encore__ {\r\n    background: rgb(255, 166, 0);\n}\n.retour__ {\r\n    background: blue;\n}\n#rlink1 {\r\n    background-color: aqua;\n}\n#btnStatut {\r\n    margin-right: 20px;\r\n    /* background-color: rgb(0, 110, 255); */\r\n    color: aliceblue;\r\n    border-radius: 8px;\r\n    width: 120px;\r\n    font-size: 18px;\r\n    padding: 10px;\r\n    height: 70px;\r\n    margin-bottom: 20px;\r\n    DISPLAY: inline-block;\r\n    padding-top: -30px;\r\n\r\n    /* \r\n    background-color: lime;\r\n    color: black;\r\n    border-radius: 8px;\r\n    font-size: 18px;\r\n    width: 120px;\r\n    margin-bottom: 20px;\r\n    padding:10px;\r\n    DISPLAY: inline-block;\r\n    margin-left: 32px; */\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -49660,7 +49758,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nform {\r\n    text-align: center;\n}\n#dateDepense,#totalTCC{\r\n    border-radius: 10px;\r\n    width: 250px;\n}\n#libelleM {\r\n    border-radius: 10px;\r\n    margin-bottom: 10px;\r\n    margin-top: 10px;\n}\n#bonDepense {\r\n    margin-left: 110px;\r\n    margin-top: 10px;\r\n    border-radius: 4px;\n}\n#btnEnreg {\r\n    background-color: aqua;\r\n    margin-top: 10px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nform {\r\n    text-align: center;\n}\n#dateDepense,#totalTCC{\r\n    border-radius: 10px;\r\n    width: 250px;\n}\n#libelleM {\r\n    border-radius: 10px;\r\n    margin-bottom: 10px;\r\n    margin-top: 10px;\n}\n#bonDepense {\r\n    margin-left: 110px;\r\n    margin-top: 10px;\r\n    border-radius: 4px;\r\n    color: blue;\n}\n#btnEnreg {\r\n    background-color: aqua;\r\n    margin-top: 10px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50140,7 +50238,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.chart_ {\r\n    background: white;\r\n    width: 100%;\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    padding: 0 3em;\r\n    margin-top: 10px;\r\n    display: inline-flex;\r\n    justify-content: space-between;\r\n    height: max-content;\n}\n.chart_ .chart_content {\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    width: 45%;\n}\n#myChart1,\r\n#myChart2 {\r\n    height: 100%;\r\n    width: 100%;\n}\n.dashboard {\r\n    width: 100%;\r\n    height: 100%;\r\n    grid-gap: 0;\r\n    grid-template-columns: 300px auto;\r\n    grid-template-rows: 80px auto;\r\n    grid-template-areas: 'menu search', 'menu content';\n}\n.search-wrap {\r\n    grid-area: search;\r\n    background: #fff;\r\n    border-bottom: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    padding: 0 3em;\n}\n.search-wrap .search {\r\n    height: 40px;\n}\n.search-wrap .search label {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 100%;\n}\n.search-wrap .search label svg {\r\n    display: block;\n}\n.search-wrap .search label svg path,\r\n.search-wrap .search label svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .search label input {\r\n    display: block;\r\n    padding-left: 1em;\r\n    height: 100%;\r\n    margin: 0;\r\n    border: 0;\n}\n.search-wrap .search label input:focus {\r\n    background: #f5f5fa;\n}\n.search-wrap .search label:hover svg path,\r\n.search-wrap .search label:hover svg circle {\r\n    fill: #2b3a60;\n}\n.search-wrap .user-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\r\n    margin-left: 0.5em;\n}\n.search-wrap .user-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.search-wrap .user-actions button svg path,\r\n.search-wrap .user-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .user-actions button:hover svg path,\r\n.search-wrap .user-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap {\r\n    grid-area: menu;\r\n    padding-bottom: 3em;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-right: 1px solid #ede8f0;\n}\n.menu-wrap .user {\r\n    height: 80px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    margin: 0;\r\n    padding: 0 3em;\n}\n.menu-wrap .user .user-avatar {\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    overflow: hidden;\n}\n.menu-wrap .user .user-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.menu-wrap .user figcaption {\r\n    margin: 0;\r\n    padding: 0 0 0 1em;\r\n    color: #1b253d;\r\n    font-weight: 700;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.menu-wrap nav {\r\n    display: block;\r\n    padding: 0 3em;\n}\n.menu-wrap nav section {\r\n    display: block;\r\n    padding: 3em 0 0;\n}\n.menu-wrap nav h3 {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    text-transform: uppercase;\r\n    color: #4b84fe;\r\n    font-weight: 600;\n}\n.menu-wrap nav ul {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 0;\n}\n.menu-wrap nav li {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 1em 0 0;\n}\n.menu-wrap nav li a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    color: #99a0b0;\r\n    text-decoration: none;\r\n    font-weight: 600;\r\n    font-size: 0.875em;\r\n    transition: color 0.15s ease;\n}\n.menu-wrap nav li a svg {\r\n    display: block;\r\n    margin-right: 1em;\n}\n.menu-wrap nav li a svg path,\r\n.menu-wrap nav li a svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.menu-wrap nav li a:hover {\r\n    color: #1b253d;\n}\n.menu-wrap nav li a:hover svg path,\r\n.menu-wrap nav li a:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap nav li a.active {\r\n    color: #4b84fe;\n}\n.menu-wrap nav li a.active svg path,\r\n.menu-wrap nav li a.active svg circle {\r\n    fill: #4b84fe;\n}\n.content-wrap {\r\n    position: relative;\r\n    grid-area: content;\r\n    padding: 3em;\r\n    width: 100%;\r\n    /* overflow: auto; */\n}\n.content-wrap .content-head {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .content-head h1 {\r\n    font-size: 1.375em;\r\n    line-height: 100%;\r\n    color: #1b253d;\r\n    font-weight: 500;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .content-head .action button {\r\n    border: 0;\r\n    background: #4b84fe;\r\n    color: #fff;\r\n    width: auto;\r\n    height: 3.5em;\r\n    padding: 0 2.25em;\r\n    border-radius: 3.5em;\r\n    font-size: 1em;\r\n    text-transform: uppercase;\r\n    font-weight: 600;\r\n    transition: background-color 0.15s ease;\n}\n.content-wrap .content-head .action button:hover {\r\n    background-color: #1861fe;\n}\n.content-wrap .content-head .action button:hover:active {\r\n    background-color: #0149e2;\r\n    transition: none;\n}\n.content-wrap .info-boxes {\r\n    padding: 3em 0 2em;\r\n    display: flex;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .info-boxes .info-box {\r\n    background: #fff;\r\n    height: 160px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    padding: 0 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg {\r\n    display: block;\r\n    width: 48px;\r\n    height: 48px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg path,\r\n.content-wrap .info-boxes .info-box .box-icon svg circle {\r\n    fill: #99a0b0;\n}\n.content-wrap .info-boxes .info-box .box-content {\r\n    padding-left: 1.25em;\r\n    white-space: nowrap;\n}\n.content-wrap .info-boxes .info-box .box-content .big {\r\n    display: block;\r\n    font-size: 2em;\r\n    line-height: 150%;\r\n    color: #1b253d;\n}\n.content-wrap .info-boxes .info-box.active svg circle,\r\n.content-wrap .info-boxes .info-box.active svg path {\r\n    fill: #4b84fe;\n}\n.content-wrap .person-boxes {\r\n    padding: 0;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .person-boxes .person-box {\r\n    background: #fff;\r\n    height: 320px;\r\n    text-align: center;\r\n    padding: 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .person-boxes .person-box:nth-child(2n) .box-avatar .no-name {\r\n    background: #4b84fe;\n}\n.content-wrap .person-boxes .person-box:nth-child(5n) .box-avatar .no-name {\r\n    background: #ffbb09;\n}\n.content-wrap .person-boxes .person-box .box-avatar {\r\n    width: 100px;\r\n    height: 100px;\r\n    border-radius: 50%;\r\n    margin: 0px auto;\r\n    overflow: hidden;\n}\n.content-wrap .person-boxes .person-box .box-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.content-wrap .person-boxes .person-box .box-avatar .no-name {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    text-align: center;\r\n    color: #fff;\r\n    font-size: 1.5em;\r\n    font-weight: 600;\r\n    text-transform: uppercase;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #fa5b67;\n}\n.content-wrap .person-boxes .person-box .box-bio {\r\n    white-space: no-wrap;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-name {\r\n    margin: 2em 0 0.75em;\r\n    color: #1b253d;\r\n    font-size: 1em;\r\n    font-weight: 700;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-position {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-actions {\r\n    margin-top: 1.25em;\r\n    padding-top: 1.25em;\r\n    width: 100%;\r\n    border-top: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .person-boxes .person-box .box-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.content-wrap .person-boxes .person-box .box-actions button:hover svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\n.H3_style {\r\n    text-align: center;\r\n    font-family: cursive;\r\n    font-size: 30px;\r\n    margin-bottom: 20px;\r\n    color: darkblue;\n}\n#h3_empP{\r\n    margin-top: 50px;\r\n    margin-bottom: 50px;\n}\n#h3_Mt{\r\n        margin-top: 50px;\n}\n#iconDep,#iconEmp,#iconPM {\r\n    font-size: 50px !important;\r\n    margin-left: 6px !important;\n}\n.em1{\r\n    margin-left: 6px !important;\n}\n#iconPempl,#iconMat{\r\n    font-size: 60px !important;\n}\n#h3_1{\r\n/* margin-bottom: 60px; */\n}\n#myChart1{\r\n    margin-top: 70px;\n}\n.em{\r\n    background-color: #a80a66 !important ;\r\n    border: 10px solid #8a0a63 !important;\r\n    width: 16% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.mat{\r\n    background-color:#ffbb09 !important;\r\n    border: 10px solid #f1ae05 !important;\r\n    width: 16% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.big{\r\n    color:#fff !important;\n}\n.active{\r\n    background-color: #06ddfa !important ;\r\n    border: 10px solid #05c6e0c5 !important;\r\n    width: 24% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.PMat{\r\n    background-color: #e60303d5 !important ;\r\n    border: 10px solid #e6030380 !important;\r\n    width: 20% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.dep{\r\n    background-color: #56e603d5 !important ;\r\n    border: 10px solid #56e60371 !important;\r\n    width: 18% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.content{\r\n    width: 100% !important;\n}\n.content-wrap{\r\n    width: 100% !important;\n}\n.dashboard{\r\n    width: 100% !important;\n}\n.Sect1{\r\n    width: 100%;\r\n    padding-left: 0px !important;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.chart_ {\r\n    background: white;\r\n    width: 100%;\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    padding: 0 3em;\r\n    margin-top: 10px;\r\n    display: inline-flex;\r\n    justify-content: space-between;\r\n    height: max-content;\n}\n.chart_ .chart_content {\r\n    height: -webkit-max-content;\r\n    height: -moz-max-content;\r\n    height: max-content;\r\n    width: 45%;\n}\n#myChart1,\r\n#myChart2 {\r\n    height: 100%;\r\n    width: 100%;\n}\n.dashboard {\r\n    width: 100%;\r\n    height: 100%;\r\n    grid-gap: 0;\r\n    grid-template-columns: 300px auto;\r\n    grid-template-rows: 80px auto;\r\n    grid-template-areas: 'menu search', 'menu content';\n}\n.search-wrap {\r\n    grid-area: search;\r\n    background: #fff;\r\n    border-bottom: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    padding: 0 3em;\n}\n.search-wrap .search {\r\n    height: 40px;\n}\n.search-wrap .search label {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 100%;\n}\n.search-wrap .search label svg {\r\n    display: block;\n}\n.search-wrap .search label svg path,\r\n.search-wrap .search label svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .search label input {\r\n    display: block;\r\n    padding-left: 1em;\r\n    height: 100%;\r\n    margin: 0;\r\n    border: 0;\n}\n.search-wrap .search label input:focus {\r\n    background: #f5f5fa;\n}\n.search-wrap .search label:hover svg path,\r\n.search-wrap .search label:hover svg circle {\r\n    fill: #2b3a60;\n}\n.search-wrap .user-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\r\n    margin-left: 0.5em;\n}\n.search-wrap .user-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.search-wrap .user-actions button svg path,\r\n.search-wrap .user-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.search-wrap .user-actions button:hover svg path,\r\n.search-wrap .user-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap {\r\n    grid-area: menu;\r\n    padding-bottom: 3em;\r\n    overflow: auto;\r\n    background: #fff;\r\n    border-right: 1px solid #ede8f0;\n}\n.menu-wrap .user {\r\n    height: 80px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    margin: 0;\r\n    padding: 0 3em;\n}\n.menu-wrap .user .user-avatar {\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    overflow: hidden;\n}\n.menu-wrap .user .user-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.menu-wrap .user figcaption {\r\n    margin: 0;\r\n    padding: 0 0 0 1em;\r\n    color: #1b253d;\r\n    font-weight: 700;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.menu-wrap nav {\r\n    display: block;\r\n    padding: 0 3em;\n}\n.menu-wrap nav section {\r\n    display: block;\r\n    padding: 3em 0 0;\n}\n.menu-wrap nav h3 {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    text-transform: uppercase;\r\n    color: #4b84fe;\r\n    font-weight: 600;\n}\n.menu-wrap nav ul {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 0;\n}\n.menu-wrap nav li {\r\n    display: block;\r\n    padding: 0;\r\n    margin: 1em 0 0;\n}\n.menu-wrap nav li a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    color: #99a0b0;\r\n    text-decoration: none;\r\n    font-weight: 600;\r\n    font-size: 0.875em;\r\n    transition: color 0.15s ease;\n}\n.menu-wrap nav li a svg {\r\n    display: block;\r\n    margin-right: 1em;\n}\n.menu-wrap nav li a svg path,\r\n.menu-wrap nav li a svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.menu-wrap nav li a:hover {\r\n    color: #1b253d;\n}\n.menu-wrap nav li a:hover svg path,\r\n.menu-wrap nav li a:hover svg circle {\r\n    fill: #2b3a60;\n}\n.menu-wrap nav li a.active {\r\n    color: #4b84fe;\n}\n.menu-wrap nav li a.active svg path,\r\n.menu-wrap nav li a.active svg circle {\r\n    fill: #4b84fe;\n}\n.content-wrap {\r\n    position: relative;\r\n    grid-area: content;\r\n    padding: 3em;\r\n    width: 100%;\r\n    /* overflow: auto; */\n}\n.content-wrap .content-head {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .content-head h1 {\r\n    font-size: 1.375em;\r\n    line-height: 100%;\r\n    color: #1b253d;\r\n    font-weight: 500;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .content-head .action button {\r\n    border: 0;\r\n    background: #4b84fe;\r\n    color: #fff;\r\n    width: auto;\r\n    height: 3.5em;\r\n    padding: 0 2.25em;\r\n    border-radius: 3.5em;\r\n    font-size: 1em;\r\n    text-transform: uppercase;\r\n    font-weight: 600;\r\n    transition: background-color 0.15s ease;\n}\n.content-wrap .content-head .action button:hover {\r\n    background-color: #1861fe;\n}\n.content-wrap .content-head .action button:hover:active {\r\n    background-color: #0149e2;\r\n    transition: none;\n}\n.content-wrap .info-boxes {\r\n    padding: 3em 0 2em;\r\n    display: flex;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .info-boxes .info-box {\r\n    background: #fff;\r\n    height: 160px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    padding: 0 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg {\r\n    display: block;\r\n    width: 48px;\r\n    height: 48px;\n}\n.content-wrap .info-boxes .info-box .box-icon svg path,\r\n.content-wrap .info-boxes .info-box .box-icon svg circle {\r\n    fill: #99a0b0;\n}\n.content-wrap .info-boxes .info-box .box-content {\r\n    padding-left: 1.25em;\r\n    white-space: nowrap;\n}\n.content-wrap .info-boxes .info-box .box-content .big {\r\n    display: block;\r\n    font-size: 2em;\r\n    line-height: 150%;\r\n    color: #1b253d;\n}\n.content-wrap .info-boxes .info-box.active svg circle,\r\n.content-wrap .info-boxes .info-box.active svg path {\r\n    fill: #4b84fe;\n}\n.content-wrap .person-boxes {\r\n    padding: 0;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\r\n    grid-gap: 2em;\n}\n.content-wrap .person-boxes .person-box {\r\n    background: #fff;\r\n    height: 320px;\r\n    text-align: center;\r\n    padding: 3em;\r\n    border: 1px solid #ede8f0;\r\n    border-radius: 5px;\n}\n.content-wrap .person-boxes .person-box:nth-child(2n) .box-avatar .no-name {\r\n    background: #4b84fe;\n}\n.content-wrap .person-boxes .person-box:nth-child(5n) .box-avatar .no-name {\r\n    background: #ffbb09;\n}\n.content-wrap .person-boxes .person-box .box-avatar {\r\n    width: 100px;\r\n    height: 100px;\r\n    border-radius: 50%;\r\n    margin: 0px auto;\r\n    overflow: hidden;\n}\n.content-wrap .person-boxes .person-box .box-avatar img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\n}\n.content-wrap .person-boxes .person-box .box-avatar .no-name {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    text-align: center;\r\n    color: #fff;\r\n    font-size: 1.5em;\r\n    font-weight: 600;\r\n    text-transform: uppercase;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #fa5b67;\n}\n.content-wrap .person-boxes .person-box .box-bio {\r\n    white-space: no-wrap;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-name {\r\n    margin: 2em 0 0.75em;\r\n    color: #1b253d;\r\n    font-size: 1em;\r\n    font-weight: 700;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-bio .bio-position {\r\n    margin: 0;\r\n    font-size: 0.875em;\r\n    line-height: 100%;\n}\n.content-wrap .person-boxes .person-box .box-actions {\r\n    margin-top: 1.25em;\r\n    padding-top: 1.25em;\r\n    width: 100%;\r\n    border-top: 1px solid #ede8f0;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\n}\n.content-wrap .person-boxes .person-box .box-actions button {\r\n    border: 0;\r\n    background: none;\r\n    width: 32px;\r\n    height: 32px;\r\n    margin: 0;\r\n    padding: 0;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg {\r\n    position: relative;\r\n    top: 2px;\n}\n.content-wrap .person-boxes .person-box .box-actions button svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button svg circle {\r\n    fill: #b6bbc6;\r\n    transition: fill 0.15s ease;\n}\n.content-wrap .person-boxes .person-box .box-actions button:hover svg path,\r\n.content-wrap .person-boxes .person-box .box-actions button:hover svg circle {\r\n    fill: #2b3a60;\n}\n.H3_style {\r\n    text-align: center;\r\n    font-family: cursive;\r\n    font-size: 30px;\r\n    margin-bottom: 20px;\r\n    color: darkblue;\n}\n#h3_empP{\r\n    margin-top: 50px;\r\n    margin-bottom: 50px;\n}\n#h3_Mt{\r\n        margin-top: 50px;\n}\n#iconDep,#iconEmp,#iconPM {\r\n    font-size: 50px !important;\r\n    margin-left: 6px !important;\n}\n.em1{\r\n    margin-left: 6px !important;\n}\n#iconPempl,#iconMat{\r\n    font-size: 60px !important;\n}\n#h3_1{\r\n/* margin-bottom: 60px; */\n}\n#myChart1{\r\n    margin-top: 70px;\n}\n.em{\r\n    background-color: #a80a66 !important ;\r\n    border: 10px solid #8a0a63 !important;\r\n    width: 16% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.mat{\r\n    background-color:#ffbb09 !important;\r\n    border: 10px solid #f1ae05 !important;\r\n    width: 16% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.big{\r\n    color:#fff !important;\n}\n.active{\r\n    background-color: #06ddfa !important ;\r\n    border: 10px solid #05c6e0c5 !important;\r\n    width: 24% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.PMat{\r\n    background-color: #e60303d5 !important ;\r\n    border: 10px solid #e60303 !important;\r\n    width: 20% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.dep{\r\n    background-color: #56e603d5 !important ;\r\n    border: 10px solid #56e603 !important;\r\n    width: 18% !important;\r\n    color:white;\r\n    font-size: 20px;\r\n    padding-left: 0px !important;\n}\n.content{\r\n    width: 100% !important;\n}\n.content-wrap{\r\n    width: 100% !important;\n}\n.dashboard{\r\n    width: 100% !important;\n}\n.Sect1{\r\n    width: 100%;\r\n    padding-left: 0px !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -76956,17 +77054,19 @@ const _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 const _hoisted_8 = ["placeholder"]
 const _hoisted_9 = { class: "tooltip" }
 const _hoisted_10 = { class: "links_name" }
-const _hoisted_11 = { class: "tooltip" }
-const _hoisted_12 = { class: "profile" }
-const _hoisted_13 = { class: "profile-details" }
-const _hoisted_14 = ["src"]
-const _hoisted_15 = {
+const _hoisted_11 = ["href"]
+const _hoisted_12 = { class: "links_name" }
+const _hoisted_13 = { class: "tooltip" }
+const _hoisted_14 = { class: "profile" }
+const _hoisted_15 = { class: "profile-details" }
+const _hoisted_16 = ["src"]
+const _hoisted_17 = {
   key: 1,
   class: "bx bxs-user-rectangle"
 }
-const _hoisted_16 = { class: "name_job" }
-const _hoisted_17 = { class: "name" }
-const _hoisted_18 = { class: "job" }
+const _hoisted_18 = { class: "name_job" }
+const _hoisted_19 = { class: "name" }
+const _hoisted_20 = { class: "job" }
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link")
@@ -77014,35 +77114,46 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.menuItems, (menuItem, index) => {
             return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", { key: index }, [
               (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-                  to: menuItem.link
-                }, {
-                  default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-                      class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bx", menuItem.icon || 'bx-square-rounded'])
-                    }, null, 2 /* CLASS */),
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.name), 1 /* TEXT */)
-                  ]),
-                  _: 2 /* DYNAMIC */
-                }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["to"]),
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.tooltip || menuItem.name), 1 /* TEXT */)
+                (!menuItem.type || menuItem.type=='to')
+                  ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
+                      key: 0,
+                      to: menuItem.link
+                    }, {
+                      default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [
+                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+                          class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bx", menuItem.icon || 'bx-square-rounded'])
+                        }, null, 2 /* CLASS */),
+                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.name), 1 /* TEXT */)
+                      ]),
+                      _: 2 /* DYNAMIC */
+                    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["to"]))
+                  : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+                      key: 1,
+                      href: menuItem.link
+                    }, [
+                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+                        class: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bx", menuItem.icon || 'bx-square-rounded'])
+                      }, null, 2 /* CLASS */),
+                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.name), 1 /* TEXT */)
+                    ], 8 /* PROPS */, _hoisted_11)),
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.tooltip || menuItem.name), 1 /* TEXT */)
               ])
             ]))
           }), 128 /* KEYED_FRAGMENT */))
         ])
       ]),
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [
           ($props.profileImg)
             ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
                 key: 0,
                 src: $props.profileImg,
                 alt: "profileImg"
-              }, null, 8 /* PROPS */, _hoisted_14))
-            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_15)),
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.profileName), 1 /* TEXT */),
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.profileRole), 1 /* TEXT */)
+              }, null, 8 /* PROPS */, _hoisted_16))
+            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_17)),
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.profileName), 1 /* TEXT */),
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.profileRole), 1 /* TEXT */)
           ])
         ]),
         ($props.isExitButton)
