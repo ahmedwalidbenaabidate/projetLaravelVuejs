@@ -25126,11 +25126,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -25193,36 +25198,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyAdministratif: function destroyAdministratif(id) {
-      var _this3 = this;
-
+    MethodAxios: function MethodAxios(id) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Supprimer ce enregistrement ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
-                pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/administratifs/delete/' + id);
 
-              case 5:
-                _this3.administratifs.splice(pos, 1);
-
-              case 6:
+              case 2:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyAdministratif: function destroyAdministratif(id) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                // if (!window.confirm('Supprimer ce enregistrement ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "voulez vous vraîment supprimer cette enregistrement!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprimer!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    var pos = _this3.search__id(id);
+
+                    _this3.MethodAxios(id);
+
+                    _this3.administratifs.splice(pos, 1); //-----------Instruction---------------//
+
+
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Votre fichier a été supprimé.', 'Succès');
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     },
     afficherDocument: function afficherDocument(u) {
@@ -26917,11 +26945,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -26975,9 +27008,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this.createEmployee(_this.form1);
 
               case 2:
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Employé a été enregistrer!!!',
+                  showConfirmButton: false,
+                  timer: 2200
+                });
+
                 _this.$router.push("/employees");
 
-              case 3:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -27256,7 +27297,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyEmployee: function destroyEmployee(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -27264,6 +27305,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/employees/delete/' + id);
+
+              case 2:
+                pos = _this3.search__id(id);
+
+                _this3.employees.splice(pos, 1);
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    destroyEmployee: function destroyEmployee(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 // Swal.fire(
                 //     'The Internet?',
@@ -27280,32 +27345,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   confirmButtonText: 'Yes, delete it!'
                 }).then(function (result) {
                   if (result.isConfirmed) {
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Deleted!', 'Your file has been deleted.', 'success');
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Deleted!', 'Your file has been deleted.', 'success');
                   }
-                });
+                }); // if (!window.confirm('Supprimer cet employee ?')) return;
+                //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
 
-                if (window.confirm('Supprimer cet employee ?')) {
-                  _context2.next = 3;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 3:
-                pos = _this3.search__id(id);
-                _context2.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/employees/delete/' + id);
-
-              case 6:
-                _this3.employees.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
-
-
-              case 7:
+              case 1:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }))();
     }
   },

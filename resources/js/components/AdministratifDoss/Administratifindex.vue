@@ -69,6 +69,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -101,17 +103,40 @@ export default {
             let i = 0;
 
             for (i = 0; i < this.administratifs.length; i++)
-                if (  this.administratifs[i].id == id)
+                if (this.administratifs[i].id == id)
                     return i
             return -1
         },
+        async MethodAxios(id){
+            await axios.delete('/administratifs/delete/' + id);
+        },
 
         async destroyAdministratif(id) {
-            if (!window.confirm('Supprimer ce enregistrement ?')) return;
-            let pos = this.search__id(id);
-            await axios.delete('/administratifs/delete/' + id);
+            // if (!window.confirm('Supprimer ce enregistrement ?')) return;
 
-            this.administratifs.splice(pos, 1)
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "voulez vous vraîment supprimer cette enregistrement!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprimer!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let pos = this.search__id(id);
+                    this.MethodAxios(id);
+
+                    this.administratifs.splice(pos, 1)
+                    //-----------Instruction---------------//
+                    Swal.fire(
+                        'Supprimé!',
+                        'Votre fichier a été supprimé.',
+                        'Succès'
+                    )
+                }
+            })
+
         },
 
         afficherDocument(u) {

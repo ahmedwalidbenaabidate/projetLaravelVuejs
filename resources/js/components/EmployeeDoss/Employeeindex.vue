@@ -134,6 +134,12 @@ export default {
                     return i
             return -1
         },
+        async MethodAxios(id) {
+            await axios.delete('/employees/delete/' + id);
+            let pos = this.search__id(id);
+            this.employees.splice(pos, 1)
+
+        },
         async destroyEmployee(id) {
             // Swal.fire(
             //     'The Internet?',
@@ -151,19 +157,18 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
                 }
             })
 
-            if (!window.confirm('Supprimer cet employee ?')) return;
-            let pos = this.search__id(id);
-            await axios.delete('/employees/delete/' + id);
+            // if (!window.confirm('Supprimer cet employee ?')) return;
 
-            this.employees.splice(pos, 1)
             //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
         },
 
