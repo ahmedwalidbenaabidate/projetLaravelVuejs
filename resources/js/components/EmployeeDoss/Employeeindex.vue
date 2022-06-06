@@ -1,5 +1,5 @@
 <template>
-<div class="flex flex-col">
+<div v-if="load" class="flex flex-col">
     <div class="flex " id="divCreer">
 
         <div class="box" style="    margin-right: 40px;">
@@ -14,7 +14,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
         <menu__2 />
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-if="employees_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -90,6 +90,20 @@
                 </template>
             </tbody>
         </table>
+        <div v-else>
+            <div v-if="!employees.length">
+                <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                <p>Aucune données</p>
+            </div>
+            <div v-else>
+                <div id="divImgLab">
+                    
+                    <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                     <p id="paraRech1">Aucune données commencer par: <b id="lb1"> {{search}} </b></p>   
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 </template>
@@ -107,6 +121,7 @@ export default {
         return {
             employees: [],
             search: "",
+            load: false
         };
     },
     computed: {
@@ -123,8 +138,11 @@ export default {
         async getEmployee() {
 
             let response = await axios.get('employees/all');
-            if (response.data.status == 1)
+            if (response.data.status == 1) {
+                this.load = true
                 this.employees = response.data.data
+
+            }
         },
         search__id(id) {
             let i = 0;
@@ -148,20 +166,20 @@ export default {
             // )
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer cet employé!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Oui, Supprime-le!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.MethodAxios(id),
 
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            'Supprimé!',
+                            'Employé a été supprimé.',
                             'success'
                         )
                 }

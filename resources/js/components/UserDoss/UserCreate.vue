@@ -3,7 +3,7 @@
 <form class="space-y-6" @submit.prevent="storeUser">
     <div>
         <label for="name" class="block">Nom utilisateur</label>
-        <input type="text" class="inp1" id="name" v-model="form1.name" placeholder="Entrez le votre nom" maxlength="10" required>
+        <input type="text" class="inp1" id="name" v-model="form1.name" placeholder="Entrez votre nom" maxlength="10" required>
     </div>
     <div>
         <label for="email" class="block">E-mail utilisateur</label>
@@ -22,6 +22,9 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 
 export default {
@@ -44,12 +47,29 @@ export default {
     methods: {
 
         async createUser(data) {
-            await axios.post('/users/create', data);
+            let res = await axios.post('/users/create', data);
+            if (res.data.status == 1) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Création réussie',
+                    showConfirmButton: false,
+                    timer: 2200
+                })
+                this.$router.push("/users");
+            }else
+            {
+            Swal.fire(
+                'Attention !',
+                'Cet email exist déjà !!!!',
+                'info'
+            )
+            }
         },
 
         async storeUser() {
             await this.createUser(this.form1);
-            this.$router.push("/users");
+            
         },
     },
 

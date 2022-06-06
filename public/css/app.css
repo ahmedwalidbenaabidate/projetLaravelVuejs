@@ -1396,6 +1396,24 @@ table .icon_table{
 #mainStaq{
   padding-bottom: 0px;
 }
+/* ------Image Recherche------------ */
+#imgRech1{
+    height: 600px;
+    display: inline-block;
+
+}
+#paraRech1{
+    color: #e8e8e8;
+    font-size: 30px;
+
+}
+#divImgLab{
+  text-align: center;
+}
+#lb1{
+  color: #fa7167;
+}
+/* ----------------------------- */
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));

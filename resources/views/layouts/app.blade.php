@@ -7,7 +7,8 @@
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-
+{{-- -------- --}}
+<link rel="icon" href="/storage/images/iconBTP.png">
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 

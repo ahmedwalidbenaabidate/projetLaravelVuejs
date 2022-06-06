@@ -15,7 +15,7 @@ const navMenu =
         {link: '/affectationMateriels',name: 'Pointage matériels', tooltip: 'Pointage matériels',type:"to", icon: 'bx-spreadsheet' },
         {link: '/accidents',name: 'Accidents', tooltip: 'Accidents', icon: 'bx-traffic-cone',type:"to" },
         {link: '/chantiers',name: 'Chantiers', tooltip: 'Chantiers', icon: 'bx-buildings',type:"to" },
-        {link: '/users',name: 'Users', tooltip: 'Users', icon: 'bx-user-circle',type:"to" },
+        {link: '/users',name: 'Utilisateurs', tooltip: 'Utilisateurs', icon: 'bx-user-circle',type:"to" },
     ]
 
 

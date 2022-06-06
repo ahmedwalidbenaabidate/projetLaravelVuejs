@@ -1,5 +1,5 @@
 <template>
-<div class="flex flex-col">
+<div v-if="load" class="flex flex-col">
     <menu__2 />
     <!-- <div class="flex ">
         <router-link :to="{name: 'administratifs.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter un document</router-link>
@@ -18,7 +18,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-if="documents_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -62,6 +62,20 @@
                 </template>
             </tbody>
         </table>
+        <div v-else>
+            <div v-if="!administratifs.length">
+                <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                <p>Aucune données</p>
+            </div>
+            <div v-else>
+                <div id="divImgLab">
+
+                    <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                    <p id="paraRech1">Aucune données commencer par: <b id="lb1"> {{search}} </b></p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 </template>
@@ -80,6 +94,7 @@ export default {
         return {
             administratifs: [],
             search: "",
+            load: false
         };
     },
     computed: {
@@ -96,8 +111,10 @@ export default {
         async getAdministratifs() {
 
             let response = await axios.get('/administratifs/all');
-            if (response.data.status == 1)
+            if (response.data.status == 1) {
+                this.load = true
                 this.administratifs = response.data.data
+            }
         },
         search__id(id) {
             let i = 0;
@@ -107,7 +124,7 @@ export default {
                     return i
             return -1
         },
-        async MethodAxios(id){
+        async MethodAxios(id) {
             await axios.delete('/administratifs/delete/' + id);
         },
 
