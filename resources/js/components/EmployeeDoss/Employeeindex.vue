@@ -1,4 +1,5 @@
 <template>
+<menu__2 />
 <div v-if="load" class="flex flex-col">
     <div class="flex " id="divCreer">
 
@@ -13,7 +14,7 @@
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
-        <menu__2 />
+        
         <table v-if="employees_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>

@@ -1,6 +1,7 @@
 <template>
-<div v-if="load" class="flex flex-col">
     <menu__2 />
+
+<div v-if="load" class="flex flex-col">
     <!-- <div class="flex ">
         <router-link :to="{name: 'administratifs.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter un document</router-link>
     </div> -->
