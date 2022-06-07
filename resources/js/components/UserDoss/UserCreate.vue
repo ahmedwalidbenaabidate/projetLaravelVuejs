@@ -3,7 +3,7 @@
 <form class="space-y-6" @submit.prevent="storeUser">
     <div>
         <label for="name" class="block">Nom utilisateur</label>
-        <input type="text" class="inp1" id="name" v-model="form1.name" placeholder="Entrez votre nom" maxlength="10" required>
+        <input type="text" class="inp1" id="name" v-model="form1.name" placeholder="Entrez votre nom" maxlength="50" required>
     </div>
     <div>
         <label for="email" class="block">E-mail utilisateur</label>
@@ -12,7 +12,7 @@
     </div>
     <div>
         <label for="password" class="block">Password</label>
-        <input type="password" class="inp1" id="password" v-model="form1.password" placeholder="Entrez password..." maxlength="10" required>
+        <input type="password" class="inp1" id="password" v-model="form1.password" placeholder="Entrez password..." min="10" required>
     </div>
     
     <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>

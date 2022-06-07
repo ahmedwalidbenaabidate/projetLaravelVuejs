@@ -1,6 +1,6 @@
 <template>
 <menu__2 />
-<form class="space-y-6" @submit.prevent="storeEmployee" >
+<form class="space-y-6" @submit.prevent="storeEmployee">
     <div>
         <label for="reference" class="block">Référence</label>
         <input type="text" class="inp1" id="reference" v-model="form1.reference" maxlength="6" required>
@@ -42,8 +42,13 @@
         </select>
     </div>
     <div>
-        <label for="permisDate" class="block">Date du permis</label>
-        <input type="date" class="inp1" id="permisDate" v-model="form1.permisDate" required>
+        <label for="permisDate" class="block">        <input type="checkbox" v-model="SansPermis" id=""> 
+Date du permis</label>
+
+        <div>
+            <input type="date" class="inp1" id="permisDate" :disabled="!SansPermis" v-model="form1.permisDate">
+        </div>
+
     </div>
     <!-- <div>
             <label for="qualite_id" class="block">Id du qualité</label>
@@ -60,8 +65,6 @@ import menu__2 from "../menu/menu.vue";
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-
-
 export default {
     components: {
         menu__2
@@ -69,8 +72,9 @@ export default {
 
     data() {
         return {
+            SansPermis: true,
             Qualites: [],
-            
+
             form1: {
                 reference: '',
                 nom: '',
@@ -84,6 +88,12 @@ export default {
 
             }
         };
+    },
+    watch: {
+        SansPermis(value) {
+           if(!value)
+             this.form1.permisDate= ''
+        }
     },
 
     methods: {
@@ -137,10 +147,11 @@ form {
 }
 
 #btnEnreg {
-   height: 50px !important;
-   
+    height: 50px !important;
+
 }
-.space-y-6{
+
+.space-y-6 {
     border: 2px;
     border-color: black;
     background-color: #1c0c30;
@@ -150,12 +161,13 @@ form {
     margin-right: auto;
     text-align: center !important;
     display: block !important;
-    padding-bottom: 10px ;
+    padding-bottom: 10px;
     padding-top: 10px;
-    font-family:"fantasy" !important;
+    font-family: "fantasy" !important;
     color: rgb(31, 26, 59);
 }
-.block{
+
+.block {
     color: rgb(255, 255, 255);
     font-family: cursive;
     padding-bottom: 10px;
