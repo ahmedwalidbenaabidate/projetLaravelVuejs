@@ -12,7 +12,7 @@
     </div>
     <div>
         <label for="password" class="block">Password</label>
-        <input type="password" class="inp1" id="password" v-model="form1.password" placeholder="Entrez password..." min="10" required>
+        <input type="password"  class="inp1" id="password" v-model="form1.password" placeholder="Entrez password..." minlength="8" required>
     </div>
     
     <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>

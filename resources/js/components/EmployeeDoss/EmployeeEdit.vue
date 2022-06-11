@@ -23,7 +23,7 @@
     </div>
     <div>
         <label for="salaire" class="block">Salaire</label>
-        <input type="number" step="any" class="inp1" id="salaire" v-model="employee.salaire" required>
+        <input type="number" min="0" step="any" class="inp1" id="salaire" v-model="employee.salaire" required>
     </div>
     <div>
         <label for="type_salaire" class="block">Type salaire</label>
@@ -43,7 +43,7 @@
     </div>
     <div>
         <label for="permisDate" class="block">Date du permis</label>
-        <input type="date" class="inp1" id="permisDate" v-model="employee.permisDate" required>
+        <input type="date" class="inp1" id="permisDate" v-model="employee.permisDate" >
     </div>
     <!-- <div>
             <label for="qualite_id" class="block">Id du qualité</label>

@@ -29,7 +29,7 @@
     </div>
     <div>
         <label for="totalTCC" class="block">TOTAL T.T.C</label>
-        <input type="number" step="any" id="totalTCC" v-model="depense.totalTCC" required>
+        <input type="number" step="any" min="0" id="totalTCC" v-model="depense.totalTCC" required>
     </div>
 
     <div>

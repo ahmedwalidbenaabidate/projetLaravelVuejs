@@ -54,6 +54,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -90,13 +92,36 @@ export default {
                     return i
             return -1
         },
-        async destroyQualite(id){
-             if (!window.confirm( 'Supprimer cette qualité ?')) return;
+
+        async MethodAxios(id) {
              let pos = this.search__id(id);
             await axios.delete('/qualites/delete/' + id);
-            
             this.qualites.splice(pos,1);
+
+        },
+
+        async destroyQualite(id){
+            //  if (!window.confirm( 'Supprimer cette qualité ?')) return;
             // $router.push('qualites/all');
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer cette qualité!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprime-le!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Supprimé!',
+                            'qualité a été supprimé.',
+                            'success'
+                        )
+                }
+            })
         },
        
 

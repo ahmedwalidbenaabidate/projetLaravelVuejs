@@ -117,8 +117,9 @@ form {
 #img1 {
     text-align: center;
     display: inline-block;
-    width: 100px;
-    height: 110px;
+    width: 300px;
+    height: 180px;
+    background: white;
 }
 
 #rlink1 {

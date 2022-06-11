@@ -1,7 +1,7 @@
 <template>
 <menu__2 />
 <form class="space-y-6" @submit.prevent="storeDepenses">
-    
+
     <div>
         <label for="description" class="block">Déscription dépenses</label>
         <textarea class="inp1" v-model="form1.description" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque" required></textarea>
@@ -29,12 +29,12 @@
     </div>
     <div>
         <label for="totalTCC" class="block">TOTAL T.T.C</label>
-        <input type="number" step="any" id="totalTCC" v-model="form1.totalTCC" required>
+        <input type="number" step="any" min="0" id="totalTCC" v-model="form1.totalTCC" required>
     </div>
 
     <div>
         <label for="bonDepense" class="block">Bon des dépenses</label>
-        <input type="file" name="bonDepense" id="bonDepense" ref="bonDepense" >
+        <input type="file" name="bonDepense" id="bonDepense" ref="bonDepense">
     </div>
 
     <button type="submit" id="btnEnreg" class="custom-btn btn-1Employee"><i id="iAddEmpl" class="bx bx-save icon_table"></i>Enregistrer</button>
@@ -43,6 +43,8 @@
 
 <script>
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -51,15 +53,15 @@ export default {
 
     data() {
         return {
-            Employees : [],
-            Materiels : [],
+            Employees: [],
+            Materiels: [],
             form1: {
-                description:'',
-                id_employee:'',
-                dateDepense:'',
-                id_materiel:'',
-                totalTCC:'',
-                bonDepense:'',
+                description: '',
+                id_employee: '',
+                dateDepense: '',
+                id_materiel: '',
+                totalTCC: '',
+                bonDepense: '',
             }
         };
     },
@@ -100,8 +102,16 @@ export default {
             formData.append("id_materiel", this.form1.id_materiel);
             formData.append("totalTCC", this.form1.totalTCC);
             let res = await axios.post('/depenses/create', formData);
-            if (res.data.status == 1)
+            if (res.data.status == 1) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Dépenses a été enregistrer!!!',
+                    showConfirmButton: false,
+                    timer: 2200
+                })
                 this.$router.push("/depenses");
+            }
             //     else
             // alert("Cet type exist déjà !!!!");
             // // if (!window.confirm('Cet type exist déjà !!!!')) return;
@@ -109,7 +119,7 @@ export default {
 
     },
 
-    mounted(){
+    mounted() {
         this.getEmployees();
         this.getMateriel();
     },
@@ -122,7 +132,9 @@ form {
     text-align: center;
 
 }
-#dateDepense,#totalTCC{
+
+#dateDepense,
+#totalTCC {
     border-radius: 10px;
     width: 250px;
 }

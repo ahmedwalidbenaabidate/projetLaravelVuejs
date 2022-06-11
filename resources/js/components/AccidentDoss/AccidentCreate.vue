@@ -38,6 +38,8 @@
 
 <script>
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -93,8 +95,16 @@ export default {
             formData.append("dateA", this.form1.dateA);
             formData.append("id_materiel", this.form1.id_materiel);
             let res = await axios.post('/accidents/create', formData);
-            if (res.data.status == 1)
+            if (res.data.status == 1){
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Accident a été enregistrer!!!',
+                showConfirmButton: false,
+                timer: 2200
+            })
                 this.$router.push("/accidents");
+            }
             //     else
             // alert("Cet type exist déjà !!!!");
             // // if (!window.confirm('Cet type exist déjà !!!!')) return;

@@ -59,6 +59,9 @@
 <script>
 import axios from "axios";
 import menu__2 from "../../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 export default {
     components: {
@@ -96,12 +99,34 @@ export default {
             return -1
         },
 
-        async destroyTypeMateriel(id) {
-            if (!window.confirm('Supprimer ce type de matériel ?')) return;
+        async MethodAxios(id) {
             let pos = this.search__id(id);
             await axios.delete('/typemarteriels/delete/' + id);
-
             this.typesMat.splice(pos, 1)
+
+        },
+
+        async destroyTypeMateriel(id) {
+            // if (!window.confirm('Supprimer ce type de matériel ?')) return;
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer ce type de matériel ?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprime-le!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Supprimé!',
+                            'Type a été supprimé.',
+                            'success'
+                        )
+                }
+            })
         },
 
     },

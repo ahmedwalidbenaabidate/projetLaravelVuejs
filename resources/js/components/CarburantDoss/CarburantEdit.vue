@@ -9,7 +9,7 @@
     </div>
     <div>
         <label for="quantiteC" class="block">QUANTITÉ DE CARBURANT<b id="L1"> (Litre)</b></label>
-        <input type="number" step="any" class="inp1" id="quantiteC" v-model="carburant.quantiteC" maxlength="6" required>
+        <input type="number" step="any" min="0" class="inp1" id="quantiteC" v-model="carburant.quantiteC" maxlength="6" required>
     </div>
     <div>
         <label for="typeC" class="block">TYPE CARBURANT</label>

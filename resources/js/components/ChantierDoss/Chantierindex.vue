@@ -67,6 +67,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 export default {
@@ -105,12 +107,33 @@ export default {
                     return i
             return -1
         },
-        async destroyChantier(id){
-             if (!window.confirm( 'Supprimer ce chantier ?')) return;
+        async MethodAxios(id) {
             let pos = this.search__id(id);
             await axios.delete('/chantiers/delete/' + id);
-            
             this.chantiers.splice(pos,1)
+        },
+
+        async destroyChantier(id){
+            //  if (!window.confirm( 'Supprimer ce chantier ?')) return;
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer ce chantier!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprime-le!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Supprimé!',
+                            'Chantier a été supprimé.',
+                            'success'
+                        )
+                }
+            })
         },
        
 

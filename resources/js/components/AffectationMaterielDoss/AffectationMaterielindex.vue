@@ -169,13 +169,36 @@ export default {
                     return i
             return -1
         },
-        async destroyAffectationM(id) {
-            if (!window.confirm('Supprimer cette affectation de matériel?')) return;
 
+        async MethodAxios(id) {
             let pos = this.search__id(id)
             await axios.delete('/affectationMateriels/delete/' + id);
-
             this.affectMats.splice(pos, 1)
+        },  
+
+        async destroyAffectationM(id) {
+            // if (!window.confirm('Supprimer cette affectation de matériel?')) return;
+
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer cette affectation de matériel?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprime-le!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Supprimé!',
+                            'Affectation a été supprimé.',
+                            'success'
+                        )
+                }
+            })
+            
             //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
         },
 

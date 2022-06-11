@@ -9,7 +9,7 @@
     </div>
     <div>
         <label for="quantiteC" class="block">QUANTITÉ DE CARBURANT<b id="L1"> (Litre)</b></label>
-        <input type="number" step="any" class="inp1" id="quantiteC" v-model="form1.quantiteC" maxlength="6" required>
+        <input type="number" min="0" step="any" class="inp1" id="quantiteC" v-model="form1.quantiteC" maxlength="6" required>
     </div>
     <div>
         <label for="typeC" class="block">TYPE CARBURANT</label>
@@ -35,6 +35,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 export default {
@@ -65,6 +67,13 @@ export default {
 
         async storeCarburant() {
             await this.createCarburant(this.form1);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Remplissage a été enregistrer!!!',
+                showConfirmButton: false,
+                timer: 2200
+            })
             this.$router.push("/carburants");
         },
 

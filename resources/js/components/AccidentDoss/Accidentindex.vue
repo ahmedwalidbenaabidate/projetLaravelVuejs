@@ -91,6 +91,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 export default {
@@ -130,12 +132,35 @@ export default {
             return -1
         },
 
-        async destroyAccident(id){
-             if (!window.confirm( 'Supprimer ce enregistrement ?')) return;
+        async MethodAxios(id) {
             let pos = this.search__id(id);
             await axios.delete('/accidents/delete/' + id);
-
             this.accidents.splice(pos,1)
+        },
+
+        async destroyAccident(id){
+            //  if (!window.confirm( 'Supprimer cet enregistrement ?')) return;
+            
+
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer cet enregistrement ?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprime-le!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Supprimé!',
+                            'Enregistrement a été supprimé.',
+                            'success'
+                        )
+                }
+            })
         },
 
         afficherDocument(u) {

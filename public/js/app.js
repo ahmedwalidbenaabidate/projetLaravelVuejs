@@ -24431,11 +24431,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -24533,9 +24538,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 9:
                 res = _context3.sent;
-                if (res.data.status == 1) _this3.$router.push("/accidents"); //     else
+
+                if (res.data.status == 1) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Accident a été enregistrer!!!',
+                    showConfirmButton: false,
+                    timer: 2200
+                  });
+
+                  _this3.$router.push("/accidents");
+                } //     else
                 // alert("Cet type exist déjà !!!!");
                 // // if (!window.confirm('Cet type exist déjà !!!!')) return;
+
 
               case 11:
               case "end":
@@ -24742,11 +24759,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -24809,7 +24831,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyAccident: function destroyAccident(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -24818,27 +24840,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Supprimer ce enregistrement ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
                 pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/accidents/delete/' + id);
 
-              case 5:
+              case 3:
                 _this3.accidents.splice(pos, 1);
 
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyAccident: function destroyAccident(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                //  if (!window.confirm( 'Supprimer cet enregistrement ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer cet enregistrement ?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Enregistrement a été supprimé.', 'success');
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     },
     afficherDocument: function afficherDocument(u) {
@@ -25158,7 +25203,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (this.search.toLocaleLowerCase() != "") {
         res = res.filter(function (item) {
-          return item.marqueM.toLocaleLowerCase().includes(_this.search.toLocaleLowerCase());
+          return item.marqueM.toLocaleLowerCase().includes(_this.search.toLocaleLowerCase()) || item.descriptionA.toLocaleLowerCase().includes(_this.search.toLocaleLowerCase());
         });
       }
 
@@ -25741,7 +25786,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyAffectationM: function destroyAffectationM(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
@@ -25750,28 +25795,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                if (window.confirm('Supprimer cette affectation de matériel?')) {
-                  _context4.next = 2;
-                  break;
-                }
-
-                return _context4.abrupt("return");
-
-              case 2:
                 pos = _this5.search__id(id);
-                _context4.next = 5;
+                _context4.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/affectationMateriels/delete/' + id);
 
-              case 5:
-                _this5.affectMats.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
+              case 3:
+                _this5.affectMats.splice(pos, 1);
 
-
-              case 6:
+              case 4:
               case "end":
                 return _context4.stop();
             }
           }
         }, _callee4);
+      }))();
+    },
+    destroyAffectationM: function destroyAffectationM(id) {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                // if (!window.confirm('Supprimer cette affectation de matériel?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer cette affectation de matériel?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this6.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Affectation a été supprimé.', 'success');
+                  }
+                }); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
+
+              case 1:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
       }))();
     }
   },
@@ -25798,11 +25865,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -25852,9 +25924,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this.createCarburant(_this.form1);
 
               case 2:
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Remplissage a été enregistrer!!!',
+                  showConfirmButton: false,
+                  timer: 2200
+                });
+
                 _this.$router.push("/carburants");
 
-              case 3:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -26056,11 +26136,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -26123,7 +26208,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyCarburant: function destroyCarburant(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -26132,28 +26217,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Voulez vous supprimer cette enregistrement ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
                 pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/carburants/delete/' + id);
 
-              case 5:
-                _this3.carburants.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve ce carburant
+              case 3:
+                _this3.carburants.splice(pos, 1);
 
-
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyCarburant: function destroyCarburant(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                //  if (!window.confirm( 'Voulez vous supprimer cette enregistrement ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer cet enregistrement!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Enregistrement a été supprimé.', 'success');
+                  }
+                }); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve ce carburant
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   },
@@ -26178,11 +26285,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -26229,9 +26341,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this.createChantier(_this.form1);
 
               case 2:
+                sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Chantier a été enregistrer!!!',
+                  showConfirmButton: false,
+                  timer: 2200
+                });
+
                 _this.$router.push("/chantiers");
 
-              case 3:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -26386,11 +26506,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -26453,7 +26578,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyChantier: function destroyChantier(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -26462,27 +26587,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Supprimer ce chantier ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
                 pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/chantiers/delete/' + id);
 
-              case 5:
+              case 3:
                 _this3.chantiers.splice(pos, 1);
 
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyChantier: function destroyChantier(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                //  if (!window.confirm( 'Supprimer ce chantier ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer ce chantier!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Chantier a été supprimé.', 'success');
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   },
@@ -26507,11 +26655,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -26611,9 +26764,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 10:
                 res = _context3.sent;
-                if (res.data.status == 1) _this3.$router.push("/depenses"); //     else
+
+                if (res.data.status == 1) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Dépenses a été enregistrer!!!',
+                    showConfirmButton: false,
+                    timer: 2200
+                  });
+
+                  _this3.$router.push("/depenses");
+                } //     else
                 // alert("Cet type exist déjà !!!!");
                 // // if (!window.confirm('Cet type exist déjà !!!!')) return;
+
 
               case 12:
               case "end":
@@ -26824,11 +26989,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -26891,7 +27061,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyDepenses: function destroyDepenses(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -26900,27 +27070,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Supprimer ce enregistrement ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
                 pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/depenses/delete/' + id);
 
-              case 5:
+              case 3:
                 _this3.depenses.splice(pos, 1);
 
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyDepenses: function destroyDepenses(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                // if (!window.confirm('Supprimer cet enregistrement ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer cet enregistrement!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Enregistrement a été supprimé.', 'success');
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     },
     afficherDocument: function afficherDocument(u) {
@@ -27398,11 +27591,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -27453,9 +27651,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this.createMateriel(_this.form1);
 
               case 2:
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Matériel a été enregistrer!!!',
+                  showConfirmButton: false,
+                  timer: 2200
+                });
+
                 _this.$router.push("/materiels");
 
-              case 3:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -27662,11 +27868,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -27729,7 +27940,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyMateriel: function destroyMateriel(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -27738,27 +27949,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Voullez vous supprimer cet materiel ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
                 pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/materiels/delete/' + id);
 
-              case 5:
+              case 3:
                 _this3.materiels.splice(pos, 1);
 
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyMateriel: function destroyMateriel(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                //  if (!window.confirm( 'Voullez vous supprimer cet materiel ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer ce matériel!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Matériel a été supprimé.', 'success');
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   },
@@ -27894,11 +28128,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -27940,7 +28179,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 res = _context.sent;
-                if (res.data.status == 1) _this.$router.push("/typemarteriels");else alert("Cet type exist déjà !!!!"); // if (!window.confirm('Cet type exist déjà !!!!')) return;
+
+                if (res.data.status == 1) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Type matériel a été enregistrer!!!',
+                    showConfirmButton: false,
+                    timer: 2200
+                  });
+
+                  _this.$router.push("/typemarteriels");
+                } else sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire('Attention !', 'Ce type exist déjà!!!', 'warning'); // alert("Cet type exist déjà !!!!");
+                // if (!window.confirm('Cet type exist déjà !!!!')) return;
+
 
               case 8:
               case "end":
@@ -27971,11 +28223,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -28038,7 +28295,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyTypeMateriel: function destroyTypeMateriel(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -28047,27 +28304,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Supprimer ce type de matériel ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
                 pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/typemarteriels/delete/' + id);
 
-              case 5:
+              case 3:
                 _this3.typesMat.splice(pos, 1);
 
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyTypeMateriel: function destroyTypeMateriel(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                // if (!window.confirm('Supprimer ce type de matériel ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer ce type de matériel ?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Type a été supprimé.', 'success');
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   },
@@ -28414,7 +28694,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    destroyPointage: function destroyPointage(id, pos) {
+    MethodAxios: function MethodAxios(id) {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
@@ -28422,22 +28702,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                if (window.confirm('Voulez vous supprimer ce pointage ?')) {
-                  _context4.next = 2;
-                  break;
-                }
-
-                return _context4.abrupt("return");
-
-              case 2:
-                _context4.next = 4;
+                _context4.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/pointages/delete/' + id);
 
-              case 4:
-                _this4.employees.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
+              case 2:
+                _this4.employees.splice(pos, 1);
 
-
-              case 5:
+              case 3:
               case "end":
                 return _context4.stop();
             }
@@ -28445,8 +28716,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    export_: function export_() {
+    destroyPointage: function destroyPointage(id, pos) {
       var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                // if (!window.confirm('Voulez vous supprimer ce pointage ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer ce pointage!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this5.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Pointage a été supprimé.', 'success');
+                  }
+                }); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
+
+              case 1:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    export_: function export_() {
+      var _this6 = this;
 
       // alert("ok");
       // this.exportTableToExcel("table_export", "test")
@@ -28460,7 +28762,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         confirmButtonText: 'Oui, Imprimer!'
       }).then(function (result) {
         if (result.isConfirmed) {
-          _this5.exportTableToExcel("table_export", "test");
+          _this6.exportTableToExcel("table_export", "test");
 
           sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Imprimé!', 'Votre fichier a été imprimé.', 'Succès');
         }
@@ -28751,11 +29053,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -28818,7 +29125,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyQualite: function destroyQualite(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -28827,28 +29134,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Supprimer cette qualité ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
                 pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/qualites/delete/' + id);
 
-              case 5:
-                _this3.qualites.splice(pos, 1); // $router.push('qualites/all');
+              case 3:
+                _this3.qualites.splice(pos, 1);
 
-
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyQualite: function destroyQualite(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                //  if (!window.confirm( 'Supprimer cette qualité ?')) return;
+                // $router.push('qualites/all');
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer cette qualité!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'qualité a été supprimé.', 'success');
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   },
@@ -29096,11 +29426,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _menu_menu_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../menu/menu.vue */ "./resources/js/components/menu/menu.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 
 
@@ -29163,7 +29498,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return -1;
     },
-    destroyUser: function destroyUser(id) {
+    MethodAxios: function MethodAxios(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -29172,28 +29507,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (window.confirm('Supprimer cet utilisateur ?')) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
                 pos = _this3.search__id(id);
-                _context2.next = 5;
+                _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/users/delete/' + id);
 
-              case 5:
-                _this3.users.splice(pos, 1); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet user
+              case 3:
+                _this3.users.splice(pos, 1);
 
-
-              case 6:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    destroyUser: function destroyUser(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                // if (!window.confirm('Supprimer cet utilisateur ?')) return;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({
+                  title: 'Êtes-vous sûr?',
+                  text: "Voulez vous vraîment supprimer cet utilisateur!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Oui, Supprime-le!'
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    _this4.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Utilisateur a été supprimé.', 'success');
+                  }
+                }); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet user
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   },
@@ -31057,6 +31414,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form1.id_materiel]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "number",
+    min: "0",
     step: "any",
     "class": "inp1",
     id: "quantiteC",
@@ -31223,6 +31581,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.carburant.id_materiel]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "number",
     step: "any",
+    min: "0",
     "class": "inp1",
     id: "quantiteC",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
@@ -32005,6 +32364,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form1.id_materiel]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "number",
     step: "any",
+    min: "0",
     id: "totalTCC",
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.form1.totalTCC = $event;
@@ -32179,6 +32539,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.depense.id_materiel]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "number",
     step: "any",
+    min: "0",
     id: "totalTCC",
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.depense.totalTCC = $event;
@@ -32629,6 +32990,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form1.cin]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "number",
+    min: "0",
     step: "any",
     "class": "inp1",
     id: "salaire",
@@ -32865,6 +33227,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.employee.cin]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "number",
+    min: "0",
     step: "any",
     "class": "inp1",
     id: "salaire",
@@ -32909,8 +33272,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "permisDate",
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $data.employee.permisDate = $event;
-    }),
-    required: ""
+    })
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.employee.permisDate]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div>\r\n            <label for=\"qualite_id\" class=\"block\">Id du qualité</label>\r\n            <input type=\"text\" id=\"qualite_id\" class=\"inp1\" v-model=\"employee.qualite_id\" disabled required>\r\n\r\n        </div> "), _hoisted_15], 32
@@ -35140,7 +35502,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.form1.password = $event;
     }),
     placeholder: "Entrez password...",
-    min: "10",
+    minlength: "8",
     required: ""
   }, null, 512
   /* NEED_PATCH */
@@ -49862,7 +50224,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#rlink1{\r\n    background-color: aqua;\n}\n#rlinkEdit{\r\n    margin-right: 20px;\n}\n#btnSupp{\r\n    margin-left: 10px;\n}\n#L1{\r\n    color: blue;\n}\n#trl1{\r\n    text-align: center;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#rlink1 {\r\n    background-color: aqua;\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#L1 {\r\n    color: blue;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -49958,7 +50320,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nform {\r\n    text-align: center;\n}\n#dateDepense,#totalTCC{\r\n    border-radius: 10px;\r\n    width: 250px;\n}\n#libelleM {\r\n    border-radius: 10px;\r\n    margin-bottom: 10px;\r\n    margin-top: 10px;\n}\n#bonDepense {\r\n    margin-left: 110px;\r\n    margin-top: 10px;\r\n    border-radius: 4px;\r\n    color: blue;\n}\n#btnEnreg {\r\n    background-color: aqua;\r\n    margin-top: 10px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nform {\r\n    text-align: center;\n}\n#dateDepense,\r\n#totalTCC {\r\n    border-radius: 10px;\r\n    width: 250px;\n}\n#libelleM {\r\n    border-radius: 10px;\r\n    margin-bottom: 10px;\r\n    margin-top: 10px;\n}\n#bonDepense {\r\n    margin-left: 110px;\r\n    margin-top: 10px;\r\n    border-radius: 4px;\r\n    color: blue;\n}\n#btnEnreg {\r\n    background-color: aqua;\r\n    margin-top: 10px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50174,7 +50536,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nform {\r\n    text-align: center;\n}\n#libelleM {\r\n    border-radius: 10px;\r\n    margin-bottom: 10px;\r\n    margin-top: 10px;\n}\n#photo1 {\r\n    margin-left: 110px;\r\n    margin-top: 10px;\r\n    border-radius: 4px;\r\n    margin-bottom: 10px;\n}\n#btnEnreg {\r\n    background-color: aqua;\r\n    margin-top: 10px;\n}\n#img1 {\r\n    text-align: center;\r\n    display: inline-block;\r\n    width: 100px;\r\n    height: 110px;\n}\n#rlink1 {\r\n    background-color: aqua;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nform {\r\n    text-align: center;\n}\n#libelleM {\r\n    border-radius: 10px;\r\n    margin-bottom: 10px;\r\n    margin-top: 10px;\n}\n#photo1 {\r\n    margin-left: 110px;\r\n    margin-top: 10px;\r\n    border-radius: 4px;\r\n    margin-bottom: 10px;\n}\n#btnEnreg {\r\n    background-color: aqua;\r\n    margin-top: 10px;\n}\n#img1 {\r\n    text-align: center;\r\n    display: inline-block;\r\n    width: 300px;\r\n    height: 180px;\r\n    background: white;\n}\n#rlink1 {\r\n    background-color: aqua;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50414,7 +50776,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#rlink1 {\r\n    background-color: aqua;\r\n    align-content: center;\r\n    border-radius: 6px;\r\n    width: 220px;\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n\r\n/* ---------------------------------- */\r\n/* input Rechercher */\n.container-4{\r\n  overflow: hidden;\r\n  width: 300px;\r\n  vertical-align: middle;\r\n  white-space: nowrap;\n}\n.container-4 input#search{\r\n  width: 300px;\r\n  height: 50px;\r\n  background: #2b303b;\r\n  border: none;\r\n  font-size: 10pt;\r\n  float: left;\r\n  color: #fff;\r\n  padding-left: 15px;\r\n  border-radius: 5px;\n}\n.container-4 input#search::-webkit-input-placeholder {\r\n   color: #65737e;\n}\n.container-4 input#search:-moz-placeholder { /* Firefox 18- */\r\n   color: #65737e;\n}\n.container-4 input#search::-moz-placeholder {  /* Firefox 19+ */\r\n   color: #65737e;\n}\n.container-4 input#search:-ms-input-placeholder {  \r\n   color: #65737e;\n}\n.container-4 button.icon{\r\n  -webkit-border-top-right-radius: 5px;\r\n  -webkit-border-bottom-right-radius: 5px;\r\n  -moz-border-radius-topright: 5px;\r\n  -moz-border-radius-bottomright: 5px;\r\n  border-top-right-radius: 5px;\r\n  border-bottom-right-radius: 5px;\r\n \r\n  border: none;\r\n  background: #232833;\r\n  height: 50px;\r\n  width: 50px;\r\n  color: #4f5b66;\r\n  opacity: 0;\r\n  font-size: 10pt;\r\n  transition: all .55s ease;\n}\n.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{\r\n  outline: none;\r\n  opacity: 1;\r\n  margin-left: -50px;\n}\n.container-4:hover button.icon:hover{\r\n  background: white;\n}\r\n/* ---------------------------------- */\r\n/* #divCreer{\r\n        justify-content: flex-end;\r\n    \r\n}\r\n#search{\r\n    width: 100% !important;\r\n    height: 100% !important;\r\n}\r\n#divCreer .container-4{\r\n    width: 900px !important;\r\n    height: 80px !important;\r\n}\r\n#divCreer .container-4 .icon{\r\n    height: 100% !important;\r\n} */\r\n\r\n\r\n/* ----------------------------------------------- */\r\n/* table {\r\n  width: 800px;\r\n  border-collapse: collapse;\r\n  overflow: hidden;\r\n  box-shadow: 0 0 20px rgba(51, 62, 87, 0.986);\r\n}\r\n\r\n\r\nth,\r\ntd {\r\n  padding: 15px;\r\n  background-color: rgba(107, 99, 99, 0.2);\r\n  color: rgb(0, 0, 0);\r\n}\r\n\r\nthead th {\r\n  background-color: #1d1b31;\r\n  height: 90px;\r\n  color: white;\r\n}\r\ntbody{\r\n    background: #65737e !important;\r\n}\r\ntbody tr:hover {\r\n  background-color: rgba(255, 255, 255, 0.3);\r\n}\r\ntbody td {\r\n  position: relative;\r\n}\r\ntbody td:hover:before {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 0;\r\n  right: 0;\r\n  top: -9999px;\r\n  bottom: -9999px;\r\n  background-color: rgb(255, 0, 0);\r\n  z-index: -1;\r\n} */\r\n/* ------------------------------------------------------- */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#rlink1 {\r\n    background-color: aqua;\r\n    align-content: center;\r\n    border-radius: 6px;\r\n    width: 220px;\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n\r\n/* ---------------------------------- */\r\n/* input Rechercher */\n.container-4 {\r\n    overflow: hidden;\r\n    width: 300px;\r\n    vertical-align: middle;\r\n    white-space: nowrap;\n}\n.container-4 input#search {\r\n    width: 300px;\r\n    height: 50px;\r\n    background: #2b303b;\r\n    border: none;\r\n    font-size: 10pt;\r\n    float: left;\r\n    color: #fff;\r\n    padding-left: 15px;\r\n    border-radius: 5px;\n}\n.container-4 input#search::-webkit-input-placeholder {\r\n    color: #65737e;\n}\n.container-4 input#search:-moz-placeholder {\r\n    /* Firefox 18- */\r\n    color: #65737e;\n}\n.container-4 input#search::-moz-placeholder {\r\n    /* Firefox 19+ */\r\n    color: #65737e;\n}\n.container-4 input#search:-ms-input-placeholder {\r\n    color: #65737e;\n}\n.container-4 button.icon {\r\n    -webkit-border-top-right-radius: 5px;\r\n    -webkit-border-bottom-right-radius: 5px;\r\n    -moz-border-radius-topright: 5px;\r\n    -moz-border-radius-bottomright: 5px;\r\n    border-top-right-radius: 5px;\r\n    border-bottom-right-radius: 5px;\r\n\r\n    border: none;\r\n    background: #232833;\r\n    height: 50px;\r\n    width: 50px;\r\n    color: #4f5b66;\r\n    opacity: 0;\r\n    font-size: 10pt;\r\n    transition: all .55s ease;\n}\n.container-4:hover button.icon,\r\n.container-4:active button.icon,\r\n.container-4:focus button.icon {\r\n    outline: none;\r\n    opacity: 1;\r\n    margin-left: -50px;\n}\n.container-4:hover button.icon:hover {\r\n    background: white;\n}\r\n\r\n/* ---------------------------------- */\r\n/* #divCreer{\r\n        justify-content: flex-end;\r\n\r\n}\r\n#search{\r\n    width: 100% !important;\r\n    height: 100% !important;\r\n}\r\n#divCreer .container-4{\r\n    width: 900px !important;\r\n    height: 80px !important;\r\n}\r\n#divCreer .container-4 .icon{\r\n    height: 100% !important;\r\n} */\r\n\r\n/* ----------------------------------------------- */\r\n/* table {\r\n  width: 800px;\r\n  border-collapse: collapse;\r\n  overflow: hidden;\r\n  box-shadow: 0 0 20px rgba(51, 62, 87, 0.986);\r\n}\r\n\r\nth,\r\ntd {\r\n  padding: 15px;\r\n  background-color: rgba(107, 99, 99, 0.2);\r\n  color: rgb(0, 0, 0);\r\n}\r\n\r\nthead th {\r\n  background-color: #1d1b31;\r\n  height: 90px;\r\n  color: white;\r\n}\r\ntbody{\r\n    background: #65737e !important;\r\n}\r\ntbody tr:hover {\r\n  background-color: rgba(255, 255, 255, 0.3);\r\n}\r\ntbody td {\r\n  position: relative;\r\n}\r\ntbody td:hover:before {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 0;\r\n  right: 0;\r\n  top: -9999px;\r\n  bottom: -9999px;\r\n  background-color: rgb(255, 0, 0);\r\n  z-index: -1;\r\n} */\r\n/* ------------------------------------------------------- */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

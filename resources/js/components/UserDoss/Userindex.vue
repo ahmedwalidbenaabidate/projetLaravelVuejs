@@ -1,15 +1,15 @@
 <template>
-<div class="flex flex-col" >
+<div class="flex flex-col">
     <div class="flex " id="divCreer">
-    
+
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Search..." />
                 <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
             </div>
         </div>
-                <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
-                <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/users/create')"><i id="iAddEmpl" class="bx bx-user-check icon_table"></i>Créer un utilisateur</button>
+        <!-- <router-link :to="{name: 'employees.create'}" id="rlink11" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un employé</router-link> -->
+        <button class="custom-btn btn-1Employee" id="rlink1" @click="$router.push('/users/create')"><i id="iAddEmpl" class="bx bx-user-check icon_table"></i>Créer un utilisateur</button>
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
@@ -23,7 +23,7 @@
                     <th scope="col" class="px-6 py-3">
                         E-mail utilisateur
                     </th>
-                    
+
                     <th scope="col" class="px-6 py-3">
                         <span class="sr-only">Action</span>
                     </th>
@@ -38,7 +38,6 @@
                         <td class="px-6 py-4">
                             <div v-text="user.email"></div>
                         </td>
-                        
 
                         <td class="px-6 py-4 text-right">
                             <!-- <router-link :to="{name: 'employees.edit', params:{id: employee.id}}" id="rlinkEdit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><i class="bx bx-edit icon_table"></i>Modifier</router-link> -->
@@ -57,6 +56,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -65,18 +66,18 @@ export default {
     data() {
         return {
             users: [],
-            search:"",
+            search: "",
         };
     },
-    computed:{
-      users_filter(){
-          let res = this.users;
-        //   let searchBy = this.search.toLocaleLowerCase();
-          if(this.search.toLocaleLowerCase() != ""){
-              res = res.filter(item=>item.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.email.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
-          }
-          return res;
-      }
+    computed: {
+        users_filter() {
+            let res = this.users;
+            //   let searchBy = this.search.toLocaleLowerCase();
+            if (this.search.toLocaleLowerCase() != "") {
+                res = res.filter(item => item.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.email.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+            }
+            return res;
+        }
     },
     methods: {
         async getUser() {
@@ -93,12 +94,34 @@ export default {
                     return i
             return -1
         },
-        async destroyUser(id) {
-            if (!window.confirm('Supprimer cet utilisateur ?')) return;
+        async MethodAxios(id) {
             let pos = this.search__id(id);
             await axios.delete('/users/delete/' + id);
-
             this.users.splice(pos, 1)
+        },
+
+        async destroyUser(id) {
+            // if (!window.confirm('Supprimer cet utilisateur ?')) return;
+
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer cet utilisateur!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprime-le!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Supprimé!',
+                            'Utilisateur a été supprimé.',
+                            'success'
+                        )
+                }
+            })
             //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet user
         },
 
@@ -110,8 +133,7 @@ export default {
 }
 </script>
 
-<style  >
-
+<style>
 #rlink1 {
     background-color: aqua;
     align-content: center;
@@ -134,79 +156,84 @@ export default {
 
 /* ---------------------------------- */
 /* input Rechercher */
-.container-4{
-  overflow: hidden;
-  width: 300px;
-  vertical-align: middle;
-  white-space: nowrap;
+.container-4 {
+    overflow: hidden;
+    width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
-.container-4 input#search{
-  width: 300px;
-  height: 50px;
-  background: #2b303b;
-  border: none;
-  font-size: 10pt;
-  float: left;
-  color: #fff;
-  padding-left: 15px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+.container-4 input#search {
+    width: 300px;
+    height: 50px;
+    background: #2b303b;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #fff;
+    padding-left: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .container-4 input#search::-webkit-input-placeholder {
-   color: #65737e;
-}
- 
-.container-4 input#search:-moz-placeholder { /* Firefox 18- */
-   color: #65737e;  
-}
- 
-.container-4 input#search::-moz-placeholder {  /* Firefox 19+ */
-   color: #65737e;  
-}
- 
-.container-4 input#search:-ms-input-placeholder {  
-   color: #65737e;  
+    color: #65737e;
 }
 
-.container-4 button.icon{
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -moz-border-radius-bottomright: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
- 
-  border: none;
-  background: #232833;
-  height: 50px;
-  width: 50px;
-  color: #4f5b66;
-  opacity: 0;
-  font-size: 10pt;
- 
-  -webkit-transition: all .55s ease;
-  -moz-transition: all .55s ease;
-  -ms-transition: all .55s ease;
-  -o-transition: all .55s ease;
-  transition: all .55s ease;
+.container-4 input#search:-moz-placeholder {
+    /* Firefox 18- */
+    color: #65737e;
 }
 
-.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
-  outline: none;
-  opacity: 1;
-  margin-left: -50px;
+.container-4 input#search::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #65737e;
 }
- 
-.container-4:hover button.icon:hover{
-  background: white;
+
+.container-4 input#search:-ms-input-placeholder {
+    color: #65737e;
 }
+
+.container-4 button.icon {
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    border: none;
+    background: #232833;
+    height: 50px;
+    width: 50px;
+    color: #4f5b66;
+    opacity: 0;
+    font-size: 10pt;
+
+    -webkit-transition: all .55s ease;
+    -moz-transition: all .55s ease;
+    -ms-transition: all .55s ease;
+    -o-transition: all .55s ease;
+    transition: all .55s ease;
+}
+
+.container-4:hover button.icon,
+.container-4:active button.icon,
+.container-4:focus button.icon {
+    outline: none;
+    opacity: 1;
+    margin-left: -50px;
+}
+
+.container-4:hover button.icon:hover {
+    background: white;
+}
+
 /* ---------------------------------- */
 /* #divCreer{
         justify-content: flex-end;
-    
+
 }
 #search{
     width: 100% !important;
@@ -220,7 +247,6 @@ export default {
     height: 100% !important;
 } */
 
-
 /* ----------------------------------------------- */
 /* table {
   width: 800px;
@@ -228,7 +254,6 @@ export default {
   overflow: hidden;
   box-shadow: 0 0 20px rgba(51, 62, 87, 0.986);
 }
-
 
 th,
 td {

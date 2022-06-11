@@ -40,6 +40,8 @@
 <script>
 import axios from "axios";
 import menu__2 from "../../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -71,6 +73,13 @@ export default {
 
         async storeMateriel() {
             await this.createMateriel(this.form1);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Matériel a été enregistrer!!!',
+                showConfirmButton: false,
+                timer: 2200
+            })
             this.$router.push("/materiels");
         },
 

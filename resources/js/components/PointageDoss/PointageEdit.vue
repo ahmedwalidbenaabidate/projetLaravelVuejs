@@ -225,12 +225,35 @@ export default {
             }
         },
 
-        async destroyPointage(id, pos) {
-            if (!window.confirm('Voulez vous supprimer ce pointage ?')) return;
-
+        async MethodAxios(id) {
             await axios.delete('/pointages/delete/' + id);
-
             this.employees.splice(pos, 1)
+        },
+
+        async destroyPointage(id, pos) {
+            // if (!window.confirm('Voulez vous supprimer ce pointage ?')) return;
+            
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer ce pointage!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprime-le!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Supprimé!',
+                            'Pointage a été supprimé.',
+                            'success'
+                        )
+                }
+            })
+
+
             //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
         },
         export_() {

@@ -103,7 +103,7 @@ export default {
             let res = this.administratifs;
             //   let searchBy = this.search.toLocaleLowerCase();
             if (this.search.toLocaleLowerCase() != "") {
-                res = res.filter(item => item.marqueM.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+                res = res.filter(item => item.marqueM.toLocaleLowerCase().includes(this.search.toLocaleLowerCase())|| item.descriptionA.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
             }
             return res;
         }

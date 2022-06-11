@@ -16,6 +16,9 @@
 
 <script>
 import menu__2 from "../../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 export default {
     components: {
         menu__2
@@ -51,10 +54,24 @@ export default {
             formData.append("photo", file);
             formData.append("libelleMateriel", this.form1.libelleMateriel);
             let res = await axios.post('/typemarteriels/create', formData);
-            if (res.data.status == 1)
+            if (res.data.status == 1){
+                Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Type matériel a été enregistrer!!!',
+                showConfirmButton: false,
+                timer: 2200
+            })
                 this.$router.push("/typemarteriels");
+            }
                 else
-            alert("Cet type exist déjà !!!!");
+                Swal.fire(
+                'Attention !',
+                'Ce type exist déjà!!!',
+                'warning'
+            )
+
+            // alert("Cet type exist déjà !!!!");
             // if (!window.confirm('Cet type exist déjà !!!!')) return;
         },
 

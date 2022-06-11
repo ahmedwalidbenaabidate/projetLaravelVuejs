@@ -23,7 +23,7 @@
     </div>
     <div>
         <label for="salaire" class="block">Salaire</label>
-        <input type="number" step="any" class="inp1" id="salaire" v-model="form1.salaire" required>
+        <input type="number" min="0" step="any" class="inp1" id="salaire" v-model="form1.salaire" required>
     </div>
     <div>
         <label for="type_salaire" class="block">Type salaire</label>

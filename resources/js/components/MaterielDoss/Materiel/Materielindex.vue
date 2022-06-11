@@ -88,6 +88,8 @@
 <script>
 import axios from "axios";
 import menu__ from "../../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 export default {
@@ -126,12 +128,35 @@ export default {
             return -1
         },
 
-        async destroyMateriel(id){
-             if (!window.confirm( 'Voullez vous supprimer cet materiel ?')) return;
+        async MethodAxios(id) {
             let pos = this.search__id(id);
             await axios.delete('/materiels/delete/' + id);
             
             this.materiels.splice(pos,1)
+
+        },
+
+        async destroyMateriel(id){
+            //  if (!window.confirm( 'Voullez vous supprimer cet materiel ?')) return;
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "Voulez vous vraîment supprimer ce matériel!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Supprime-le!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.MethodAxios(id),
+
+                        Swal.fire(
+                            'Supprimé!',
+                            'Matériel a été supprimé.',
+                            'success'
+                        )
+                }
+            })
         },
        
 

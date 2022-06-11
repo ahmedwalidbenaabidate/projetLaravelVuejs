@@ -19,6 +19,8 @@
 
 <script>
 import menu__2 from "../menu/menu.vue";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default {
     components: {
@@ -45,6 +47,13 @@ export default {
 
         async storeChantier(){
             await this.createChantier(this.form1);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Chantier a été enregistrer!!!',
+                showConfirmButton: false,
+                timer: 2200
+            })
             this.$router.push("/chantiers");
         },
 
