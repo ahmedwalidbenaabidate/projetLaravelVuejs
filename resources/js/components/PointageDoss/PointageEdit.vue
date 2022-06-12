@@ -53,7 +53,7 @@
                 </tr>
             </thead>
             <tbody>
-                <template v-for="employee,i in employees" :key="i">
+                <template v-for="employee,i in employees_filter" :key="i">
                     <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{employee.id_employee}}
@@ -90,7 +90,7 @@
                         <td class="px-6 py-4 text-right">
                             <!-- <button id="btnEnr" @click="create_pointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline">Enregistrer</button>  -->
                             <button id="rlinkEdit" @click="savePointage(i)" class="font-medium text-black-600 dark:text-black-500 hover:underline"><i class="bx bx-edit icon_table"></i>Modifier</button>
-                            <button id="btnSupp" @click="destroyPointage(employee.id,i)" class="font-medium text-black-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i>Supprimer</button>
+                            <button id="btnSupp" @click="destroyPointage(employee.id)" class="font-medium text-black-600 dark:text-black-500 hover:underline"><i class="bx bx-trash icon_table"></i>Supprimer</button>
                         </td>
                     </tr>
                 </template>
@@ -129,7 +129,7 @@
                 </tr>
             </thead>
             <tbody>
-                <template v-for="employee,i in employees" :key="i">
+                <template v-for="employee,i in employees_filter" :key="i">
                     <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{employee.id_employee}}
@@ -183,11 +183,21 @@ export default {
     data() {
         return {
             employees: [],
+            search: "",
         };
     },
 
+computed: {
+        employees_filter() {
+            let res = this.employees;
+            //   let searchBy = this.search.toLocaleLowerCase();
+            if (this.search.toLocaleLowerCase() != "") {
+                res = res.filter(item => item.nom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+            }
+            return res;
+        }
+    },
 
-    
     methods: {
         async getEmployee() {
 
@@ -237,12 +247,22 @@ export default {
             }
         },
 
+        search__id(id) {
+            let i = 0;
+
+            for (i = 0; i < this.employees.length; i++)
+                if (this.employees[i].id == id)
+                    return i
+            return -1
+        },
+
         async MethodAxios(id) {
             await axios.delete('/pointages/delete/' + id);
+            let pos = this.search__id(id);
             this.employees.splice(pos, 1)
         },
 
-        async destroyPointage(id, pos) {
+        async destroyPointage(id) {
             // if (!window.confirm('Voulez vous supprimer ce pointage ?')) return;
             
             Swal.fire({

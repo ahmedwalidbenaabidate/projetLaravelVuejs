@@ -28582,12 +28582,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      employees: []
+      employees: [],
+      search: ""
     };
+  },
+  computed: {
+    employees_filter: function employees_filter() {
+      var _this = this;
+
+      var res = this.employees; //   let searchBy = this.search.toLocaleLowerCase();
+
+      if (this.search.toLocaleLowerCase() != "") {
+        res = res.filter(function (item) {
+          return item.nom.toLocaleLowerCase().includes(_this.search.toLocaleLowerCase()) || item.prenom.toLocaleLowerCase().includes(_this.search.toLocaleLowerCase());
+        });
+      }
+
+      return res;
+    }
   },
   methods: {
     getEmployee: function getEmployee() {
-      var _this = this;
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var response;
@@ -28602,7 +28618,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context.sent;
 
                 if (response.data.status == 1) {
-                  _this.employees = response.data.data;
+                  _this2.employees = response.data.data;
                 }
 
               case 4:
@@ -28614,7 +28630,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     getEmployeeParDate: function getEmployeeParDate($date_pointage) {
-      var _this2 = this;
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var response;
@@ -28634,7 +28650,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context2.sent;
 
                 if (response.data.status == 1) {
-                  _this2.employees = response.data.data;
+                  _this3.employees = response.data.data;
                 }
 
                 _context2.next = 8;
@@ -28653,16 +28669,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     savePointage: function savePointage(i) {
-      var _this3 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                console.log(_this3.employees[i].remarque);
+                console.log(_this4.employees[i].remarque);
 
-                if (!(_this3.employees[i].presence === '' || _this3.employees[i].heurs_suppl === '' || _this3.employees[i].remarque == '')) {
+                if (!(_this4.employees[i].presence === '' || _this4.employees[i].heurs_suppl === '' || _this4.employees[i].remarque == '')) {
                   _context3.next = 5;
                   break;
                 }
@@ -28674,7 +28690,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
                 _context3.next = 7;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/pointages/update', _this3.employees[i]);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/pointages/update', _this4.employees[i]);
 
               case 7:
                 // alert("Modification à été bien fait");
@@ -28694,10 +28710,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
+    search__id: function search__id(id) {
+      var i = 0;
+
+      for (i = 0; i < this.employees.length; i++) {
+        if (this.employees[i].id == id) return i;
+      }
+
+      return -1;
+    },
     MethodAxios: function MethodAxios(id) {
-      var _this4 = this;
+      var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var pos;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -28706,9 +28732,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/pointages/delete/' + id);
 
               case 2:
-                _this4.employees.splice(pos, 1);
+                pos = _this5.search__id(id);
 
-              case 3:
+                _this5.employees.splice(pos, 1);
+
+              case 4:
               case "end":
                 return _context4.stop();
             }
@@ -28716,8 +28744,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    destroyPointage: function destroyPointage(id, pos) {
-      var _this5 = this;
+    destroyPointage: function destroyPointage(id) {
+      var _this6 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
@@ -28735,7 +28763,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   confirmButtonText: 'Oui, Supprime-le!'
                 }).then(function (result) {
                   if (result.isConfirmed) {
-                    _this5.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Pointage a été supprimé.', 'success');
+                    _this6.MethodAxios(id), sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Supprimé!', 'Pointage a été supprimé.', 'success');
                   }
                 }); //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
 
@@ -28748,7 +28776,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     export_: function export_() {
-      var _this6 = this;
+      var _this7 = this;
 
       // alert("ok");
       // this.exportTableToExcel("table_export", "test")
@@ -28762,7 +28790,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         confirmButtonText: 'Oui, Imprimer!'
       }).then(function (result) {
         if (result.isConfirmed) {
-          _this6.exportTableToExcel("table_export", "test");
+          _this7.exportTableToExcel("table_export", "test");
 
           sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire('Imprimé!', 'Votre fichier a été imprimé.', 'Succès');
         }
@@ -35078,13 +35106,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, _hoisted_8)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "search",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.search = $event;
+      return $data.search = $event;
     }),
     id: "search",
     placeholder: "Search..."
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.search]]), _hoisted_11])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.employees, function (employee, i) {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_11])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.employees_filter, function (employee, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: i,
       id: "trl1",
@@ -35138,7 +35166,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_33), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       id: "btnSupp",
       onClick: function onClick($event) {
-        return $options.destroyPointage(employee.id, i);
+        return $options.destroyPointage(employee.id);
       },
       "class": "font-medium text-black-600 dark:text-black-500 hover:underline"
     }, _hoisted_40, 8
@@ -35146,7 +35174,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_37)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" On ajoute cette table pour éviter le probléme de ne pas amenné tous les donnnées car dans la table\r\n        il y a des \"input\", Export amenné seulement les données exist dans la table sur td {{___.___}} "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ------------------------------- "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.employees, function (employee, i) {
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" On ajoute cette table pour éviter le probléme de ne pas amenné tous les donnnées car dans la table\r\n        il y a des \"input\", Export amenné seulement les données exist dans la table sur td {{___.___}} "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ------------------------------- "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.employees_filter, function (employee, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: i,
       id: "trl1",
