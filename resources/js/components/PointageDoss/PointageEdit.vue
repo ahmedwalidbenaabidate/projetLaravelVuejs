@@ -2,12 +2,21 @@
 <menu__2 />
 <div class="flex flex-col">
     <div class="DivRecherche">
+        
         <button @click="export_()" class="custom-btn btn-2" id="btn2Impr" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
         <!-- <input type="button" @click="export_()" class="custom-btn btn-2" value="export"  name="" id="imprimer"> -->
         <!-- <i class='bx bx-printer'></i> -->
         <input type="date" v-model="$datePP" style="background-color:rgb(214, 205, 228);" class="inp1" name="datePointage" id="dateP">
         <button id="btnRech" @click="getEmployeeParDate($datePP)" class="custom-btn btn-1"><i id="iRech" class='bx bx-search-alt'></i><i>Recherche</i></button>
+
     </div>
+
+        <div class="box" style="    margin-right: 40px;">
+            <div id="Cont4Rech" class="container-4">
+                <input type="search" v-model="search" id="search" placeholder="Search..." />
+                <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
@@ -176,6 +185,9 @@ export default {
             employees: [],
         };
     },
+
+
+    
     methods: {
         async getEmployee() {
 
@@ -331,8 +343,10 @@ export default {
 }
 
 #btnRech {
-    background-color: aqua;
+    /* background-color: aqua; */
     margin-left: 40px;
+    height: 81px;
+    width: 260px;
 }
 
 .inp1 {
@@ -341,7 +355,30 @@ export default {
 }
 
 .DivRecherche {
-    margin-left: 30%;
-    margin-bottom: 50px;
+    margin-left: 40%;
+    margin-bottom: 10px;
+}
+#Cont4Rech{
+    margin-top: -140px;
+    margin-bottom: 20px !important;
+    margin-left: 230px;
+    width: 430px;
+}
+#dateP{
+    height: 81px;
+}
+#btn2Impr{
+    height: 81px;
+    width: 220px;
+}
+#btnsearch{
+    margin-top: 40px;
+    height: 80px !important;
+}
+#search{
+    margin-top: 40px;
+    border-radius: 6px;
+    height: 80px !important;
+    width: 380px !important;
 }
 </style>

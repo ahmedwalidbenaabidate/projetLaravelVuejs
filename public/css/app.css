@@ -1389,6 +1389,7 @@ table .icon_table{
 #bgTrans{
   background-image: linear-gradient(rgb(0 0 0 / 10%),rgb(0 0 0 / 48%)) !important;
     background-color: transparent !important; 
+    width: 101%;
 }
 #sectStq{
   padding-top: 0px;
