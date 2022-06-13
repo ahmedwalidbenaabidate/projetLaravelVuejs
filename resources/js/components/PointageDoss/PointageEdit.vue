@@ -77,14 +77,14 @@
                         </td>
                         <td class="px-6 py-4">
                             <!-- <input type="number" v-model="list_create_pointage[i].heurs_suppl" min="0" class="inp1"> -->
-                            <input type="number" v-model="employee.heurs_suppl" min="0" class="inp1">
+                            <input id="inp1" type="number" v-model="employee.heurs_suppl" min="0" max="24" class="inp1">
                         </td>
                         <td class="px-6 py-4">
                             <textarea class="inp1" v-model="employee.remarque" name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Remarque"></textarea>
                         </td>
                         <td class="px-6 py-4">
                             <!-- <input type="date" class="inp1" v-model="list_create_pointage[i].date_pointage"> -->
-                            <label for="dateP">{{employee.date_pointage}}</label>
+                            <label for="dateP" id="lb11">{{employee.date_pointage}}</label>
                         </td>
 
                         <td class="px-6 py-4 text-right">
@@ -400,5 +400,9 @@ computed: {
     border-radius: 6px;
     height: 80px !important;
     width: 380px !important;
+}
+
+#inp1{
+    width: 200px;
 }
 </style>

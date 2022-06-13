@@ -295,3 +295,10 @@ table {
   color: #fa7167;
 }
 /* ----------------------------- */
+#txtare1{
+  background: #f7f6f6d8 !important;
+}
+#lb11{
+  width: 100px;
+  display: inline-block;
+}

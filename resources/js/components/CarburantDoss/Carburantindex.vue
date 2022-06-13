@@ -70,7 +70,8 @@
                             <div v-text="carburant.dateC"></div>
                         </td>
                         <td class="px-6 py-4">
-                            <div v-text="carburant.observation"></div>
+                            <!-- <div v-text="carburant.observation"></div> -->
+                            <textarea class="inp1" v-model="carburant.observation" disabled name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Observation" required></textarea>
                         </td>
 
                         <td class="px-6 py-4 text-right">
@@ -188,4 +189,5 @@ export default {
 #trl1 {
     text-align: center;
 }
+
 </style>

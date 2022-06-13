@@ -30666,7 +30666,7 @@ var _hoisted_12 = {
   scope: "row",
   "class": "px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
 };
-var _hoisted_13 = ["textContent"];
+var _hoisted_13 = ["onUpdate:modelValue"];
 var _hoisted_14 = {
   scope: "row",
   "class": "px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
@@ -30783,11 +30783,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: i,
       id: "trl1",
       "class": "bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(administratif.descriptionA)
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-text=\"administratif.descriptionA\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+      "class": "inp1",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return administratif.descriptionA = $event;
+      },
+      disabled: "",
+      name: "textarea1",
+      id: "txtare1",
+      cols: "30",
+      rows: "4",
+      placeholder: "Observation",
+      required: ""
     }, null, 8
     /* PROPS */
-    , _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, administratif.descriptionA]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(administratif.marqueM)
     }, null, 8
     /* PROPS */
@@ -31779,7 +31789,7 @@ var _hoisted_23 = ["textContent"];
 var _hoisted_24 = {
   "class": "px-6 py-4"
 };
-var _hoisted_25 = ["textContent"];
+var _hoisted_25 = ["onUpdate:modelValue"];
 var _hoisted_26 = {
   "class": "px-6 py-4 text-right"
 };
@@ -31852,11 +31862,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(carburant.dateC)
     }, null, 8
     /* PROPS */
-    , _hoisted_23)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(carburant.observation)
+    , _hoisted_23)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-text=\"carburant.observation\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+      "class": "inp1",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return carburant.observation = $event;
+      },
+      disabled: "",
+      name: "textarea1",
+      id: "txtare1",
+      cols: "30",
+      rows: "4",
+      placeholder: "Observation",
+      required: ""
     }, null, 8
     /* PROPS */
-    , _hoisted_25)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'carburants.edit', params:{id: carburant.id}}\" id=\"rlinkEdit\" class=\"font-medium text-blue-600 dark:text-blue-500 hover:underline\">Modifier</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_25), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, carburant.observation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'carburants.edit', params:{id: carburant.id}}\" id=\"rlinkEdit\" class=\"font-medium text-blue-600 dark:text-blue-500 hover:underline\">Modifier</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return _ctx.$router.push('/carburants/' + carburant.id + '/edit');
       },
@@ -32683,7 +32703,7 @@ var _hoisted_12 = {
   scope: "row",
   "class": "px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
 };
-var _hoisted_13 = ["textContent"];
+var _hoisted_13 = ["onUpdate:modelValue"];
 var _hoisted_14 = {
   scope: "row",
   "class": "px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
@@ -32784,11 +32804,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: i,
       id: "trl1",
       "class": "bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(depense.description)
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-text=\"depense.description\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+      "class": "inp1",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return depense.description = $event;
+      },
+      disabled: "",
+      name: "textarea1",
+      id: "txtare1",
+      cols: "30",
+      rows: "4",
+      placeholder: "Observation",
+      required: ""
     }, null, 8
     /* PROPS */
-    , _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, depense.description]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(depense.reference)
     }, null, 8
     /* PROPS */
@@ -33441,7 +33471,8 @@ var _hoisted_26 = {
   "class": "px-6 py-4"
 };
 var _hoisted_27 = {
-  key: 0
+  key: 0,
+  id: "lb11"
 };
 var _hoisted_28 = {
   key: 1
@@ -34966,7 +34997,8 @@ var _hoisted_30 = {
   "class": "px-6 py-4"
 };
 var _hoisted_31 = {
-  "for": "dateP"
+  "for": "dateP",
+  id: "lb11"
 };
 var _hoisted_32 = {
   "class": "px-6 py-4 text-right"
@@ -35133,11 +35165,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, _hoisted_25, 8
     /* PROPS */
     , _hoisted_20), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, employee.presence]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"number\" v-model=\"list_create_pointage[i].heurs_suppl\" min=\"0\" class=\"inp1\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      id: "inp1",
       type: "number",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return employee.heurs_suppl = $event;
       },
       min: "0",
+      max: "24",
       "class": "inp1"
     }, null, 8
     /* PROPS */
@@ -50283,7 +50317,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#rlink1 {\r\n    background-color: aqua;\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#L1 {\r\n    color: blue;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#rlink1 {\r\n    background-color: aqua;\n}\n#rlinkEdit {\r\n    margin-right: 20px;\n}\n#btnSupp {\r\n    margin-left: 10px;\n}\n#L1 {\r\n    color: blue;\n}\n#trl1 {\r\n    text-align: center;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50691,7 +50725,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#btnEnr[data-v-d807f1da] {\r\n    background-color: lime;\r\n    color: black;\r\n    border-radius: 8px;\r\n    font-size: 18px;\r\n    width: 85px;\r\n    margin-bottom: 20px;\r\n    margin-left: 10px;\n}\n#btnRech[data-v-d807f1da] {\r\n    /* background-color: aqua; */\r\n    margin-left: 40px;\r\n    height: 81px;\r\n    width: 260px;\n}\n.inp1[data-v-d807f1da] {\r\n    border-radius: 10px;\n}\n.DivRecherche[data-v-d807f1da] {\r\n    margin-left: 40%;\r\n    margin-bottom: 10px;\n}\n#Cont4Rech[data-v-d807f1da]{\r\n    margin-top: -140px;\r\n    margin-bottom: 20px !important;\r\n    margin-left: 230px;\r\n    width: 430px;\n}\n#dateP[data-v-d807f1da]{\r\n    height: 81px;\n}\n#btn2Impr[data-v-d807f1da]{\r\n    height: 81px;\r\n    width: 220px;\n}\n#btnsearch[data-v-d807f1da]{\r\n    margin-top: 40px;\r\n    height: 80px !important;\n}\n#search[data-v-d807f1da]{\r\n    margin-top: 40px;\r\n    border-radius: 6px;\r\n    height: 80px !important;\r\n    width: 380px !important;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#btnEnr[data-v-d807f1da] {\r\n    background-color: lime;\r\n    color: black;\r\n    border-radius: 8px;\r\n    font-size: 18px;\r\n    width: 85px;\r\n    margin-bottom: 20px;\r\n    margin-left: 10px;\n}\n#btnRech[data-v-d807f1da] {\r\n    /* background-color: aqua; */\r\n    margin-left: 40px;\r\n    height: 81px;\r\n    width: 260px;\n}\n.inp1[data-v-d807f1da] {\r\n    border-radius: 10px;\n}\n.DivRecherche[data-v-d807f1da] {\r\n    margin-left: 40%;\r\n    margin-bottom: 10px;\n}\n#Cont4Rech[data-v-d807f1da]{\r\n    margin-top: -140px;\r\n    margin-bottom: 20px !important;\r\n    margin-left: 230px;\r\n    width: 430px;\n}\n#dateP[data-v-d807f1da]{\r\n    height: 81px;\n}\n#btn2Impr[data-v-d807f1da]{\r\n    height: 81px;\r\n    width: 220px;\n}\n#btnsearch[data-v-d807f1da]{\r\n    margin-top: 40px;\r\n    height: 80px !important;\n}\n#search[data-v-d807f1da]{\r\n    margin-top: 40px;\r\n    border-radius: 6px;\r\n    height: 80px !important;\r\n    width: 380px !important;\n}\n#inp1[data-v-d807f1da]{\r\n    width: 200px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -75,7 +75,7 @@
                             <div v-text="employee.type_salaire"></div>
                         </td>
                         <td class="px-6 py-4">
-                            <div  v-if="employee.permisDate">{{employee.permisDate}}</div>
+                            <div id="lb11" v-if="employee.permisDate">{{employee.permisDate}}</div>
                             <div  v-else>Sans permis</div>
 
                         </td>

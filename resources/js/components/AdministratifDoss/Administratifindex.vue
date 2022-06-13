@@ -41,7 +41,8 @@
                 <template v-for="administratif,i in documents_filter" :key="i">
                     <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                            <div v-text="administratif.descriptionA"></div>
+                            <!-- <div v-text="administratif.descriptionA"></div> -->
+                            <textarea class="inp1" v-model="administratif.descriptionA" disabled name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Observation" required></textarea>
                         </th>
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
