@@ -1,6 +1,6 @@
 <template>
 <menu__2 />
-<div class="flex flex-col">
+<div v-if="load" class="flex flex-col">
     <!-- <div class="flex ">
         <router-link :to="{name: 'affectationMateriels.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un pointage</router-link>
     </div> -->
@@ -18,7 +18,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-if="affectMats_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -84,6 +84,22 @@
                 </template>
             </tbody>
         </table>
+        <!-- ----------------Image-- pour afficher que les données pas trouver---------------------- -->
+        <div v-else>
+            <div v-if="!affectMats.length" id="divImgLab">
+                <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                <p id="paraRech1">Aucune données</p>
+            </div>
+            <div v-else>
+                <div id="divImgLab">
+
+                    <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                    <p id="paraRech1">Aucune données commencer par: <b id="lb1"> {{search}} </b></p>
+                </div>
+            </div>
+
+        </div>
+        <!-- ------------------------------------ -->
     </div>
 </div>
 </template>
@@ -102,6 +118,7 @@ export default {
         return {
             affectMats: [],
             search: '',
+            load: false
         };
     },
     computed: {
@@ -115,8 +132,8 @@ export default {
         }
     },
     methods: {
-      async  Axios_SaveStatut(index){
-          await axios.post('/affectationMateriels/update', this.affectMats[index]);
+        async Axios_SaveStatut(index) {
+            await axios.post('/affectationMateriels/update', this.affectMats[index]);
 
         },
         async saveStatut(id) {
@@ -140,7 +157,6 @@ export default {
                     }
                     this.Axios_SaveStatut(index);
 
-
                     // alert("Le pointage matériel à été fait avec succes");
                     // ----------------------------//
                     Swal.fire(
@@ -151,15 +167,14 @@ export default {
                 }
             })
 
-            
-
         },
 
         async getAffectationM() {
 
             let response = await axios.get('affectationMateriels/all');
             if (response.data.status == 1)
-                this.affectMats = response.data.data
+                this.load = true
+            this.affectMats = response.data.data
         },
         search__id(id) {
             let i = 0;
@@ -174,7 +189,7 @@ export default {
             let pos = this.search__id(id)
             await axios.delete('/affectationMateriels/delete/' + id);
             this.affectMats.splice(pos, 1)
-        },  
+        },
 
         async destroyAffectationM(id) {
             // if (!window.confirm('Supprimer cette affectation de matériel?')) return;
@@ -198,7 +213,7 @@ export default {
                         )
                 }
             })
-            
+
             //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
         },
 

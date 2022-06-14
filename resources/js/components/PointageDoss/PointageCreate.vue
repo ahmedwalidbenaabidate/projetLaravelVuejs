@@ -1,6 +1,6 @@
 <template>
 <menu__2 />
-<div class="flex flex-col" v-if="list_create_pointage.length">
+<div class="flex flex-col" v-if="list_create_pointage.length && load">
     <!-- <div class="flex ">
         <router-link :to="{name: 'pointages.edit'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Modifier Pointage</router-link>
     </div> -->
@@ -18,7 +18,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-if="employees_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -97,7 +97,22 @@
                 </template>
             </tbody>
         </table>
+            <!-- ----------------Image-- pour afficher que les données pas trouver---------------------- -->
+        <div v-else>
+            <div v-if="!employees.length" id="divImgLab">
+                <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                <p id="paraRech1">Aucune données</p>
+            </div>
+            <div v-else>
+                <div id="divImgLab">
+                    
+                    <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                     <p id="paraRech1">Aucune données commencer par: <b id="lb1"> {{search}} </b></p>   
+                </div>
+            </div>
 
+        </div>
+        <!-- ------------------------------------ -->
     </div>
 </div>
 </template>
@@ -117,6 +132,7 @@ export default {
         return {
             employees: [],
             search: '',
+            load: false,
             list_create_pointage: [],
             Object_pointage: {
                 //date_pointage: '',
@@ -147,6 +163,7 @@ export default {
 
             let response = await axios.get('/pointages/allAbs');
             if (response.data.status == 1) {
+                this.load = true
                 this.employees = response.data.data
                 let i = 0;
                 for (i = 0; i < this.employees.length; i++) {

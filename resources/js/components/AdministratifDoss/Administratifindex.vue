@@ -65,9 +65,9 @@
             </tbody>
         </table>
         <div v-else>
-            <div v-if="!administratifs.length">
+            <div v-if="!administratifs.length" id="divImgLab">
                 <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
-                <p>Aucune données</p>
+                <p id="paraRech1">Aucune données</p>
             </div>
             <div v-else>
                 <div id="divImgLab">

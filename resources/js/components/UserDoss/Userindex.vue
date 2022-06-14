@@ -1,5 +1,6 @@
 <template>
-<div class="flex flex-col">
+<menu__2 />
+<div v-if="load" class="flex flex-col">
     <div class="flex " id="divCreer">
 
         <div class="box" style="    margin-right: 40px;">
@@ -13,8 +14,8 @@
 
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
-        <menu__2 />
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        
+        <table v-if="users_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -49,6 +50,22 @@
                 </template>
             </tbody>
         </table>
+        <!-- ----------------Image-- pour afficher que les données pas trouver---------------------- -->
+        <div v-else>
+            <div v-if="!users.length" id="divImgLab">
+                <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                <p id="paraRech1">Aucune données</p>
+            </div>
+            <div v-else>
+                <div id="divImgLab">
+                    
+                    <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                     <p id="paraRech1">Aucune données commencer par: <b id="lb1"> {{search}} </b></p>   
+                </div>
+            </div>
+
+        </div>
+        <!-- ------------------------------------ -->
     </div>
 </div>
 </template>
@@ -67,6 +84,7 @@ export default {
         return {
             users: [],
             search: "",
+            load: false
         };
     },
     computed: {
@@ -84,7 +102,8 @@ export default {
 
             let response = await axios.get('/users/all');
             if (response.data.status == 1)
-                this.users = response.data.data
+                this.load = true
+            this.users = response.data.data
         },
         search__id(id) {
             let i = 0;

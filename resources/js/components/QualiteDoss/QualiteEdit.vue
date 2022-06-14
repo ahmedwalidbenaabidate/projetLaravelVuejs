@@ -75,6 +75,7 @@ export default {
                     showConfirmButton: false,
                     timer: 2200
                 })
+                this.$router.push("/qualites")
 
         },
 

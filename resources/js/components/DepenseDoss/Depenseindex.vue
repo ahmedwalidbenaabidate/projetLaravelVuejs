@@ -1,6 +1,6 @@
 <template>
 <menu__2 />
-<div class="flex flex-col">
+<div v-if="load" class="flex flex-col">
     <!-- <div class="flex ">
         <router-link :to="{name: 'depenses.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter des dépenses</router-link>
     </div> -->
@@ -18,7 +18,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-if="depenses_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -93,6 +93,22 @@
                 </template>
             </tbody>
         </table>
+        <!-- ----------------Image-- pour afficher que les données pas trouver---------------------- -->
+        <div v-else>
+            <div v-if="!depenses.length" id="divImgLab">
+                <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                <p id="paraRech1">Aucune données</p>
+            </div>
+            <div v-else>
+                <div id="divImgLab">
+                    
+                    <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                     <p id="paraRech1">Aucune données commencer par: <b id="lb1"> {{search}} </b></p>   
+                </div>
+            </div>
+
+        </div>
+        <!-- ------------------------------------ -->
     </div>
 </div>
 </template>
@@ -111,6 +127,7 @@ export default {
         return {
             depenses: [],
             search: "",
+            load: false
         };
     },
     computed: {
@@ -128,6 +145,7 @@ export default {
 
             let response = await axios.get('/depenses/all');
             if (response.data.status == 1)
+            this.load = true
                 this.depenses = response.data.data
 
         },
