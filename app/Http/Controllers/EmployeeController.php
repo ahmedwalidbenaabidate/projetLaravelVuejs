@@ -33,6 +33,7 @@ class EmployeeController extends Controller
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'adresse' => $request->adresse,
+            'tele' => $request->tele,
             'cin' => $request->cin,
             'salaire' => $request->salaire,
             'type_salaire' => $request->type_salaire,

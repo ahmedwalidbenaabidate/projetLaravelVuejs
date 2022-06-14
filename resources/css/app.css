@@ -302,3 +302,9 @@ table {
   width: 100px;
   display: inline-block;
 }
+
+#btn2ImprEmployee{
+  margin-right: 30px;
+  width: 250px;
+  height: 81px;
+}

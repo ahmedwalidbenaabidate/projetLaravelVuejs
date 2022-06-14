@@ -2,7 +2,8 @@
 <menu__2 />
 <div v-if="load" class="flex flex-col">
     <div class="flex " id="divCreer">
-
+        <button @click="export_()" class="custom-btn btn-2" id="btn2ImprEmployee" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
+            <!-- @click="export_()" -->
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Search..." />
@@ -15,7 +16,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
         
-        <table v-if="employees_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-if="employees_filter.length" id="table_exportEMP" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -29,6 +30,9 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Adresse
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Téléphone
                     </th>
                     <th scope="col" class="px-6 py-3">
                         CIN
@@ -66,6 +70,9 @@
                             <div v-text="employee.adresse"></div>
                         </td>
                         <td class="px-6 py-4">
+                            <div v-text="employee.tele"></div>
+                        </td>
+                        <td class="px-6 py-4">
                             <div v-text="employee.cin"></div>
                         </td>
                         <td class="px-6 py-4">
@@ -93,6 +100,7 @@
                 </template>
             </tbody>
         </table>
+        <!-- ----------------Image-- pour afficher que les données pas trouver---------------------- -->
         <div v-else>
             <div v-if="!employees.length">
                 <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
@@ -107,6 +115,7 @@
             </div>
 
         </div>
+        <!-- ------------------------------------ -->
     </div>
 </div>
 </template>
@@ -192,6 +201,61 @@ export default {
 
             //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve cet employée
         },
+
+        export_() {
+            // alert("ok");
+            // this.exportTableToExcel("table_export", "test")
+
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "voulez vous imprimer cette liste!",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Imprimer!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.exportTableToExcel("table_exportEMP", "test")
+                    Swal.fire(
+                        'Imprimé!',
+                        'Votre fichier a été imprimé.',
+                        'success'
+                    )
+                }
+            })
+
+        },
+        exportTableToExcel(tableID, filename = '') {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+        }
 
     },
     mounted() {
@@ -297,6 +361,7 @@ export default {
 .container-4:hover button.icon:hover {
     background: white;
 }
+
 
 /* ---------------------------------- */
 /* #divCreer{

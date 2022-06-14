@@ -1422,6 +1422,11 @@ table .icon_table{
   width: 100px;
   display: inline-block;
 }
+#btn2ImprEmployee{
+  margin-right: 30px;
+  width: 250px;
+  height: 81px;
+}
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));

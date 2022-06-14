@@ -18,6 +18,10 @@
         <input type="text" class="inp1" id="adresse" v-model="form1.adresse" required>
     </div>
     <div>
+        <label for="tele" class="block">Téléphone</label>
+        <input type="text" class="inp1" id="tele" v-model="form1.tele" pattern="^0[0-9]{9}" required>
+    </div>
+    <div>
         <label for="cin" class="block">CIN</label>
         <input type="text" class="inp1" id="cin" v-model="form1.cin" required>
     </div>
@@ -42,8 +46,8 @@
         </select>
     </div>
     <div>
-        <label for="permisDate" class="block">        <input type="checkbox" v-model="SansPermis" id=""> 
-Date du permis</label>
+        <label for="permisDate" class="block"> <input type="checkbox" v-model="SansPermis" id="">
+            Date du permis</label>
 
         <div>
             <input type="date" class="inp1" id="permisDate" :disabled="!SansPermis" v-model="form1.permisDate">
@@ -80,6 +84,7 @@ export default {
                 nom: '',
                 prenom: '',
                 adresse: '',
+                tele: '',
                 cin: '',
                 salaire: '',
                 type_salaire: '',
@@ -91,8 +96,8 @@ export default {
     },
     watch: {
         SansPermis(value) {
-           if(!value)
-             this.form1.permisDate= ''
+            if (!value)
+                this.form1.permisDate = ''
         }
     },
 

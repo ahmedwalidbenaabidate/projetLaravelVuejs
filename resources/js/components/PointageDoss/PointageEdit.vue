@@ -306,7 +306,7 @@ computed: {
                     Swal.fire(
                         'Imprimé!',
                         'Votre fichier a été imprimé.',
-                        'Succès'
+                        'success'
                     )
                 }
             })

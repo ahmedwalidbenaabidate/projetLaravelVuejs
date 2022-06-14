@@ -18,6 +18,10 @@
         <input type="text" class="inp1" id="adresse" v-model="employee.adresse" required>
     </div>
     <div>
+        <label for="tele" class="block">Téléphone</label>
+        <input type="text" class="inp1" id="tele" v-model="employee.tele" required>
+    </div>
+    <div>
         <label for="cin" class="block">CIN</label>
         <input type="text" class="inp1" id="cin" v-model="employee.cin" required>
     </div>
