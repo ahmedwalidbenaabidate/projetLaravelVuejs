@@ -30419,7 +30419,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -30898,7 +30898,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -31437,7 +31437,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -32051,7 +32051,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -32484,7 +32484,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -33121,7 +33121,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -33959,7 +33959,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_8])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -34602,7 +34602,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -35008,7 +35008,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -35303,7 +35303,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -35764,7 +35764,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_11])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [$options.employees_filter.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.employees_filter, function (employee, i) {
@@ -36141,7 +36141,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -36559,7 +36559,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.search = $event;
     }),
     id: "search",
-    placeholder: "Search..."
+    placeholder: "Chercher..."
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name: 'employees.create'}\" id=\"rlink11\" class=\"bg-green-500  px-2 py-1 text-balck  rounded\">Créer un employé</router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -75470,7 +75470,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       searchPlaceholder: {
         type: String,
-        default: 'Search...',
+        default: 'Chercher...',
       },
       searchTooltip: {
         type: String,

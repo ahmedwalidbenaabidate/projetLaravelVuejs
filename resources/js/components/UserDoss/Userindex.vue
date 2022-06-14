@@ -5,7 +5,7 @@
 
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
-                <input type="search" v-model="search" id="search" placeholder="Search..." />
+                <input type="search" v-model="search" id="search" placeholder="Chercher..." />
                 <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
             </div>
         </div>
