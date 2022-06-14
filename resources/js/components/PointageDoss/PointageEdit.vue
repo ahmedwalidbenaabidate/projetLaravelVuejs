@@ -1,6 +1,6 @@
 <template>
 <menu__2 />
-<div class="flex flex-col">
+<div v-if="load" class="flex flex-col">
     <div class="DivRecherche">
         
         <button @click="export_()" class="custom-btn btn-2" id="btn2Impr" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
@@ -20,7 +20,7 @@
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-if="employees_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -96,6 +96,25 @@
                 </template>
             </tbody>
         </table>
+        <!-- ------------------------------------------------- -->
+            <!-- ----------------Image-- pour afficher que les données pas trouver---------------------- -->
+        <div v-else>
+            <div v-if="!employees.length">
+                <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                <p>Aucune données</p>
+            </div>
+            <div v-else>
+                <div id="divImgLab">
+                    
+                    <img id="imgRech1" src="/storage/images/Rech1.png" alt="Vide">
+                     <p id="paraRech1">Aucune données commencer par: <b id="lb1"> {{search}} </b></p>   
+                </div>
+            </div>
+
+        </div>
+        <!-- ------------------------------------ -->
+        <!-- ---------------------------------------------- -->
+
         <!-- On ajoute cette table pour éviter le probléme de ne pas amenné tous les donnnées car dans la table
         il y a des "input", Export amenné seulement les données exist dans la table sur td {{___.___}} -->
         <!-- ------------------------------- -->
@@ -165,6 +184,7 @@
             </tbody>
         </table>
         <!-- --------------------------------------------------------------- -->
+        
 
     </div>
 </div>
@@ -184,6 +204,7 @@ export default {
         return {
             employees: [],
             search: "",
+            load: false
         };
     },
 
@@ -203,6 +224,7 @@ computed: {
 
             let response = await axios.get('/pointages/all');
             if (response.data.status == 1) {
+                this.load = true
                 this.employees = response.data.data
             }
         },
