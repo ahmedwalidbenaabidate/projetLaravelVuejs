@@ -3,7 +3,6 @@
 <div v-if="load" class="flex flex-col">
     <div class="flex " id="divCreer">
         <button @click="export_()" class="custom-btn btn-2" id="btn2ImprEmployee" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
-            <!-- @click="export_()" -->
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Chercher..." />

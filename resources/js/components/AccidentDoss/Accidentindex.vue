@@ -5,7 +5,7 @@
         <router-link :to="{name: 'accidents.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter un accident</router-link>
     </div> -->
     <div class="flex " id="divCreer">
-    
+        <button @click="export_()" class="custom-btn btn-2" id="btn2ImprEmployee" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Chercher..." />
@@ -100,6 +100,58 @@
 
         </div>
         <!-- ------------------------------------ -->
+        <!-- ------------------------------------ -->
+
+        <table v-show="false" v-if="accidents_filter.length" id="table_exportACC" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Description
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Reference employee
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Nom employee
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Prenom employee
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Date d'accident
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Materiel
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="accident,i in accidents_filter" :key="i">
+                    <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="accident.description"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="accident.reference"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="accident.nom"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="accident.prenom"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="accident.dateA"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="accident.marqueM"></div>
+                        </th>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <!-- ------------------------------------ -->
 
     </div>
 </div>
@@ -181,6 +233,62 @@ export default {
                 }
             })
         },
+        
+        export_() {
+            // alert("ok");
+            // this.exportTableToExcel("table_export", "test")
+
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "voulez vous imprimer cette liste!",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Imprimer!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.exportTableToExcel("table_exportACC", "test")
+                    Swal.fire(
+                        'Imprimé!',
+                        'Votre fichier a été imprimé.',
+                        'success'
+                    )
+                }
+            })
+
+        },
+        exportTableToExcel(tableID, filename = '') {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+        },
+        //-----------------------------------------------------------------------
 
         afficherDocument(u) {
             window.open(u)

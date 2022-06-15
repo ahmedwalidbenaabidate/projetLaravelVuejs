@@ -5,7 +5,7 @@
         <router-link :to="{name: 'depenses.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Ajouter des dépenses</router-link>
     </div> -->
     <div class="flex " id="divCreer">
-
+        <button @click="export_()" class="custom-btn btn-2" id="btn2ImprEmployee" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Chercher..." />
@@ -109,6 +109,66 @@
 
         </div>
         <!-- ------------------------------------ -->
+        <!-- ------------------------------------ -->
+
+        <table v-show="false" v-if="depenses_filter.length" id="table_exportDEP" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Description depenses
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Reference employee
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Nom employee
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Prenom employee
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Date depenses
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Materiel
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Total T.T.C <b id="L1"> (Dhs)</b>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="depense,i in depenses_filter" :key="i">
+                    <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            {{depense.description}}
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="depense.reference"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="depense.nom"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="depense.prenom"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="depense.dateDepense"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <!-- pour afficher sur le tableau des dépenses "Autre dépenses si le id_materiel dans la base de données égale à -1" -->
+                            <div v-if="depense.id_materiel==-1"> Autre depenses</div>
+                            <div v-else v-text="depense.marqueM"></div>
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="depense.totalTCC"></div>
+                        </th>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <!-- ------------------------------------ -->
     </div>
 </div>
 </template>
@@ -187,7 +247,63 @@ export default {
             })
             
         },
+        export_() {
+            // alert("ok");
+            // this.exportTableToExcel("table_export", "test")
 
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "voulez vous imprimer cette liste!",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Imprimer!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.exportTableToExcel("table_exportDEP", "test")
+                    Swal.fire(
+                        'Imprimé!',
+                        'Votre fichier a été imprimé.',
+                        'success'
+                    )
+                }
+            })
+
+        },
+        exportTableToExcel(tableID, filename = '') {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+        },
+
+
+        // -----------------------------------
         afficherDocument(u) {
             window.open(u)
         },

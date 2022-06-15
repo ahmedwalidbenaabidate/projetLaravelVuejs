@@ -5,7 +5,7 @@
         <router-link :to="{name: 'carburants.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un remplissage</router-link>
     </div> -->
     <div class="flex " id="divCreer">
-
+        <button @click="export_()" class="custom-btn btn-2" id="btn2ImprEmployee" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
         <div class="box" style="    margin-right: 40px;">
             <div class="container-4">
                 <input type="search" v-model="search" id="search" placeholder="Chercher..." />
@@ -18,7 +18,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
 
-        <table v-if="carburants_filter.length" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table v-if="carburants_filter.length"  class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -99,6 +99,65 @@
 
         </div>
         <!-- ------------------------------------ -->
+        <!-- ------------------------------------ -->
+            <table v-show="false" v-if="carburants_filter.length" id="table_exportCARB" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        MARQUE MATERIEL
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        TYPE MATERIEL
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        ETAT MATERIEL
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        QUANTITE DE CARBURANT<b id="L1"> (Litre)</b>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        TYPE CARBURANT
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        DATE DE REMPLISSAGE
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        OBSERVATIONS
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-for="carburant,i in carburants_filter" :key="i">
+                    <tr id="trl1" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <div v-text="carburant.marqueM"></div>
+                        </th>
+                        <td class="px-6 py-4">
+                            <div v-text="carburant.libelleMateriel"></div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div v-text="carburant.etatM"></div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div v-text="carburant.quantiteC"></div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div v-text="carburant.typeC"></div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div v-text="carburant.dateC"></div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <!-- <div v-text="carburant.observation"></div> -->
+                            <!-- <textarea class="inp1" v-model="carburant.observation" disabled name="textarea1" id="txtare1" cols="30" rows="4" placeholder="Observation" required></textarea> -->
+                            {{carburant.observation}}
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <!-- ------------------------------------ -->
     </div>
 </div>
 </template>
@@ -177,6 +236,61 @@ export default {
             })
             //pos c'est l'index du ligne sur le tableau d'affichage(html) et le 1 est pour combien de fois se trouve ce carburant
         },
+
+        export_() {
+            // alert("ok");
+            // this.exportTableToExcel("table_export", "test")
+
+            Swal.fire({
+                title: 'Êtes-vous sûr?',
+                text: "voulez vous imprimer cette liste!",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, Imprimer!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.exportTableToExcel("table_exportCARB", "test")
+                    Swal.fire(
+                        'Imprimé!',
+                        'Votre fichier a été imprimé.',
+                        'success'
+                    )
+                }
+            })
+
+        },
+        exportTableToExcel(tableID, filename = '') {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+        }
 
     },
     mounted() {
