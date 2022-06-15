@@ -70,6 +70,7 @@ Route::delete('/accidents/delete/{id}', "App\Http\Controllers\AccidentController
 
 //Route AffectationMateriel-----------------------------------
 Route::get('/affectationMateriels/all', "App\Http\Controllers\AffectationMaterielController@index");
+Route::get('/affectationMateriels/allPOINTDate/{date_pointage}', "App\Http\Controllers\AffectationMaterielController@indexAfficherPointParDate");
 Route::post('/affectationMateriels/create', "App\Http\Controllers\AffectationMaterielController@create");
 Route::get('/affectationMateriels/get/{id}', "App\Http\Controllers\AffectationMaterielController@show");
 Route::post('/affectationMateriels/update', "App\Http\Controllers\AffectationMaterielController@update");

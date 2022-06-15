@@ -1,14 +1,16 @@
 <template>
 <menu__2 />
-<div v-if="load" class="flex flex-col">
+<div v-if="load" id="affectGLdiv" class="flex flex-col">
     <!-- <div class="flex ">
         <router-link :to="{name: 'affectationMateriels.create'}" id="rlink1" class="bg-green-500  px-2 py-1 text-balck  rounded">Créer un pointage</router-link>
     </div> -->
     <div class="flex " id="divCreer">
         <button @click="export_()" class="custom-btn btn-2" id="btn2ImprEmployee" value="export"><i id="iImpri" class='bx bx-printer'></i><i>Imprimer</i> </button>
+        <input type="date" v-model="$datePP" style="background-color:rgb(214, 205, 228);" class="inp1" name="datePointage" id="dateP">
+        <button id="btnRech" @click="getPointageParDate($datePP)" class="custom-btn btn-1"><i id="iRech" class='bx bx-search-alt'></i><i>Recherche</i></button>
         <div class="box" style="    margin-right: 40px;">
-            <div class="container-4">
-                <input type="search" v-model="search" id="search" placeholder="Chercher..." />
+            <div id="divAffect" class="container-4">
+                <input type="search" class="search1" v-model="search" id="search" placeholder="Chercher..." />
                 <button class="icon" id="btnsearch"><i class="fa fa-search"></i></button>
             </div>
         </div>
@@ -236,6 +238,26 @@ export default {
                 this.load = true
             this.affectMats = response.data.data
         },
+        // -----------------------------------
+
+        async getPointageParDate($date_pointage) {
+            if ($date_pointage) {
+                let response = await axios.get('/affectationMateriels/allPOINTDate/' + $date_pointage);
+                if (response.data.status == 1) {
+                    this.load = true
+                    this.affectMats = response.data.data
+                }
+            } else
+                // alert("Veuillez choisir une date");
+                Swal.fire(
+                    'Attention !',
+                    'Veuillez choisir une date!!!',
+                    'info'
+                )
+        },
+
+
+        // ------------------------------
         search__id(id) {
             let i = 0;
 
@@ -390,5 +412,20 @@ export default {
 
 #trl1 {
     text-align: center;
+}
+#divAffect #search{
+    width: 350px !important;        
+}
+#divCreer #divAffect {
+    width: 350px !important;
+    margin-left: 30px;
+}
+#affectGLdiv #btnRech {
+    width: 250px;
+    height: 78px;
+    margin-left: 30px;
+}
+#affectGLdiv #dateP{
+    height: 80px;
 }
 </style>

@@ -24,6 +24,21 @@ class AffectationMaterielController extends Controller
         ]);
     }
 
+
+    public function indexAfficherPointParDate($date_pointage)
+    {
+        $data = AffectationMateriel::join("employees","employees.id","=","affectation_materiels.id_employee")
+        ->join("materiels","affectation_materiels.id_materiel","=","materiels.id")
+        ->select("affectation_materiels.id","reference","nom","prenom","date_debut","date_fin","marqueM","statut")
+        ->where("date_debut","=","$date_pointage")
+        ->latest("affectation_materiels.created_at")
+        ->get();
+          return \response()->json([
+            "data"=>$data,
+            "status"=>1,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
